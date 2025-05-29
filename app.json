@@ -4,8 +4,13 @@
     "slug": "SinCase",
     "version": "1.0.0",
     "orientation": "portrait",
+<<<<<<< Updated upstream
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+=======
+    "icon": "./src/assets/SinIcon.png",
+    "userInterfaceStyle": "automatic",
+>>>>>>> Stashed changes
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
