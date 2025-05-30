@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, Pressable, Alert, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { styles } from "./styles"
 
 export default function App() {
   const handleButtonPress = (option: string) => {
@@ -55,6 +56,7 @@ export default function App() {
     </View>
   );
 }
+<<<<<<< Updated upstream:src/App.tsx
 
 const styles = StyleSheet.create({
   container: {
@@ -118,3 +120,5 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
+=======
+>>>>>>> Stashed changes:src/game/App.tsx
