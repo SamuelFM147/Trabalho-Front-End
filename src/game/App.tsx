@@ -1,27 +1,40 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Pressable, Alert } from 'react-native';
+import { StyleSheet, Text, View, Image, Pressable, Alert, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { styles } from "./styles"
 
 export default function App() {
-  const handleButtonPress = (option) => {
+  const handleButtonPress = (option: string) => {
+    // Aqui você pode adicionar a lógica para cada opção
     Alert.alert(`Você escolheu a opção ${option}`);
   };
 
   return (
     <View style={styles.container}>
       {/* Fala em pergaminho */}
-      <View style={styles.scrollContainer}>
-        <Text style={styles.scrollText}>
-          “Saudações, aventureiro... Escolha sabiamente o seu caminho!”
-        </Text>
-      </View>
+      <ScrollView style={styles.scrollContainer}>
 
-      {/* Imagem central */}
-      <Image
-        source={require('./assets/SinSplash.png')} // ajuste o caminho conforme onde está sua imagem
-        style={styles.characterImage}
-      />
+        <Text style={styles.scrollText}>
+          “Saudações, aventureiro... Escolha sabiamente o seu caminho!" 
+        </Text> 
+
+        <Image
+        source={require('./assets/SinSplash.png')}
+        style={styles.imagemTexto}
+        />
+         <Text style={styles.scrollText}>
+          “Saudações, aventureiro... Escolha sabiamente o seu caminho!" 
+        </Text> 
+        <Image
+        source={require('./assets/SinSplash.png')}
+        style={styles.imagemTexto}
+        />
+         <Text style={styles.scrollText}>
+          “Saudações, aventureiro... Escolha sabiamente o seu caminho!" 
+        </Text> 
+
+      </ScrollView>  
+      {/* trocado o View  e adicionado o ScrollView para permitir rolagem do texto, entao todos os texto devem estar dentro do Scrollview */}
 
       {/* Botões estilizados */}
       <View style={styles.buttonsContainer}>
@@ -48,7 +61,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1c1c1c',
+    backgroundColor: '#f5deb3', // cor de fundo
     padding: 20,
     justifyContent: 'space-between',
   },
@@ -56,13 +69,12 @@ const styles = StyleSheet.create({
     marginTop: 50,
     padding: 15,
     backgroundColor: '#f5deb3', // cor de pergaminho
-    borderWidth: 2,
-    borderColor: '#8b5a2b',
     borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: { width: 4, height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 5,
+    marginBottom: 28,
   },
   scrollText: {
     fontSize: 16,
@@ -79,9 +91,10 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: '#8b5a2b',
   },
+
   buttonsContainer: {
     marginBottom: 50,
-    gap: 10, // se não funcionar, pode usar marginVertical nos botões
+    gap: 10,    // se não funcionar, pode usar marginVertical nos botões
   },
   button: {
     padding: 12,
@@ -94,6 +107,17 @@ const styles = StyleSheet.create({
     color: '#f5deb3',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+
+  imagemTexto: {        //aqui é apenas um exemplo de imagem, para ficar visivel, usar apenas de base
+    flex: 1,
+    resizeMode: 'cover',
+    alignSelf: 'center',
+    width: 200,
+    height: 260,
+    marginTop: 20,
+    borderRadius: 10,
+    marginBottom: 10,
   },
 });
 =======

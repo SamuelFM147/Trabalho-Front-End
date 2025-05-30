@@ -4,8 +4,12 @@
     "slug": "SinCase",
     "version": "1.0.0",
     "orientation": "portrait",
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     "icon": "./assets/icon.png",
+=======
+    "icon": "./src/assets/SinIcon.png",
+>>>>>>> main
     "userInterfaceStyle": "light",
 =======
     "icon": "./src/assets/SinIcon.png",
@@ -13,22 +17,23 @@
 >>>>>>> Stashed changes
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./src/assets/SinSplash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./src/assets/SinIcon.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#000000"
       },
       "edgeToEdgeEnabled": true
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./src/assets/SinIcon.png"
     }
   }
 }
