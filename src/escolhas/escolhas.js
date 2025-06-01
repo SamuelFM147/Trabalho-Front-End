@@ -55,9 +55,9 @@
       {
         "destino_id": 4,
         "code_condicao": "Voce vai para a floresta"
-      },
-    ]
-  },
+      }
+    ]
+  },
 {
     "id":1.1,
     "mensagem": "Voce esmurra o rosto do idoso, o fazendo entrar em desespero e começar a contar que viu um homem estranho caminhando em direção a floresta logo apos a morte de sua filha"
