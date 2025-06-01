@@ -4,11 +4,15 @@ const { width, height } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
     background: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'black',
-    },
+  flex: 1,
+  width: width * 0.5, // 80% da largura da tela
+  height: height * 0.2, // 80% da altura da tela
+  alignSelf: 'center',
+  resizeMode: 'contain',
+  marginTop: height * 0.0, // Centraliza verticalmente
+  marginBottom: height * 0.1, // Espaço abaixo do logo
+  backgroundColor: 'rgb(10, 10, 10)', // Fundo semitransparente
+},
     container: {
       flex: 1,
       justifyContent: 'flex-end',
@@ -40,4 +44,4 @@ export const styles = StyleSheet.create({
       fontWeight: 'bold',
       letterSpacing: 1,
     },
-  });
+});
