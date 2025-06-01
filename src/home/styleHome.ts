@@ -1,12 +1,20 @@
-import { StyleSheet } from "react-native"; 
+import { StyleSheet, Dimensions } from "react-native"; 
+
+const { width, height } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
+    background: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'black',
+    },
     container: {
       flex: 1,
-      backgroundColor: '#0e0d0d',
+      justifyContent: 'flex-end',
       alignItems: 'center',
-      justifyContent: 'center',
-      padding: 20,
+      width: '100%',
+      paddingBottom: 80,
     },
     title: {
       fontSize: 36,
@@ -20,22 +28,16 @@ export const styles = StyleSheet.create({
       fontFamily: 'serif', 
     },
     button: {
-      backgroundColor: '#3c2f2f',
-      paddingVertical: 15,
-      paddingHorizontal: 40,
-      borderRadius: 12,
-      borderWidth: 2,
-      borderColor: '#a88e56',
-      elevation: 8,
-      shadowColor: '#000',
-      shadowOffset: { width: 4, height: 4 },
-      shadowOpacity: 0.8,
-      shadowRadius: 6,
+      backgroundColor: 'rgba(0,0,0,0.7)',
+      paddingVertical: 16,
+      paddingHorizontal: 60,
+      borderRadius: 10,
+      marginBottom: 40,
     },
     buttonText: {
-      color: '#f5e6c5',
-      fontSize: 20,
-      fontWeight: '600',
+      color: '#fff',
+      fontSize: 22,
+      fontWeight: 'bold',
       letterSpacing: 1,
     },
   });
