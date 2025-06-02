@@ -1,4 +1,6 @@
-export const jsonData = [
+import { GameData } from '../types/gameTypes';
+
+export const jsonData: GameData = [
   {
     "id": 0,
     "mensagem": "O momento chegou. Onde você deseja enterrar sua filha?",
@@ -55,7 +57,8 @@ export const jsonData = [
       {
         "destino_id": 3.1,
         "code_condicao": "Dar uma moeda",
-        "descricao_opcao": "Você decide ajudar o mendigo, dando-lhe uma moeda"
+        "descricao_opcao": "Você decide ajudar o mendigo, dando-lhe uma moeda",
+        "define_condicao": "ajudou_mendigo"
       },
       {
         "destino_id": 3.2,
@@ -71,7 +74,8 @@ export const jsonData = [
       {
         "destino_id": 4,
         "code_condicao": "Chegar na bifurcação",
-        "descricao_opcao": "Você chega na bifurcação mencionada pelo mendigo"
+        "descricao_opcao": "Você chega na bifurcação mencionada pelo mendigo",
+        "define_condicao": "recebeu_conselho_mendigo"
       }
     ]
   },
@@ -108,9 +112,10 @@ export const jsonData = [
     "mensagem": "Na floresta escura, você encontra uma criança perdida chorando.",
     "possiveis_destinos": [
       {
-        "destino_id": "4.1.1",
+        "destino_id": 5,
         "code_condicao": "Ajudar a criança",
-        "descricao_opcao": "Você decide ajudar a criança, caminhando de mãos dadas para fora da floresta"
+        "descricao_opcao": "Você decide ajudar a criança, caminhando de mãos dadas para fora da floresta",
+        "define_condicao": "tem_crianca"
       }
     ]
   },
