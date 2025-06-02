@@ -1,4 +1,6 @@
-export const jsonData = [
+import { GameData } from '../types/gameTypes';
+
+export const jsonData: GameData = [
   {
     "id": 0,
     "mensagem": "O momento chegou. Onde você deseja enterrar sua filha?",
