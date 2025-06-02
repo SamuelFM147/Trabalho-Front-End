@@ -1,58 +1,38 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Pressable, Alert, ScrollView } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import { styles } from "./styles"
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { useFonts } from 'expo-font'; //essa é a biblioteca para usar as fontes personalizadas
+import Home from '../home'; 
+import Game from './AppGame'; 
+import { Text, View } from 'react-native'; 
 
+const Stack = createStackNavigator();
+
+//aqui é uma função para carregar essas fontes personalizadas, ela esta puxando da pasta Fonts que criei dentro de Assets
 export default function App() {
-  const handleButtonPress = (option: string) => {
-    // Aqui você pode adicionar a lógica para cada opção
-    Alert.alert(`Você escolheu a opção ${option}`);
-  };
+  const [fontsLoaded, fontError] = useFonts({
+    'FonteHome': require('../assets/Fonts/teste.ttf'),
+  });
+
+  //aqui é para dar log no expo caso tenha algum erro acontecendo
+  console.log('Fontes carregadas:', fontsLoaded, 'Erro na fonte:', fontError);
+
+  if (fontError) {
+
+    return <Text>Erro ao carregar fonte: {fontError.message}</Text>;
+  }
+
+  if (!fontsLoaded) {
+    return <Text>Carregando fontes...</Text>; 
+  }
+
 
   return (
-    <View style={styles.container}>
-      {/* Fala em pergaminho */}
-      <ScrollView style={styles.scrollContainer}>
-
-        <Text style={styles.scrollText}>
-          “Saudações, aventureiro... Escolha sabiamente o seu caminho!" 
-        </Text> 
-
-        <Image
-        source={require('./assets/SinSplash.png')}
-        style={styles.imagemTexto}
-        />
-         <Text style={styles.scrollText}>
-          “Saudações, aventureiro... Escolha sabiamente o seu caminho!" 
-        </Text> 
-        <Image
-        source={require('./assets/SinSplash.png')}
-        style={styles.imagemTexto}
-        />
-         <Text style={styles.scrollText}>
-          “Saudações, aventureiro... Escolha sabiamente o seu caminho!" 
-        </Text> 
-
-      </ScrollView>  
-      {/* trocado o View  e adicionado o ScrollView para permitir rolagem do texto, entao todos os texto devem estar dentro do Scrollview */}
-
-      {/* Botões estilizados */}
-      <View style={styles.buttonsContainer}>
-        {['Ataque', 'Defesa', 'Fugir', 'Negociar'].map((action, index) => (
-          <Pressable
-            key={index}
-            style={({ pressed }) => [
-              styles.button,
-              { backgroundColor: pressed ? '#444' : '#333' }
-            ]}
-            onPress={() => handleButtonPress(action)}
-          >
-            <Text style={styles.buttonText}>{action}</Text>
-          </Pressable>
-        ))}
-      </View>
-
-      <StatusBar style="light" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Game" component={Game} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
