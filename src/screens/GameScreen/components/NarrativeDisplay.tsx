@@ -1,5 +1,5 @@
 // --- INÍCIO DO ARQUIVO: src/screens/GameScreen/components/NarrativeDisplay.tsx ---
-import React from 'react';
+import * as React from 'react';
 import { View, Text, ScrollView, Image } from 'react-native';
 import { styles } from '../styles';
 import { Scene } from '../../../types/gameTypes';
@@ -16,7 +16,6 @@ const NarrativeDisplay: React.FC<NarrativeDisplayProps> = ({ scene }) => {
     'SinIcon.png': require('../../../assets/SinIcon.png'),
     'SinHome.png': require('../../../assets/SinHome.png')
   };
-
   return (
     <ScrollView style={styles.narrativeContainer}>
       {scene.imagem && imageSources[scene.imagem] && (
