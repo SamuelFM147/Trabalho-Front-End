@@ -17,8 +17,8 @@ export const styles = StyleSheet.create({
   },
 
   containerDoBotao: {
-    
-
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   title: {
@@ -32,14 +32,6 @@ export const styles = StyleSheet.create({
     textShadowRadius: 6,
     fontFamily: 'serif',
   },
-
-  button: {
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    paddingVertical: 16,
-    paddingHorizontal: 60,
-    borderRadius: 10,
-  },
-
 
   //NAO USAR FONTSTYLE se nao quebra a fontFamily 
   Textobotao: {
