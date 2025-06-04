@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { SafeAreaView, ScrollView, Image, Animated } from 'react-native';
+import { SafeAreaView, ScrollView, Image, Text, View, Animated } from 'react-native';
 import { useGameEngine } from '../../hooks/useGameEngine';
 import NarrativeText from '../../components/NarrativeText';
 import SceneDivider from '../../components/SceneDivider';
@@ -29,7 +29,7 @@ const GameScreen: React.FC = () => {
   const scrollViewRef = useRef<ScrollView>(null);
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const [isTransitioning, setIsTransitioning] = useState(false);
-
+  
   const {
     currentScene,
     availableChoices,

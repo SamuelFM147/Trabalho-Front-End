@@ -1,21 +1,21 @@
-// Baseado no styles.ts fornecido e no protótipo visual
+// Tema místico e sombrio com detalhes dourados
 export const colors = {
-    background: '#eae7d6',
-    text: '#222',
-    divider: '#bdb8a3',
-    choiceBackground: '#8B7355', // Marrom mais claro
-    choiceHighlight: '#A0522D', // Marrom siena mais claro para hover
-    choiceText: '#ffffff', // Mantendo o texto em branco para contraste
-    pergaminhoBg: '#f5e8c8', // Um tom mais claro para o pergaminho, similar a #f5deb3 mas levemente ajustado
-    pergaminhoBorder: '#c8b898', // Borda para o pergaminho
-    textPrimary: '#3e2c1c', // Texto escuro sobre o pergaminho
-    textLight: '#e0e0e0', // Texto claro para botões ou elementos sobre fundo escuro
-    buttonBg: '#333333', // Fundo escuro para botões
-    buttonBorder: '#8b5a2b', // Borda dos botões como no styles.ts
-    buttonText: '#f5deb3', // Texto claro nos botões
-    sceneIdColor: '#5a3d2b', // Cor para o ID da cena, um marrom mais forte
+    background: '#0A0F14', // Fundo muito escuro com tom azulado
+    text: '#E6C068', // Dourado suave para texto
+    divider: '#2A333C', // Divisor escuro com tom azulado
+    choiceBackground: '#1A1E23', // Fundo escuro para escolhas
+    choiceHighlight: '#2C3238', // Destaque suave para hover
+    choiceText: '#E6C068', // Dourado suave para texto das escolhas
+    pergaminhoBg: '#0F1419', // Fundo escuro para o pergaminho
+    pergaminhoBorder: '#2A333C', // Borda do pergaminho
+    textPrimary: '#E6C068', // Texto principal em dourado
+    textLight: '#BFA75F', // Dourado mais claro
+    buttonBg: '#1A1E23', // Fundo escuro para botões
+    buttonBorder: '#3A424C', // Borda sutil para botões
+    buttonText: '#E6C068', // Texto dos botões em dourado
+    sceneIdColor: '#BFA75F', // ID da cena em dourado mais claro
     white: '#FFFFFF',
     black: '#000000',
-    disabledButtonBg: '#555555',
+    disabledButtonBg: '#1C2126',
     // Adicione mais cores conforme necessário
   };
