@@ -1,4 +1,3 @@
-
 import { StyleSheet, Dimensions } from 'react-native';
 import { colors } from '../../constants/colors';
 import { typography } from '../../constants/typography';
@@ -95,24 +94,33 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: colors.background,
+    backgroundColor: '#000000',
   },
   endGameText: {
-    fontSize: 24,
-    color: colors.textLight,
+    fontSize: 32,
+    color: '#FF0000',
     textAlign: 'center',
     marginBottom: 30,
-    marginTop: 20,
+    fontFamily: 'serif',
+    textShadowColor: 'rgba(255, 0, 0, 0.5)',
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 4,
   },
   restartButton: {
-    backgroundColor: colors.buttonBorder,
+    backgroundColor: 'transparent',
     paddingVertical: 15,
     paddingHorizontal: 40,
     borderRadius: 8,
+    borderWidth: 2,
+    borderColor: '#FF0000',
   },
   restartButtonText: {
-    color: colors.white,
-    fontSize: 18,
+    color: '#FF0000',
+    fontSize: 24,
     fontWeight: 'bold',
+    fontFamily: 'serif',
+    textShadowColor: 'rgba(255, 0, 0, 0.3)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 2,
   },
 });

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { SafeAreaView, ScrollView, Image, Text, View } from 'react-native';
 import { useGameEngine } from '../../hooks/useGameEngine';
@@ -6,10 +5,11 @@ import NarrativeText from '../../components/NarrativeText';
 import SceneDivider from '../../components/SceneDivider';
 import ChoiceList from '../../components/ChoiceList';
 import { colors } from '../../constants/colors';
-import { styles } from './styles'; 
+import { styles } from './styles';
+import { useNavigation } from '@react-navigation/native';
+import EndGameScreen from './components/EndGameScreen';
 
-
-const localImages = {
+const localImages: Record<string, any> = {
   '/assets/id0.jpeg': require('../../assets/id0.png'),
   '/assets/id2.jpeg': require('../../assets/id2.png'),
   '/assets/id3.png': require('../../assets/id3.png'),
@@ -22,10 +22,10 @@ const localImages = {
   '/assets/id92.png': require('../../assets/id92.png'),
   '/assets/id94.png': require('../../assets/id94.png'),
   '/assets/id95.png': require('../../assets/id95.png'),
-  
 };
 
 const GameScreen: React.FC = () => {
+  const navigation = useNavigation();
   const {
     currentScene,
     availableChoices,
@@ -34,6 +34,11 @@ const GameScreen: React.FC = () => {
     isGameOver,
     isVictory,
   } = useGameEngine();
+
+  const handleRestart = () => {
+    restartGame();
+    navigation.navigate('Home' as never);
+  };
 
   if (!currentScene) {
     return (
@@ -51,35 +56,12 @@ const GameScreen: React.FC = () => {
 
   
   if (isGameOver || isVictory) {
-    const finalMessage = currentScene.mensagem || (isGameOver ? "Fim de Jogo." : "Vitória!");
-    const finalImageSource = currentScene.imagem_url && localImages[currentScene.imagem_url]
-      ? localImages[currentScene.imagem_url]
-      : null;
-
     return (
-      <SafeAreaView style={styles.endGameContainer}>
-        <ScrollView contentContainerStyle={styles.scrollContent}>
-          {finalImageSource && (
-            <Image
-              source={finalImageSource}
-              style={styles.sceneImage}
-              resizeMode="cover"
-            />
-          )}
-          <Text style={styles.endGameText}>
-            {finalMessage}
-          </Text>
-          <ChoiceList
-            choices={[
-              {
-                descricao_opcao: 'Jogar Novamente',
-                onPress: restartGame,
-                code_condicao: 'reiniciar'
-              },
-            ]}
-          />
-        </ScrollView>
-      </SafeAreaView>
+      <EndGameScreen
+        message={currentScene.mensagem || (isGameOver ? "Sua jornada chegou ao fim..." : "Você conquistou a vitória!")}
+        onRestart={handleRestart}
+        isVictory={isVictory}
+      />
     );
   }
 
