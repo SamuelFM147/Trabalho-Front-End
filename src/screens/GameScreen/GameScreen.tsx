@@ -6,6 +6,8 @@ import NarrativeText from '../../components/NarrativeText';
 import SceneDivider from '../../components/SceneDivider';
 import ChoiceList from '../../components/ChoiceList';
 import { colors } from '../../constants/colors';
+import { useNavigation } from '@react-navigation/native';
+import EndGameScreen from './components/EndGameScreen';
 
 // Se você estiver usando React Navigation, pode precisar dos tipos de props
 // import { StackScreenProps } from '@react-navigation/stack';
@@ -14,6 +16,7 @@ import { colors } from '../../constants/colors';
 // type GameScreenProps = StackScreenProps<RootStackParamList, 'Game'>;
 
 const GameScreen: React.FC /* <GameScreenProps> */ = () => {
+  const navigation = useNavigation();
   const {
     currentScene,
     availableChoices,
@@ -22,6 +25,11 @@ const GameScreen: React.FC /* <GameScreenProps> */ = () => {
     isGameOver,
     isVictory,
   } = useGameEngine();
+
+  const handleRestart = () => {
+    restartGame();
+    navigation.navigate('Home' as never);
+  };
 
   if (!currentScene) {
     return (
@@ -33,22 +41,11 @@ const GameScreen: React.FC /* <GameScreenProps> */ = () => {
 
   if (isGameOver || isVictory) {
     return (
-      <SafeAreaView style={styles.container}>
-        <ScrollView contentContainerStyle={styles.scrollContent}>
-          <NarrativeText 
-            text={currentScene.mensagem || (isGameOver ? "Fim de Jogo." : "Vitória!")} 
-          />
-          <SceneDivider sceneNumber={currentScene.id} />
-          <ChoiceList
-            choices={[
-              {
-                descricao_opcao: 'Jogar Novamente',
-                onPress: restartGame,
-              },
-            ]}
-          />
-        </ScrollView>
-      </SafeAreaView>
+      <EndGameScreen
+        message={currentScene.mensagem || (isGameOver ? "Sua jornada chegou ao fim..." : "Você conquistou a vitória!")}
+        onRestart={handleRestart}
+        isVictory={isVictory}
+      />
     );
   }
 

@@ -87,23 +87,34 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+    backgroundColor: '#000000', // Fundo preto
   },
   endGameText: {
-    fontSize: 24,
-    color: colors.textLight,
+    fontSize: 32,
+    color: '#FF0000', // Texto vermelho
     textAlign: 'center',
     marginBottom: 30,
+    fontFamily: 'serif',
+    textShadowColor: 'rgba(255, 0, 0, 0.5)',
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 4,
   },
   restartButton: {
-    backgroundColor: colors.buttonBorder, // Cor de destaque
+    backgroundColor: 'transparent',
     paddingVertical: 15,
     paddingHorizontal: 40,
     borderRadius: 8,
+    borderWidth: 2,
+    borderColor: '#FF0000',
   },
   restartButtonText: {
-    color: colors.white,
-    fontSize: 18,
+    color: '#FF0000',
+    fontSize: 24,
     fontWeight: 'bold',
+    fontFamily: 'serif',
+    textShadowColor: 'rgba(255, 0, 0, 0.3)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 2,
   },
 });
 // --- FIM DO ARQUIVO: src/screens/GameScreen/styles.ts ---
