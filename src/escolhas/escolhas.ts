@@ -3,387 +3,179 @@ import { GameData } from '../types/gameTypes';
 export const jsonData: GameData = [
   {
     "id": "0",
-    "mensagem": "O momento chegou. Onde você deseja enterrar sua filha?",
+    "mensagem": "O pó das cinzas do que um dia foi um corpo pequeno e frágil se esvaiu pela vila silenciosa, passando pelas paredes que uma vez confidenciou fofocas e brincadeiras das crianças. ",
     "possiveis_destinos": [
       {
-        "destino_id": "1",
-        "code_condicao": "Enterrar junto da mãe",
-        "descricao_opcao": "Você decide enterrar sua filha junto de sua mãe no cemitério local"
+        "destino_id": "90",
+        "code_condicao": "Se tornar um com o mundo",
+        "descricao_opcao": "Sua vontade se dispersará e seu corpo será tão grande quanto o céu, os ventos carregarão sussurros de sua vontade"
       },
       {
         "destino_id": "2",
-        "code_condicao": "Enterrar embaixo da árvore",
-        "descricao_opcao": "Você escolhe enterrar sua filha embaixo da árvore onde ela costumava se balançar"
+        "code_condicao": "Seguir os passos da terra",
+        "descricao_opcao": "A vila era abandonada conforme Sin caminhava pela estrada de terra, após horas de viagem se recorda que nem mesmo juntou as cinzas da filha... mas isso não importa mais."
       }
     ]
   },
   {
-    "id": "1",
-    "mensagem": "Enquanto enterra sua filha, você nota um homem também enterrando sua esposa. Ele parece estar em grande angústia, assim como você.",
+    "id": "90",
+    "mensagem": "Sin abriu os braços diante do vazio onde antes existia a vila Naríbia. As pedras ainda queimavam, o ar era feito de silêncio e ruína. Não havia mais dor — só a vastidão. Ele deixou que os ventos o atravessassem. Deixou que levassem seus ossos, sua carne, suas lembranças. As cinzas de Felícia fundiram-se às suas. A raiva cessou. A tristeza também. Restou apenas a pulsação da terra, que agora batia em uníssono com seu peito. Ele se tornou poeira nos campos, sussurros nas cavernas, uma sombra sob as árvores onde antes o riso habitava. As montanhas passaram a tremer em noites de tempestade — como se algo gigante respirasse sob elas. Ninguém soube o que houve com Sin. Mas em cada vila devastada pelo tempo, alguns dizem ouvir um nome carregado pelo vento. Outros juram sentir olhos invisíveis observando, silenciosos, entre as folhas secas. Ele se tornou um com o mundo. Não por escolha. Mas por necessidade. E o mundo… finalmente teve um coração que compreendia sua dor.",
     "possiveis_destinos": [
       {
-        "destino_id": "1.1",
-        "code_condicao": "Conversar com o homem",
-        "descricao_opcao": "Você decide conversar com o homem, compartilhando sua dor e desenvolvendo uma amizade"
-      }
-    ]
-  },
-  {
-    "id": "1.1",
-    "mensagem": "O homem, após compartilhar sua história, oferece te levar para Windhelm. No caminho, vocês são abordados por um exército do rei tirano.",
-    "possiveis_destinos": [
-      {
-        "destino_id": "GAME_OVER_1",
-        "code_condicao": "Ser morto pelo exército",
-        "descricao_opcao": "O rei ordena sua morte e a de seu novo amigo. Fim de jogo."
+        "destino_id": "RESTART",
+        "code_condicao": "Final: O Coração do Mundo",
+        "descricao_opcao": "Sua vontade se dispersou, mas sua essência se tornou parte do mundo."
       }
     ]
   },
   {
     "id": "2",
-    "mensagem": "Após enterrar sua filha sob a árvore, seu espírito amargurado te faz caminhar sem rumo pela estrada de terra próxima.",
+    "mensagem": "A vila era abandonada conforme Sin caminhava pela estrada de terra. Após horas de viagem, ele já não sabia se o gosto em sua boca era poeira ou memória. Felícia. Ele não havia sequer recolhido as cinzas... mas isso podia não importar mais. A estrada antes familiar agora era completamente diferente, árvores altas e cheia de vida agora são retorcidas e frutos podres, a realidade se distorcia em seus olhos sem vida conforme observava sem animo o show que o mundo te apresentava. A estrada seguia silenciosa, até que o rangido de uma carroça quebrou o torpor. Um jovem conduzindo um velho cavalo parou ao avistar Sin. Seus olhos demonstravam uma cautela gentil.\n— Senhor, está perdido? Posso levá-lo até Abenra, a cidade próxima. Está a dois dias daqui.\nSin apenas o observou. Seu olhar era vazio como uma caverna sem eco, mas por dentro, um redemoinho de memórias, dor e confusão rugia. A voz dele saiu rouca e baixa:\n— Você carrega algo de valor?...\nO jovem sorriu sem escutar os murmúrios, acreditando tratar-se apenas de um velho exausto. Mas o olhar de Sin começava a oscilar — um lampejo de compaixão, outro de fome. Não por comida. Mas por silêncio. A mente dele ainda era sua. Mas até quando?",
     "possiveis_destinos": [
       {
         "destino_id": "3",
-        "code_condicao": "Continuar caminhando",
-        "descricao_opcao": "Você segue pela estrada, perdido em seus pensamentos"
+        "code_condicao": "Matar e saquear",
+        "descricao_opcao": "Você ataca o jovem sem aviso, decidido a tomar tudo e seguir sozinho, com seus poderes um estalar de dedos e o mundo responde a seu chamado e torna pó."
+      },
+      {
+        "destino_id": "4",
+        "code_condicao": "Aceitar a Carona",
+        "descricao_opcao": "Você sobe na carroça em silêncio e parte com ele rumo à cidade."
       }
     ]
   },
   {
     "id": "3",
-    "mensagem": "Um mendigo sujo se aproxima, implorando por alguma moeda para comer.",
+    "mensagem": "A pergunta de Sin ecoou na carroça como um trovão abafado:\n— Você carrega algo de valor?...\nO jovem parou de sorrir. O mundo ao redor se contorceu como um reflexo na água agitada. A estrada se dissolveu por um segundo e, com um estalar de dedos, Sin viu — ou sentiu — a realidade responder. O cavalo empinou, o céu escureceu, o chão gemeu como se temesse o que viria a seguir. Mas ele não atacou. Não de verdade. O mundo estremeceu apenas por pensar. Apenas por desejar. O jovem olhou espantado para o nada, como se um frio antigo o tocasse. Mas Sin fechou os olhos. Respirou fundo. Sentiu o silêncio outra vez. E o silêncio, por mais que o desejasse, era horrível quando era total. — Esqueça... — disse Sin, voltando a encarar o chão. O jovem hesitou, depois assentiu, talvez sem entender. Estendeu a mão. Suba. Pode descansar um pouco. Sin subiu. A carroça seguiu. A realidade voltou a pulsar como antes — distorcida, mas suportável. As árvores se alinharam novamente, como se jamais tivessem sido amaldiçoadas. Ele havia matado, sim. Mas apenas dentro de si. E talvez fosse pior assim.",
     "possiveis_destinos": [
       {
-        "destino_id": "3.1",
-        "code_condicao": "Dar uma moeda",
-        "descricao_opcao": "Você decide ajudar o mendigo, dando-lhe uma moeda",
-        "define_condicao": "ajudou_mendigo"
+        "destino_id": "5",
+        "code_condicao": "Seguir viagem em silêncio",
+        "descricao_opcao": "Você permanece calado enquanto o jovem fala sobre sua irmã, Lina."
       },
       {
-        "destino_id": "3.2",
-        "code_condicao": "Não dar nada",
-        "descricao_opcao": "Você decide não dar nada ao mendigo"
-      }
-    ]
-  },
-  {
-    "id": "3.1",
-    "mensagem": "O mendigo agradece e te avisa sobre uma bifurcação na estrada, recomendando seguir pelo caminho da esquerda.",
-    "possiveis_destinos": [
-      {
-        "destino_id": "4",
-        "code_condicao": "Chegar na bifurcação",
-        "descricao_opcao": "Você chega na bifurcação mencionada pelo mendigo",
-        "define_condicao": "recebeu_conselho_mendigo"
-      }
-    ]
-  },
-  {
-    "id": "3.2",
-    "mensagem": "O mendigo abaixa a cabeça em silêncio e deseja boa sorte. Você continua seu caminho.",
-    "possiveis_destinos": [
-      {
-        "destino_id": "4",
-        "code_condicao": "Chegar na bifurcação",
-        "descricao_opcao": "Você chega na bifurcação da estrada"
+        "destino_id": "6",
+        "code_condicao": "Compartilhar a dor",
+        "descricao_opcao": "Você compartilha a história da destruição de Naríbia e de Felícia."
       }
     ]
   },
   {
     "id": "4",
-    "mensagem": "Você se depara com uma bifurcação na estrada. Para onde você vai?",
-    "possiveis_destinos": [
-      {
-        "destino_id": "4.1",
-        "code_condicao": "Seguir pela esquerda (se recebeu conselho do mendigo)",
-        "descricao_opcao": "Você segue pelo caminho da esquerda, entrando em uma floresta escura e sombria",
-        "requer_condicao": "recebeu_conselho_mendigo"
-      },
-      {
-        "destino_id": "4.2",
-        "code_condicao": "Seguir pela direita",
-        "descricao_opcao": "Você segue pelo caminho da direita, continuando pela estrada"
-      }
-    ]
-  },
-  {
-    "id": "4.1",
-    "mensagem": "Na floresta escura, você encontra uma criança perdida chorando.",
+    "mensagem": "A carroça avançava lentamente pela estrada, com o céu coberto de nuvens imóveis. O jovem puxava as rédeas e falava sobre coisas simples — sua irmã Lina, a colheita que perderam nas últimas chuvas, a saudade da mãe. Sin ouvia em silêncio. Cada palavra era como um prego em algo que ele tentava enterrar dentro de si. — Ela gostava de se balançar numa árvore — disse o jovem, rindo. — Ficava horas ali... como se conversasse com o vento. Sin virou o rosto. O vento agora parecia sussurrar Felícia. Seu rosto. Seu riso. O mundo começou a girar, mas por fora ele continuava imóvel. — Felícia também fazia isso — murmurou. Sua voz rachada quase não saiu. — Ela... gostava de cantar enquanto o vento balançava os galhos... O jovem, surpreso, parou de falar. Pela primeira vez, viu nos olhos de Sin algo mais do que silêncio. Viu tristeza. Viu uma história que pesava mais que o corpo daquele homem. O passado estava se quebrando dentro de Sin. E ele sabia que precisava dizer mais. Ou calar para sempre.",
     "possiveis_destinos": [
       {
         "destino_id": "5",
-        "code_condicao": "Ajudar a criança",
-        "descricao_opcao": "Você decide ajudar a criança, caminhando de mãos dadas para fora da floresta",
-        "define_condicao": "tem_crianca"
-      }
-    ]
-  },
-  {
-    "id": "4.2",
-    "mensagem": "Um grupo de 4 bandidos te aborda, exigindo todo seu dinheiro.",
-    "possiveis_destinos": [
-      {
-        "destino_id": "4.2.1",
-        "code_condicao": "Dar o dinheiro (se ainda tiver)",
-        "descricao_opcao": "Você entrega seu dinheiro aos bandidos",
-        "requer_condicao": "tem_dinheiro"
+        "code_condicao": "Permanecer em Silêncio",
+        "descricao_opcao": "Você desvia o olhar e deixa que o passado continue te corroendo por dentro."
       },
       {
-        "destino_id": "GAME_OVER_2",
-        "code_condicao": "Recusar ou não ter dinheiro",
-        "descricao_opcao": "Os bandidos te atacam e você morre. Fim de jogo."
-      }
-    ]
-  },
-  {
-    "id": "4.2.1",
-    "mensagem": "Mesmo após dar o dinheiro, os bandidos te surram por diversão, ferindo sua perna direita.",
-    "possiveis_destinos": [
-      {
-        "destino_id": "5",
-        "code_condicao": "Continuar para Windhelm",
-        "descricao_opcao": "Você segue para Windhelm, mancando devido ao ferimento"
+        "destino_id": "6",
+        "code_condicao": "Compartilhar sua dor",
+        "descricao_opcao": "Você conta ao jovem o que aconteceu em Naríbia e sobre sua filha Felícia."
       }
     ]
   },
   {
     "id": "5",
-    "mensagem": "Você chega em Windhelm, uma cidade em ruínas, com famílias se abrigando em cabanas.",
+    "mensagem": "A carroça rangeu suavemente à medida que avançava pela estrada tortuosa. O jovem falava como quem tenta afastar o peso do tempo. Contava histórias de sua irmã Lina, da colheita perdida, das broncas da mãe e dos sonhos que tinha com Abenra. Sin apenas ouvia. Seus olhos fixos no horizonte, mas seus ouvidos mergulhados em cada palavra. Nada escapava. Cada riso do jovem parecia ecoar dentro dele como um fantasma — da filha que não voltaria, da vida que não haveria. — Ela gostava de se balançar numa árvore — disse o rapaz, sorrindo. — Ficava horas ali... como se conversasse com o vento. Sin não reagiu. Por dentro, algo se contorceu. Por fora, permaneceu imóvel. — Bem... — disse o jovem, notando a ausência de resposta. — Abenra está logo ali adiante. Um lugar seguro. Gente boa. Talvez... talvez seja um novo começo. Sin não respondeu. E talvez essa fosse a resposta. Quando chegaram à entrada da cidade, o jovem desceu da carroça. — Pode seguir por aqui. O templo fica ao norte. Boa sorte, senhor. Sin desceu. Olhou ao redor como quem nunca esteve num lugar assim. Abenra vibrava com vida — tão diferente de Naríbia, tão distante de Felícia. Ele não disse uma palavra. Mas o silêncio dele agora era diferente.",
     "possiveis_destinos": [
       {
-        "destino_id": "5.1",
-        "code_condicao": "Chegar com a criança",
-        "descricao_opcao": "A família da criança te encontra e oferece recompensa e abrigo",
-        "requer_condicao": "tem_crianca"
+        "destino_id": "94",
+        "code_condicao": "Se tornar em corpo e alma Sin",
+        "descricao_opcao": "Você abraça a destruição e se torna O Tabu do Mundo."
       },
       {
-        "destino_id": "5.1",
-        "code_condicao": "Chegar sozinho",
-        "descricao_opcao": "Você vaga pela cidade, observando as famílias desabrigadas"
+        "destino_id": "95",
+        "code_condicao": "O Guardião Silencioso",
+        "descricao_opcao": "Você se torna uma vontade protetora, um monumento à vigília."
       }
     ]
   },
   {
-    "id": "5.1",
-    "mensagem": "Dias depois, um grupo de soldados rebeldes te aborda, pedindo para se juntar à resistência contra o rei tirano.",
+    "id": "94",
+    "mensagem": "Sin chegou a Abenra sob o brilho dourado de um sol tranquilo. Crianças corriam entre barracas, mercadores riam alto, e o som dos sinos se misturava ao perfume de pães recém-assados. Um mundo intacto. Um mundo feliz demais para ainda existir. Ele parou no centro da praça. As pessoas olhavam para ele — um homem sujo, de olhos vazios e manto puído. Algumas franziram o cenho. Outras desviaram. Uma criança estendeu uma maçã. E foi aí que o silêncio dentro dele explodiu. Vocês não sentem? — murmurou. — Vocês fingem que nada aconteceu... enquanto tudo ardeu. Seus pés começaram a vibrar. O chão tremeu. O céu escureceu como se o tempo recuasse. Os gritos começaram antes mesmo da primeira pedra flutuar. Abenra se tornou poeira. Prédios ruíram como papel. Chamas brotaram sem calor — apenas com ódio. O ar gritou o nome dele antes de se calar: **Sin.** Quando os juízes do tempo acordaram, já era tarde. A cidade era apenas uma cratera, e no centro dela, uma figura de olhos queimando e corpo em pedaços — reconstruído pela própria vontade. Não era mais homem. Era um Tabu. Um nome que não se pronuncia. Um evento que não se estuda. Crianças aprendem a temer o vento do sul, pois dizem que ele carrega fragmentos da voz de Sin. E em noites em que as vilas silenciam, mães juram ver um vulto andando, buscando outra cidade feliz demais para continuar existindo.",
     "possiveis_destinos": [
       {
-        "destino_id": "6.1",
-        "code_condicao": "Aceitar juntar-se à resistência",
-        "descricao_opcao": "Você se torna um soldado da resistência, recebendo treinamento e equipamentos"
-      },
-      {
-        "destino_id": "6.2",
-        "code_condicao": "Recusar",
-        "descricao_opcao": "Você recusa o convite dos rebeldes"
+        "destino_id": "RESTART",
+        "code_condicao": "Final: O Tabu do Mundo",
+        "descricao_opcao": "Você se tornou uma força de destruição, um lembrete do que foi perdido."
       }
     ]
   },
   {
-    "id": "6.1",
-    "mensagem": "O comandante te chama para uma reunião urgente. O exército do rei está se aproximando.",
+    "id": "95",
+    "mensagem": "Abenra estava viva — barulhenta, pulsante, inocente. Algo que Sin já não era. Ele caminhou pelas ruas como uma sombra deslocada entre o calor humano. Viu crianças brincando onde, outrora, jaziam os corpos de Naríbia. Sentiu no ar o que perdeu. Na praça central havia um espaço vazio. Um altar quebrado, jamais reconstruído desde tempos antigos. Ele parou ali. E o mundo pareceu respirar com ele. Sin olhou para o céu — não em busca de perdão, mas em aceitação. O silêncio dentro dele não doía mais. Era firme. Claro. Com um último suspiro, ele ajoelhou-se sobre o mármore frio. Seu corpo começou a se endurecer. Primeiro os pés, depois as mãos, o peito, os olhos. As pessoas notaram, algumas correram, outras assistiram em silêncio. Nenhum grito. Nenhuma súplica. Apenas a transformação. Horas depois, uma estátua estava ali. Olhos voltados para o horizonte. Rosto austero. Manto de pedra. Uma inscrição simples apareceu no pedestal, como se gravada pelo tempo: “Aqui descansa o que restou da ruína. E o que brotou da vigília.” Sin não foi esquecido. Mas também não foi entendido. Com o passar dos séculos, crianças passaram a deixar flores aos seus pés. Guerreiros tocaram sua mão antes de partir. E, em noites de medo, os anciãos diziam: — Abenra nunca cairá... enquanto ele vigiar.",
     "possiveis_destinos": [
       {
-        "destino_id": "6.1.1",
-        "code_condicao": "Aumentar número de arqueiros",
-        "descricao_opcao": "Você sugere focar em aumentar o número de arqueiros"
-      },
-      {
-        "destino_id": "6.1.2",
-        "code_condicao": "Aumentar número de infantaria",
-        "descricao_opcao": "Você sugere focar em aumentar o número de soldados de infantaria"
+        "destino_id": "RESTART",
+        "code_condicao": "Final: O Guardião Silencioso",
+        "descricao_opcao": "Você se tornou um monumento, um protetor eterno da cidade."
       }
     ]
   },
   {
-    "id": "6.1.1",
-    "mensagem": "Os arqueiros conseguem enfraquecer o exército inimigo, levando à vitória. Você se torna um comandante respeitado.",
+    "id": "6",
+    "mensagem": "Abenra surgiu ao longe como um borrão de cor e ruído. Telhados alaranjados, crianças correndo, sinos marcando as horas. Um mundo intacto. Um mundo que não sabia, e não se importava, com o que aconteceu em Naríbia. A carroça parou próxima ao mercado central. Sin desceu com cuidado, sentindo os olhos das pessoas sobre ele — o manto esfarrapado, o olhar perdido. O jovem viajante o olhou com respeito, talvez com medo. Mas algo dentro dele havia mudado desde a história de Felícia. — Aqui nos despedimos — disse o jovem. — Espero que encontre o que procura… ou pelo menos… um lugar onde isso tudo não pese tanto. Sin assentiu. Ele não sabia o que buscava, mas o peso era real. Vagou até um templo de pedra clara, com jardins simples e incenso no ar. Não era sagrado para ele, mas havia silêncio ali. E silêncio era raro. Em seu bolso, algo: o laço de cabelo de Felícia. Restava isso. E a lembrança. Sempre a lembrança. Ali, diante de um altar apagado, ele pensou se devia deixá-lo ali. Um símbolo de fim. Ou guardar, como promessa de vingança, dor ou memória eterna.",
     "possiveis_destinos": [
-      {
-        "destino_id": "VITORIA_1",
-        "code_condicao": "Final vitorioso",
-        "descricao_opcao": "Você passa o resto de seus dias como um símbolo de esperança para o povo"
-      }
-    ]
-  },
-  {
-    "id": "6.1.2",
-    "mensagem": "O exército inimigo invade a cidade. Você corre para a pousada onde está a criança que salvou.",
-    "possiveis_destinos": [
-      {
-        "destino_id": "6.1.2.1",
-        "code_condicao": "Tentar salvar a criança",
-        "descricao_opcao": "Você luta contra os soldados para salvar a criança"
-      },
-      {
-        "destino_id": "6.1.2.2",
-        "code_condicao": "Abandonar a criança",
-        "descricao_opcao": "Você decide fugir, abandonando a criança"
-      }
-    ]
-  },
-  {
-    "id": "6.1.2.1",
-    "mensagem": "Você consegue salvar a criança, mas é atingido por uma flecha no peito.",
-    "possiveis_destinos": [
-      {
-        "destino_id": "GAME_OVER_3",
-        "code_condicao": "Morte heroica",
-        "descricao_opcao": "Você morre salvando a criança. Fim de jogo."
-      }
-    ]
-  },
-  {
-    "id": "6.1.2.2",
-    "mensagem": "Você foge da cidade, mas o peso na consciência é grande demais.",
-    "possiveis_destinos": [
-      {
-        "destino_id": "GAME_OVER_4",
-        "code_condicao": "Suicídio",
-        "descricao_opcao": "O remorso te leva a tirar sua própria vida. Fim de jogo."
-      }
-    ]
-  },
-  {
-    "id": "6.2",
-    "mensagem": "Os soldados te chamam de covarde.",
-    "possiveis_destinos": [
-      {
-        "destino_id": "GAME_OVER_5",
-        "code_condicao": "Responder com violência",
-        "descricao_opcao": "Você é morto pelos soldados. Fim de jogo."
-      },
       {
         "destino_id": "7",
-        "code_condicao": "Ignorar os insultos",
-        "descricao_opcao": "Você é expulso de Windhelm"
+        "code_condicao": "Guardar o laço",
+        "descricao_opcao": "Você mantém o laço consigo — a dor ainda é parte de quem você é."
+      },
+      {
+        "destino_id": "8",
+        "code_condicao": "Deixar o laço de cabelo",
+        "descricao_opcao": "Você deposita o laço de cabelo no altar como um gesto de despedida."
       }
     ]
   },
   {
     "id": "7",
-    "mensagem": "Após ser expulso, você chega em Whiterun, quase morto de fome e sede.",
+    "mensagem": "Você mantém o laço de cabelo consigo — a dor ainda é parte de quem você é. A cidade de Abenra pulsa ao seu redor, mas a lembrança de Felícia e Naríbia permanece viva em seu peito. Você sabe que a busca por um propósito ou uma nova vida não será fácil com esse fardo. O que fará agora?",
     "possiveis_destinos": [
       {
-        "destino_id": "7.1",
-        "code_condicao": "Conhecer a médica",
-        "descricao_opcao": "Uma médica te ajuda a se recuperar"
+        "destino_id": "GAME_OVER_NO_FINAL_7", // Um placeholder, já que a história não deu continuidade a partir daqui
+        "code_condicao": "Continuar a jornada com o laço",
+        "descricao_opcao": "Sua jornada continua, mas o laço te lembra constantemente do que você perdeu."
       }
     ]
   },
   {
-    "id": "7.1",
-    "mensagem": "A médica demonstra interesse por você. Você a convida para um festival de dança.",
+    "id": "8",
+    "mensagem": "As chamas subiram devagar, lambendo o tecido como se fossem dedos antigos pedindo adeus. Sin observou o manto queimar até restar apenas cinza, assim como Felícia, assim como Naríbia, assim como tudo que ele fora. O monge não disse nada. Apenas desapareceu de volta para o templo, como uma lembrança que se apaga. Sin caminhou para fora e percebeu que o jovem viajante havia partido. Abenra parecia menor agora. Viva demais para alguém como ele. Seguiu pela estrada até onde ela se bifurcava. À esquerda, colinas e pastos sem fim — esquecimento, talvez paz. À direita, uma torre solitária se erguia no horizonte, seus sinos mudos. Dizem que lá os juízes do tempo ouvem histórias que nem os deuses suportariam. Ele hesitou. Mas não por fraqueza. Pela primeira vez, sentia o peso exato do que carregava. E então, escolheu.",
     "possiveis_destinos": [
       {
-        "destino_id": "7.1.1",
-        "code_condicao": "Enfrentar o ex-marido",
-        "descricao_opcao": "O ex-marido da médica te desafia para um duelo"
+        "destino_id": "92",
+        "code_condicao": "Desaparecer nas colinas",
+        "descricao_opcao": "Você vira para o outro lado e some entre as pastagens — talvez o mundo o esqueça, e você também."
       },
       {
-        "destino_id": "GAME_OVER_6",
-        "code_condicao": "Recusar o duelo",
-        "descricao_opcao": "A humilhação pública te leva ao suicídio. Fim de jogo."
+        "destino_id": "91",
+        "code_condicao": "Seguir Para a Torre",
+        "descricao_opcao": "Você segue em direção à torre — pronto para contar sua história, mesmo que ninguém ouça."
       }
     ]
   },
   {
-    "id": "7.1.1",
-    "mensagem": "Você vence o duelo, perdendo um olho, mas ganhando o respeito da cidade.",
-    "possiveis_destinos": [
-      {
-        "destino_id": "VITORIA_2",
-        "code_condicao": "Final feliz",
-        "descricao_opcao": "Você se casa com a médica e cria uma nova vida em Whiterun"
-      }
-    ]
-  },
-  {
-    "id": "GAME_OVER_1",
-    "mensagem": "O rei tirano ordena sua execução. Sua jornada termina aqui, mas sua história de resistência inspira outros a continuarem lutando.",
+    "id": "91",
+    "mensagem": "A torre se erguia como um pilar sustentando o céu morto. Não havia guardas, portões, nem luzes — apenas a presença esmagadora do tempo acumulado em cada pedra. Sin subiu os degraus lentamente. Cada passo era uma memória. Cada andar, um luto. Lá no topo, não havia tribunal. Nem deuses. Nem juízes. Havia apenas um espelho antigo, coberto por véus. Ele se aproximou e puxou o tecido com as mãos sujas de cinza. No reflexo, não viu um monstro. Nem um mártir. Apenas um homem… cansado. Ferido. Cheio demais de coisas que o mundo não quis ouvir. E então, ele falou. Contou sobre Naríbia. Sobre Felícia. Sobre a vila, o colapso, a loucura, o silêncio. Contou com uma voz firme, que tremia só quando falava o nome dela. O espelho não respondeu. Mas quando Sin terminou, o véu caiu de suas mãos e se desfez em poeira. O chão vibrou, e o tempo pareceu segurar a respiração. Ele se deitou ali, com o rosto voltado para o teto partido, onde o céu cinza se abria lentamente. E por um instante — só por um — sentiu que Felícia ainda balançava na árvore, e que o vento ainda guardava seu canto.",
     "possiveis_destinos": [
       {
         "destino_id": "RESTART",
-        "code_condicao": "Reiniciar jogo",
-        "descricao_opcao": "Tentar novamente"
+        "code_condicao": "Final: O Último Canto",
+        "descricao_opcao": "Você encontra paz ao contar sua história, e o tempo se silencia para ouvi-la."
       }
     ]
   },
   {
-    "id": "GAME_OVER_2",
-    "mensagem": "Os bandidos são impiedosos. Sua jornada termina em sangue na estrada.",
+    "id": "92",
+    "mensagem": "Sin olhou para a bifurcação como quem encara dois espelhos: um refletia sua dor; o outro, o silêncio após ela. Ele se virou devagar, afastando-se da torre. O caminho da esquerda era de grama alta, colinas suaves e ventos sem memórias. A terra não sabia seu nome. E talvez fosse isso que ele buscava. A estrada foi engolindo seus passos. As nuvens, antes pesadas, tornaram-se lençóis brancos, sem forma. O mundo já não pulsava como antes. Nem o seu coração. Ele não deixou uma lápide. Não contou sua história. Não pediu perdão. Apenas sumiu. Alguns aldeões juram ter visto um homem calado que ajuda na colheita, que dorme sob árvores e sorri pouco, mas sinceramente. Um homem sem nome. Um homem que não sonha — ou sonha com coisas que não sabe de onde vêm. Felícia... talvez seja apenas o nome de uma flor, agora.",
     "possiveis_destinos": [
       {
         "destino_id": "RESTART",
-        "code_condicao": "Reiniciar jogo",
-        "descricao_opcao": "Tentar novamente"
-      }
-    ]
-  },
-  {
-    "id": "GAME_OVER_3",
-    "mensagem": "Você morre como um herói, salvando uma vida inocente. Sua história será lembrada.",
-    "possiveis_destinos": [
-      {
-        "destino_id": "RESTART",
-        "code_condicao": "Reiniciar jogo",
-        "descricao_opcao": "Tentar novamente"
-      }
-    ]
-  },
-  {
-    "id": "GAME_OVER_4",
-    "mensagem": "O peso da culpa é demais para carregar. Sua jornada termina em tristeza.",
-    "possiveis_destinos": [
-      {
-        "destino_id": "RESTART",
-        "code_condicao": "Reiniciar jogo",
-        "descricao_opcao": "Tentar novamente"
-      }
-    ]
-  },
-  {
-    "id": "GAME_OVER_5",
-    "mensagem": "A violência gera mais violência. Sua jornada termina em conflito.",
-    "possiveis_destinos": [
-      {
-        "destino_id": "RESTART",
-        "code_condicao": "Reiniciar jogo",
-        "descricao_opcao": "Tentar novamente"
-      }
-    ]
-  },
-  {
-    "id": "GAME_OVER_6",
-    "mensagem": "A humilhação pública é demais para suportar. Sua jornada termina em desespero.",
-    "possiveis_destinos": [
-      {
-        "destino_id": "RESTART",
-        "code_condicao": "Reiniciar jogo",
-        "descricao_opcao": "Tentar novamente"
-      }
-    ]
-  },
-  {
-    "id": "VITORIA_1",
-    "mensagem": "Você lidera a resistência à vitória! O rei tirano é derrotado e você se torna um símbolo de esperança para o povo. Sua filha estaria orgulhosa.",
-    "possiveis_destinos": [
-      {
-        "destino_id": "RESTART",
-        "code_condicao": "Jogar novamente",
-        "descricao_opcao": "Começar uma nova jornada"
-      }
-    ]
-  },
-  {
-    "id": "VITORIA_2",
-    "mensagem": "Você encontra um novo propósito em Whiterun. Apesar de todas as perdas, você constrói uma nova família e uma nova vida. Sua filha estaria feliz por você ter encontrado paz.",
-    "possiveis_destinos": [
-      {
-        "destino_id": "RESTART",
-        "code_condicao": "Jogar novamente",
-        "descricao_opcao": "Começar uma nova jornada"
+        "code_condicao": "Final: A Paz do Esquecimento",
+        "descricao_opcao": "Você encontra a paz no anonimato, e o mundo começa a curar suas feridas."
       }
     ]
   },
@@ -397,5 +189,16 @@ export const jsonData: GameData = [
         "descricao_opcao": "Começar do início"
       }
     ]
+  },
+  {
+    "id": "GAME_OVER_NO_FINAL_7",
+    "mensagem": "Sua jornada termina com o fardo do laço em seu peito, sem um caminho claro a seguir. O peso da memória é grande demais para avançar. (Este é um final provisório, pois a história não teve continuidade a partir do ID 7.)",
+    "possiveis_destinos": [
+      {
+        "destino_id": "RESTART",
+        "code_condicao": "Reiniciar jogo",
+        "descricao_opcao": "Tentar novamente"
+      }
+    ]
   }
-] 
+]
