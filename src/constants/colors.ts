@@ -3,9 +3,9 @@ export const colors = {
     background: '#eae7d6',
     text: '#222',
     divider: '#bdb8a3',
-    choiceBackground: '#f5f2e6',
-    choiceHighlight: '#e0dcc7',
-    choiceText: '#222',
+    choiceBackground: '#8B7355', // Marrom mais claro
+    choiceHighlight: '#A0522D', // Marrom siena mais claro para hover
+    choiceText: '#ffffff', // Mantendo o texto em branco para contraste
     pergaminhoBg: '#f5e8c8', // Um tom mais claro para o pergaminho, similar a #f5deb3 mas levemente ajustado
     pergaminhoBorder: '#c8b898', // Borda para o pergaminho
     textPrimary: '#3e2c1c', // Texto escuro sobre o pergaminho
