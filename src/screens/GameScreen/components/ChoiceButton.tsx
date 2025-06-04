@@ -1,4 +1,4 @@
-// --- INÍCIO DO ARQUIVO: src/screens/GameScreen/components/ChoiceButton.tsx ---
+
 import React from 'react';
 import { TouchableOpacity, Text, View } from 'react-native';
 import { styles } from '../styles';
@@ -9,7 +9,7 @@ interface ChoiceButtonProps {
   onPress: (choice: PossibleDestiny) => void;
 }
 
-// Simples mapeamento de ícones (textual por enquanto)
+
 const getIconForChoice = (codeCondicao: string): string => {
   if (codeCondicao.toLowerCase().includes('matar')) return '⚔️';
   if (codeCondicao.toLowerCase().includes('observar')) return '👁️';
@@ -19,7 +19,7 @@ const getIconForChoice = (codeCondicao: string): string => {
   if (codeCondicao.toLowerCase().includes('conversar')) return '💬';
   if (codeCondicao.toLowerCase().includes('caminhando')) return '🚶';
   if (codeCondicao.toLowerCase().includes('seguir')) return '➡️';
-  return '🔘'; // Default
+  return '🔘'; 
 };
 
 const ChoiceButton: React.FC<ChoiceButtonProps> = ({ choice, onPress }) => {
@@ -36,4 +36,3 @@ const ChoiceButton: React.FC<ChoiceButtonProps> = ({ choice, onPress }) => {
 };
 
 export default ChoiceButton;
-// --- FIM DO ARQUIVO: src/screens/GameScreen/components/ChoiceButton.tsx ---

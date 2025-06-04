@@ -1,4 +1,4 @@
-// --- INÍCIO DO ARQUIVO: src/screens/GameScreen/components/SceneIdDisplay.tsx ---
+
 import * as React from 'react';
 import { View, Text } from 'react-native';
 import { styles } from '../styles';
@@ -8,7 +8,7 @@ interface SceneIdDisplayProps {
 }
 
 const SceneIdDisplay: React.FC<SceneIdDisplayProps> = ({ id }) => {
-  // Apenas mostra o número do ID, como no protótipo (ex: "2", "1")
+
   const displayId = typeof id === 'string' && (id.startsWith('GAME_OVER') || id.startsWith('VITORIA')) ? 'FIM' : id.toString();
   
   return (
@@ -19,4 +19,3 @@ const SceneIdDisplay: React.FC<SceneIdDisplayProps> = ({ id }) => {
 };
 
 export default SceneIdDisplay;
-// --- FIM DO ARQUIVO: src/screens/GameScreen/components/SceneIdDisplay.tsx ---
