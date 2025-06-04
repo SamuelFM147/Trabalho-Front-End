@@ -1,33 +1,35 @@
-export const jsonData = [
+import { GameData } from '../types/gameTypes';
+
+export const jsonData: GameData = [
   {
-    "id": 0,
+    "id": "0",
     "mensagem": "O momento chegou. Onde você deseja enterrar sua filha?",
     "possiveis_destinos": [
       {
-        "destino_id": 1,
+        "destino_id": "1",
         "code_condicao": "Enterrar junto da mãe",
         "descricao_opcao": "Você decide enterrar sua filha junto de sua mãe no cemitério local"
       },
       {
-        "destino_id": 2,
+        "destino_id": "2",
         "code_condicao": "Enterrar embaixo da árvore",
         "descricao_opcao": "Você escolhe enterrar sua filha embaixo da árvore onde ela costumava se balançar"
       }
     ]
   },
   {
-    "id": 1,
+    "id": "1",
     "mensagem": "Enquanto enterra sua filha, você nota um homem também enterrando sua esposa. Ele parece estar em grande angústia, assim como você.",
     "possiveis_destinos": [
       {
-        "destino_id": 1.1,
+        "destino_id": "1.1",
         "code_condicao": "Conversar com o homem",
         "descricao_opcao": "Você decide conversar com o homem, compartilhando sua dor e desenvolvendo uma amizade"
       }
     ]
   },
   {
-    "id": 1.1,
+    "id": "1.1",
     "mensagem": "O homem, após compartilhar sua história, oferece te levar para Windhelm. No caminho, vocês são abordados por um exército do rei tirano.",
     "possiveis_destinos": [
       {
@@ -38,56 +40,58 @@ export const jsonData = [
     ]
   },
   {
-    "id": 2,
+    "id": "2",
     "mensagem": "Após enterrar sua filha sob a árvore, seu espírito amargurado te faz caminhar sem rumo pela estrada de terra próxima.",
     "possiveis_destinos": [
       {
-        "destino_id": 3,
+        "destino_id": "3",
         "code_condicao": "Continuar caminhando",
         "descricao_opcao": "Você segue pela estrada, perdido em seus pensamentos"
       }
     ]
   },
   {
-    "id": 3,
+    "id": "3",
     "mensagem": "Um mendigo sujo se aproxima, implorando por alguma moeda para comer.",
     "possiveis_destinos": [
       {
-        "destino_id": 3.1,
+        "destino_id": "3.1",
         "code_condicao": "Dar uma moeda",
-        "descricao_opcao": "Você decide ajudar o mendigo, dando-lhe uma moeda"
+        "descricao_opcao": "Você decide ajudar o mendigo, dando-lhe uma moeda",
+        "define_condicao": "ajudou_mendigo"
       },
       {
-        "destino_id": 3.2,
+        "destino_id": "3.2",
         "code_condicao": "Não dar nada",
         "descricao_opcao": "Você decide não dar nada ao mendigo"
       }
     ]
   },
   {
-    "id": 3.1,
+    "id": "3.1",
     "mensagem": "O mendigo agradece e te avisa sobre uma bifurcação na estrada, recomendando seguir pelo caminho da esquerda.",
     "possiveis_destinos": [
       {
-        "destino_id": 4,
+        "destino_id": "4",
         "code_condicao": "Chegar na bifurcação",
-        "descricao_opcao": "Você chega na bifurcação mencionada pelo mendigo"
+        "descricao_opcao": "Você chega na bifurcação mencionada pelo mendigo",
+        "define_condicao": "recebeu_conselho_mendigo"
       }
     ]
   },
   {
-    "id": 3.2,
+    "id": "3.2",
     "mensagem": "O mendigo abaixa a cabeça em silêncio e deseja boa sorte. Você continua seu caminho.",
     "possiveis_destinos": [
       {
-        "destino_id": 4,
+        "destino_id": "4",
         "code_condicao": "Chegar na bifurcação",
         "descricao_opcao": "Você chega na bifurcação da estrada"
       }
     ]
   },
   {
-    "id": 4,
+    "id": "4",
     "mensagem": "Você se depara com uma bifurcação na estrada. Para onde você vai?",
     "possiveis_destinos": [
       {
@@ -108,9 +112,10 @@ export const jsonData = [
     "mensagem": "Na floresta escura, você encontra uma criança perdida chorando.",
     "possiveis_destinos": [
       {
-        "destino_id": "4.1.1",
+        "destino_id": "5",
         "code_condicao": "Ajudar a criança",
-        "descricao_opcao": "Você decide ajudar a criança, caminhando de mãos dadas para fora da floresta"
+        "descricao_opcao": "Você decide ajudar a criança, caminhando de mãos dadas para fora da floresta",
+        "define_condicao": "tem_crianca"
       }
     ]
   },
@@ -136,47 +141,47 @@ export const jsonData = [
     "mensagem": "Mesmo após dar o dinheiro, os bandidos te surram por diversão, ferindo sua perna direita.",
     "possiveis_destinos": [
       {
-        "destino_id": 5,
+        "destino_id": "5",
         "code_condicao": "Continuar para Windhelm",
         "descricao_opcao": "Você segue para Windhelm, mancando devido ao ferimento"
       }
     ]
   },
   {
-    "id": 5,
+    "id": "5",
     "mensagem": "Você chega em Windhelm, uma cidade em ruínas, com famílias se abrigando em cabanas.",
     "possiveis_destinos": [
       {
-        "destino_id": 5.1,
+        "destino_id": "5.1",
         "code_condicao": "Chegar com a criança",
         "descricao_opcao": "A família da criança te encontra e oferece recompensa e abrigo",
         "requer_condicao": "tem_crianca"
       },
       {
-        "destino_id": 5.2,
+        "destino_id": "5.1",
         "code_condicao": "Chegar sozinho",
         "descricao_opcao": "Você vaga pela cidade, observando as famílias desabrigadas"
       }
     ]
   },
   {
-    "id": 5.1,
+    "id": "5.1",
     "mensagem": "Dias depois, um grupo de soldados rebeldes te aborda, pedindo para se juntar à resistência contra o rei tirano.",
     "possiveis_destinos": [
       {
-        "destino_id": 6.1,
+        "destino_id": "6.1",
         "code_condicao": "Aceitar juntar-se à resistência",
         "descricao_opcao": "Você se torna um soldado da resistência, recebendo treinamento e equipamentos"
       },
       {
-        "destino_id": 6.2,
+        "destino_id": "6.2",
         "code_condicao": "Recusar",
         "descricao_opcao": "Você recusa o convite dos rebeldes"
       }
     ]
   },
   {
-    "id": 6.1,
+    "id": "6.1",
     "mensagem": "O comandante te chama para uma reunião urgente. O exército do rei está se aproximando.",
     "possiveis_destinos": [
       {
@@ -241,7 +246,7 @@ export const jsonData = [
     ]
   },
   {
-    "id": 6.2,
+    "id": "6.2",
     "mensagem": "Os soldados te chamam de covarde.",
     "possiveis_destinos": [
       {
@@ -250,25 +255,25 @@ export const jsonData = [
         "descricao_opcao": "Você é morto pelos soldados. Fim de jogo."
       },
       {
-        "destino_id": 7,
+        "destino_id": "7",
         "code_condicao": "Ignorar os insultos",
         "descricao_opcao": "Você é expulso de Windhelm"
       }
     ]
   },
   {
-    "id": 7,
+    "id": "7",
     "mensagem": "Após ser expulso, você chega em Whiterun, quase morto de fome e sede.",
     "possiveis_destinos": [
       {
-        "destino_id": 7.1,
+        "destino_id": "7.1",
         "code_condicao": "Conhecer a médica",
         "descricao_opcao": "Uma médica te ajuda a se recuperar"
       }
     ]
   },
   {
-    "id": 7.1,
+    "id": "7.1",
     "mensagem": "A médica demonstra interesse por você. Você a convida para um festival de dança.",
     "possiveis_destinos": [
       {
@@ -291,6 +296,105 @@ export const jsonData = [
         "destino_id": "VITORIA_2",
         "code_condicao": "Final feliz",
         "descricao_opcao": "Você se casa com a médica e cria uma nova vida em Whiterun"
+      }
+    ]
+  },
+  {
+    "id": "GAME_OVER_1",
+    "mensagem": "O rei tirano ordena sua execução. Sua jornada termina aqui, mas sua história de resistência inspira outros a continuarem lutando.",
+    "possiveis_destinos": [
+      {
+        "destino_id": "RESTART",
+        "code_condicao": "Reiniciar jogo",
+        "descricao_opcao": "Tentar novamente"
+      }
+    ]
+  },
+  {
+    "id": "GAME_OVER_2",
+    "mensagem": "Os bandidos são impiedosos. Sua jornada termina em sangue na estrada.",
+    "possiveis_destinos": [
+      {
+        "destino_id": "RESTART",
+        "code_condicao": "Reiniciar jogo",
+        "descricao_opcao": "Tentar novamente"
+      }
+    ]
+  },
+  {
+    "id": "GAME_OVER_3",
+    "mensagem": "Você morre como um herói, salvando uma vida inocente. Sua história será lembrada.",
+    "possiveis_destinos": [
+      {
+        "destino_id": "RESTART",
+        "code_condicao": "Reiniciar jogo",
+        "descricao_opcao": "Tentar novamente"
+      }
+    ]
+  },
+  {
+    "id": "GAME_OVER_4",
+    "mensagem": "O peso da culpa é demais para carregar. Sua jornada termina em tristeza.",
+    "possiveis_destinos": [
+      {
+        "destino_id": "RESTART",
+        "code_condicao": "Reiniciar jogo",
+        "descricao_opcao": "Tentar novamente"
+      }
+    ]
+  },
+  {
+    "id": "GAME_OVER_5",
+    "mensagem": "A violência gera mais violência. Sua jornada termina em conflito.",
+    "possiveis_destinos": [
+      {
+        "destino_id": "RESTART",
+        "code_condicao": "Reiniciar jogo",
+        "descricao_opcao": "Tentar novamente"
+      }
+    ]
+  },
+  {
+    "id": "GAME_OVER_6",
+    "mensagem": "A humilhação pública é demais para suportar. Sua jornada termina em desespero.",
+    "possiveis_destinos": [
+      {
+        "destino_id": "RESTART",
+        "code_condicao": "Reiniciar jogo",
+        "descricao_opcao": "Tentar novamente"
+      }
+    ]
+  },
+  {
+    "id": "VITORIA_1",
+    "mensagem": "Você lidera a resistência à vitória! O rei tirano é derrotado e você se torna um símbolo de esperança para o povo. Sua filha estaria orgulhosa.",
+    "possiveis_destinos": [
+      {
+        "destino_id": "RESTART",
+        "code_condicao": "Jogar novamente",
+        "descricao_opcao": "Começar uma nova jornada"
+      }
+    ]
+  },
+  {
+    "id": "VITORIA_2",
+    "mensagem": "Você encontra um novo propósito em Whiterun. Apesar de todas as perdas, você constrói uma nova família e uma nova vida. Sua filha estaria feliz por você ter encontrado paz.",
+    "possiveis_destinos": [
+      {
+        "destino_id": "RESTART",
+        "code_condicao": "Jogar novamente",
+        "descricao_opcao": "Começar uma nova jornada"
+      }
+    ]
+  },
+  {
+    "id": "RESTART",
+    "mensagem": "Deseja começar uma nova jornada?",
+    "possiveis_destinos": [
+      {
+        "destino_id": "0",
+        "code_condicao": "Sim",
+        "descricao_opcao": "Começar do início"
       }
     ]
   }

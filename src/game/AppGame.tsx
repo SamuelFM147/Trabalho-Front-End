@@ -1,52 +1,27 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Pressable, Alert, ScrollView } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import { styles } from "./styles"
+import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import GameScreen from '../screens/GameScreen/GameScreen';
+import { colors } from '../constants/colors';
 
-export default function AppGame() {
-  const handleButtonPress = (option: string) => {
-    // Aqui você pode adicionar a lógica para cada opção
-    Alert.alert(`Você escolheu a opção ${option}`);
-  };
-
+// Main game container component
+const AppGame: React.FC = () => {
   return (
-    <View style={styles.container}>
-      {/* Fala em pergaminho */}
-      <ScrollView style={styles.scrollContainer}>
-        <Text style={styles.scrollText}>
-          "Saudações, aventureiro... Escolha sabiamente o seu caminho!" 
-        </Text> 
-        <Image
-          source={require('../assets/SinSplash.png')}
-          style={styles.imagemTexto}
-        />
-        <Text style={styles.scrollText}>
-          "Saudações, aventureiro... Escolha sabiamente o seu caminho!" 
-        </Text> 
-        <Image
-          source={require('../assets/SinSplash.png')}
-          style={styles.imagemTexto}
-        />
-        <Text style={styles.scrollText}>
-          "Saudações, aventureiro... Escolha sabiamente o seu caminho!" 
-        </Text> 
-      </ScrollView>  
-      {/* Botões estilizados */}
-      <View style={styles.buttonsContainer}>
-        {['Ataque', 'Defesa', 'Fugir', 'Negociar'].map((action, index) => (
-          <Pressable
-            key={index}
-            style={({ pressed }) => [
-              styles.button,
-              { backgroundColor: pressed ? '#444' : '#333' }
-            ]}
-            onPress={() => handleButtonPress(action)}
-          >
-            <Text style={styles.buttonText}>{action}</Text>
-          </Pressable>
-        ))}
-      </View>
-      <StatusBar style="light" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <StatusBar 
+        barStyle="light-content" 
+        backgroundColor={colors.background} 
+        translucent={true}
+      />
+      <GameScreen />
+    </SafeAreaView>
   );
-} 
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+});
+
+export default AppGame; 

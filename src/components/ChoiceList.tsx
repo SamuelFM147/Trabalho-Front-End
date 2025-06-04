@@ -1,33 +1,26 @@
 import React from 'react';
 import { View } from 'react-native';
 import ChoiceItem from './ChoiceItem';
-
-interface Choice {
-  descricao_opcao: string;
-  onPress: () => void;
-  isGameOver?: boolean;
-  isVictory?: boolean;
-}
+import { PossibleDestiny } from '../types/gameTypes';
 
 interface ChoiceListProps {
-  choices: Choice[];
+  choices: Array<{
+    descricao_opcao: string;
+    onPress: () => void;
+  }>;
 }
 
-const ChoiceList: React.FC<ChoiceListProps> = ({ choices }) => {
-  return (
-    <View>
-      {choices.map((choice, index) => (
-        <ChoiceItem
-          key={index}
-          label={choice.descricao_opcao}
-          onPress={choice.onPress}
-          isLast={index === choices.length - 1}
-          isGameOver={choice.isGameOver}
-          isVictory={choice.isVictory}
-        />
-      ))}
-    </View>
-  );
-};
+const ChoiceList: React.FC<ChoiceListProps> = ({ choices }) => (
+  <View>
+    {choices.map((choice, idx) => (
+      <ChoiceItem
+        key={idx}
+        label={choice.descricao_opcao}
+        onPress={choice.onPress}
+        isLast={idx === choices.length - 1}
+      />
+    ))}
+  </View>
+);
 
 export default ChoiceList; 
