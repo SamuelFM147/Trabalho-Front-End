@@ -8,6 +8,7 @@ interface ChoiceListProps {
     descricao_opcao: string;
     onPress: () => void;
     isRestartButton?: boolean;
+    disabled?: boolean;
   }>;
 }
 
@@ -20,6 +21,7 @@ const ChoiceList: React.FC<ChoiceListProps> = ({ choices }) => (
         onPress={choice.onPress}
         isLast={idx === choices.length - 1}
         isRestartButton={choice.isRestartButton}
+        disabled={choice.disabled}
       />
     ))}
   </View>

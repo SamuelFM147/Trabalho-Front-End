@@ -1,5 +1,5 @@
-import React from 'react';
-import { SafeAreaView, ScrollView, Image, Text, View } from 'react-native';
+import React, { useRef, useEffect, useState } from 'react';
+import { SafeAreaView, ScrollView, Image, Text, View, Animated } from 'react-native';
 import { useGameEngine } from '../../hooks/useGameEngine';
 import NarrativeText from '../../components/NarrativeText';
 import SceneDivider from '../../components/SceneDivider';
@@ -26,6 +26,10 @@ const localImages: Record<string, any> = {
 
 const GameScreen: React.FC = () => {
   const navigation = useNavigation();
+  const scrollViewRef = useRef<ScrollView>(null);
+  const fadeAnim = useRef(new Animated.Value(1)).current;
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  
   const {
     currentScene,
     availableChoices,
@@ -34,6 +38,42 @@ const GameScreen: React.FC = () => {
     isGameOver,
     isVictory,
   } = useGameEngine();
+
+  // Função para fazer a transição suave
+  const handleSceneTransition = async (choice: any) => {
+    setIsTransitioning(true);
+    
+    // Fade out
+    Animated.timing(fadeAnim, {
+      toValue: 0,
+      duration: 300,
+      useNativeDriver: true,
+    }).start(async () => {
+      // Rola para o topo
+      if (scrollViewRef.current) {
+        scrollViewRef.current.scrollTo({ y: 0, animated: false });
+      }
+      
+      // Faz a escolha
+      await makeChoice(choice);
+      
+      // Fade in
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: true,
+      }).start(() => {
+        setIsTransitioning(false);
+      });
+    });
+  };
+
+  // Efeito para rolar suavemente quando a cena mudar
+  useEffect(() => {
+    if (scrollViewRef.current && !isTransitioning) {
+      scrollViewRef.current.scrollTo({ y: 0, animated: true });
+    }
+  }, [currentScene, isTransitioning]);
 
   const handleRestart = () => {
     restartGame();
@@ -72,35 +112,37 @@ const GameScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        {}
-        <NarrativeText text={textBeforeImage.trim()} />
+      <ScrollView 
+        ref={scrollViewRef}
+        contentContainerStyle={styles.scrollContent}
+        scrollEventThrottle={16}
+      >
+        <Animated.View style={{ opacity: fadeAnim }}>
+          <NarrativeText text={textBeforeImage.trim()} />
 
-        {}
-        {shouldRenderImageInline && currentImageSource && (
-          <Image
-            source={currentImageSource}
-            style={styles.sceneImage} 
-            resizeMode="cover"
+          {shouldRenderImageInline && currentImageSource && (
+            <Image
+              source={currentImageSource}
+              style={styles.sceneImage} 
+              resizeMode="cover"
+            />
+          )}
+          
+          {shouldRenderImageInline && textAfterImage.trim().length > 0 && (
+            <NarrativeText text={textAfterImage.trim()} />
+          )}
+          {!shouldRenderImageInline && <NarrativeText text={currentScene.mensagem} />}
+
+          <SceneDivider sceneNumber={currentScene.id} />
+          <ChoiceList
+            choices={availableChoices.map(choice => ({
+              descricao_opcao: choice.descricao_opcao,
+              onPress: () => handleSceneTransition(choice),
+              code_condicao: choice.code_condicao,
+              disabled: isTransitioning
+            }))}
           />
-        )}
-        
-        {}
-        {shouldRenderImageInline && textAfterImage.trim().length > 0 && (
-          <NarrativeText text={textAfterImage.trim()} />
-        )}
-        {}
-        {!shouldRenderImageInline && <NarrativeText text={currentScene.mensagem} />}
-
-
-        <SceneDivider sceneNumber={currentScene.id} />
-        <ChoiceList
-          choices={availableChoices.map(choice => ({
-            descricao_opcao: choice.descricao_opcao,
-            onPress: () => makeChoice(choice),
-            code_condicao: choice.code_condicao,
-          }))}
-        />
+        </Animated.View>
       </ScrollView>
     </SafeAreaView>
   );

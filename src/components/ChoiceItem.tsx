@@ -10,45 +10,60 @@ interface ChoiceItemProps {
   isLast?: boolean;
   isRestartButton?: boolean;
   isVictory?: boolean;
+  disabled?: boolean;
 }
 
-const ChoiceItem: React.FC<ChoiceItemProps> = ({ label, onPress, isLast, isRestartButton, isVictory }) => (
+const ChoiceItem: React.FC<ChoiceItemProps> = ({ label, onPress, isLast, isRestartButton, isVictory, disabled }) => (
   <View style={[
     !isRestartButton && styles.shadowWrapper,
+    disabled && styles.disabledWrapper
   ]}>
     {!isRestartButton ? (
       <Pressable
         onPress={onPress}
+        disabled={disabled}
         style={({ pressed }) => [
           styles.button,
-          pressed && styles.buttonPressed,
+          pressed && !disabled && styles.buttonPressed,
+          disabled && styles.disabledButton
         ]}
       >
         <LinearGradient
-          colors={['#1a1a1a', '#8B4513']}
+          colors={disabled ? ['#333333', '#666666'] : ['#1a1a1a', '#8B4513']}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           style={styles.gradient}
         >
           <View style={styles.contentContainer}>
-            <FontAwesome5 name="scroll" size={18} color="#FFD700" style={styles.icon} />
-            <Text style={styles.text}>{label}</Text>
+            <FontAwesome5 
+              name="scroll" 
+              size={18} 
+              color={disabled ? "#999999" : "#FFD700"} 
+              style={styles.icon} 
+            />
+            <Text style={[
+              styles.text,
+              disabled && styles.disabledText
+            ]}>{label}</Text>
           </View>
         </LinearGradient>
       </Pressable>
     ) : (
       <Pressable
         onPress={onPress}
+        disabled={disabled}
         style={({ pressed }) => [
           styles.restartButton,
-          pressed && styles.restartPressed,
+          pressed && !disabled && styles.restartPressed,
+          disabled && styles.disabledButton
         ]}
       >
         <View style={styles.contentContainer}>
           <Text style={[
             styles.text, 
             styles.restartText,
-            isVictory && styles.victoryText
+            isVictory && styles.victoryText,
+            disabled && styles.disabledText
           ]}>{label}</Text>
         </View>
       </Pressable>
@@ -133,6 +148,15 @@ const styles = StyleSheet.create({
   victoryText: {
     color: '#00FF00',  // Verde brilhante
     textShadowColor: 'rgba(0, 255, 0, 0.5)',
+  },
+  disabledWrapper: {
+    opacity: 0.7,
+  },
+  disabledButton: {
+    opacity: 0.7,
+  },
+  disabledText: {
+    color: '#999999',
   },
 });
 
