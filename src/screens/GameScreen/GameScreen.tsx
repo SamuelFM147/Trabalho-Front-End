@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, Image, Text, View } from 'react-native';
+import { SafeAreaView, ScrollView, Image } from 'react-native';
 import { useGameEngine } from '../../hooks/useGameEngine';
 import NarrativeText from '../../components/NarrativeText';
 import SceneDivider from '../../components/SceneDivider';

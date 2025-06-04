@@ -7,12 +7,11 @@ import { colors } from '../constants/colors';
 interface ChoiceItemProps {
   label: string;
   onPress: () => void;
-  isLast?: boolean;
   isRestartButton?: boolean;
   isVictory?: boolean;
 }
 
-const ChoiceItem: React.FC<ChoiceItemProps> = ({ label, onPress, isLast, isRestartButton, isVictory }) => (
+const ChoiceItem: React.FC<ChoiceItemProps> = ({ label, onPress, isRestartButton, isVictory }) => (
   <View style={[
     !isRestartButton && styles.shadowWrapper,
   ]}>
