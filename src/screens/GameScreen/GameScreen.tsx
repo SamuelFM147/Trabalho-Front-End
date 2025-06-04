@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream
 import React, { useRef, useEffect, useState } from 'react';
 import { SafeAreaView, ScrollView, Image, Text, View, Animated } from 'react-native';
+=======
+import React, { useRef, useEffect } from 'react';
+import { SafeAreaView, ScrollView, Image } from 'react-native';
+>>>>>>> Stashed changes
 import { useGameEngine } from '../../hooks/useGameEngine';
 import NarrativeText from '../../components/NarrativeText';
 import SceneDivider from '../../components/SceneDivider';
