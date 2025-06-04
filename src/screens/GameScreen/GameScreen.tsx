@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { SafeAreaView, ScrollView, Image, Text, View } from 'react-native';
 import { useGameEngine } from '../../hooks/useGameEngine';
 import NarrativeText from '../../components/NarrativeText';
@@ -26,6 +26,7 @@ const localImages: Record<string, any> = {
 
 const GameScreen: React.FC = () => {
   const navigation = useNavigation();
+  const scrollViewRef = useRef<ScrollView>(null);
   const {
     currentScene,
     availableChoices,
@@ -34,6 +35,13 @@ const GameScreen: React.FC = () => {
     isGameOver,
     isVictory,
   } = useGameEngine();
+
+  // Efeito para rolar para o topo quando a cena mudar
+  useEffect(() => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({ y: 0, animated: true });
+    }
+  }, [currentScene]);
 
   const handleRestart = () => {
     restartGame();
@@ -72,11 +80,12 @@ const GameScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        {}
+      <ScrollView 
+        ref={scrollViewRef}
+        contentContainerStyle={styles.scrollContent}
+      >
         <NarrativeText text={textBeforeImage.trim()} />
 
-        {}
         {shouldRenderImageInline && currentImageSource && (
           <Image
             source={currentImageSource}
@@ -85,13 +94,10 @@ const GameScreen: React.FC = () => {
           />
         )}
         
-        {}
         {shouldRenderImageInline && textAfterImage.trim().length > 0 && (
           <NarrativeText text={textAfterImage.trim()} />
         )}
-        {}
         {!shouldRenderImageInline && <NarrativeText text={currentScene.mensagem} />}
-
 
         <SceneDivider sceneNumber={currentScene.id} />
         <ChoiceList
