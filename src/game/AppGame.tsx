@@ -3,7 +3,6 @@ import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 import GameScreen from '../screens/GameScreen/GameScreen';
 import { colors } from '../constants/colors';
 
-// Main game container component
 const AppGame: React.FC = () => {
   return (
     <SafeAreaView style={styles.container}>
@@ -24,4 +23,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AppGame; 
+export default AppGame;

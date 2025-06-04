@@ -1,17 +1,17 @@
-import { StyleSheet } from "react-native"; 
 
+import { StyleSheet } from "react-native"; 
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5deb3', // cor de fundo
+    backgroundColor: '#f5deb3',
     padding: 20,
     justifyContent: 'space-between',
   },
   scrollContainer: {
     marginTop: 50,
     padding: 15,
-    backgroundColor: '#f5deb3', // cor de pergaminho
+    backgroundColor: '#f5deb3',
     borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: { width: 4, height: 4 },
@@ -25,10 +25,9 @@ export const styles = StyleSheet.create({
     color: '#3e2c1c',
     textAlign: 'center',
   },
-
   buttonsContainer: {
     marginBottom: 50,
-    gap: 10,    // se não funcionar, pode usar marginVertical nos botões
+    gap: 10,
   },
   button: {
     padding: 12,
@@ -42,8 +41,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-
-  imagemTexto: {        //aqui é apenas um exemplo de imagem, para ficar visivel, usar apenas de base
+  imagemTexto: {
     flex: 1,
     resizeMode: 'cover',
     alignSelf: 'center',

@@ -1,4 +1,4 @@
-// --- INÍCIO DO ARQUIVO: src/screens/GameScreen/components/NarrativeDisplay.tsx ---
+
 import * as React from 'react';
 import { View, Text, ScrollView, Image } from 'react-native';
 import { styles } from '../styles';
@@ -9,7 +9,7 @@ interface NarrativeDisplayProps {
 }
 
 const NarrativeDisplay: React.FC<NarrativeDisplayProps> = ({ scene }) => {
-  // Mapeamento de imagens disponíveis
+
   const imageSources: { [key: string]: any } = {
     'SinSplash.png': require('../../../assets/SinSplash.png'),
     'SinLOGO.png': require('../../../assets/SinLOGO.png'),
@@ -27,4 +27,3 @@ const NarrativeDisplay: React.FC<NarrativeDisplayProps> = ({ scene }) => {
 };
 
 export default NarrativeDisplay;
-// --- FIM DO ARQUIVO: src/screens/GameScreen/components/NarrativeDisplay.tsx ---
