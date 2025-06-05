@@ -1,9 +1,9 @@
 
 export interface PossibleDestiny {
     destino_id: string | number;
-    code_condicao: string;
+    
     descricao_opcao: string;
-    requer_condicao?: string;
+
     define_condicao?: string;
 }
 

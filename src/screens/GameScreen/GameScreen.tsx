@@ -138,7 +138,6 @@ const GameScreen: React.FC = () => {
             choices={availableChoices.map(choice => ({
               descricao_opcao: choice.descricao_opcao,
               onPress: () => handleSceneTransition(choice),
-              code_condicao: choice.code_condicao,
               disabled: isTransitioning
             }))}
           />
