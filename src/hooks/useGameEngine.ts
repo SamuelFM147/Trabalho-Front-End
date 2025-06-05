@@ -1,7 +1,7 @@
 // --- INÍCIO DO ARQUIVO: src/hooks/useGameEngine.ts ---
 import { useState, useCallback, useMemo } from 'react';
-import { Scene, PossibleDestiny } from '../constants/gameManager';
-import { GameManager } from '../constants/gameManager';
+import { Scene, PossibleDestiny } from '../game/gameManager';
+import { GameManager } from '../game/gameManager';
 
 export const useGameEngine = () => {
   const gameManager = useMemo(() => new GameManager(), []);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import ChoiceItem from './ChoiceItem';
-import { PossibleDestiny } from '../constants/gameManager';
+import { PossibleDestiny } from '../game/gameManager';
 
 interface ChoiceListProps {
   choices: Array<{

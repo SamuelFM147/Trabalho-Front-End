@@ -8,8 +8,8 @@ import Game from './AppGame';
 const Stack = createStackNavigator();
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
-    'FonteHome': require('../assets/Fonts/teste.ttf'),
+  const [fontsLoaded] = useFonts({ //porcaria de fonte que ta aqui e se tirar crasha
+    'FonteHome': require('../assets/Fonts/teste.ttf'), //não deveria estar aqui, e nem sei o pq diabos mas se mudar para o style ele não funciona e crasha
   });
 
   if (!fontsLoaded) {

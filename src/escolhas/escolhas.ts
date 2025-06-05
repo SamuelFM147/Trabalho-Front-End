@@ -1,4 +1,4 @@
-import { GameData } from '../constants/gameManager';
+import { GameData } from '../game/gameManager';
 
 export const jsonData: GameData = [
   {
