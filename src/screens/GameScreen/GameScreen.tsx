@@ -4,7 +4,6 @@ import { useGameEngine } from '../../hooks/useGameEngine';
 import NarrativeText from '../../components/NarrativeText';
 import SceneDivider from '../../components/SceneDivider';
 import ChoiceList from '../../components/ChoiceList';
-import { colors } from '../../constants/colors';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import EndGameScreen from './components/EndGameScreen';
@@ -105,7 +104,6 @@ const GameScreen: React.FC = () => {
     );
   }
 
-  
   const currentImageSource = currentScene.imagem_url && localImages[currentScene.imagem_url]
     ? localImages[currentScene.imagem_url]
     : null;

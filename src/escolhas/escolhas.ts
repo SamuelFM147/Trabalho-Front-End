@@ -1,4 +1,4 @@
-import { GameData } from '../types/gameTypes';
+import { GameData } from '../game/gameManager';
 
 export const jsonData: GameData = [
   {
@@ -8,12 +8,10 @@ export const jsonData: GameData = [
     "possiveis_destinos": [
       {
         "destino_id": "90",
-        "code_condicao": "Se tornar um com o mundo",
         "descricao_opcao": "Sua vontade se dispersará e seu corpo será tão grande quanto o céu, os ventos carregarão sussurros de sua vontade"
       },
       {
         "destino_id": "2",
-        "code_condicao": "Seguir os passos da terra",
         "descricao_opcao": "A vila era abandonada conforme Sin caminhava pela estrada de terra, após horas de viagem se recorda que nem mesmo juntou as cinzas da filha... mas isso não importa mais."
       }
     ]
@@ -25,7 +23,6 @@ export const jsonData: GameData = [
     "possiveis_destinos": [
       {
         "destino_id": "RESTART",
-        "code_condicao": "Final: O Coração do Mundo",
         "descricao_opcao": "Sua vontade se dispersou, mas sua essência se tornou parte do mundo."
       }
     ]
@@ -37,12 +34,10 @@ export const jsonData: GameData = [
     "possiveis_destinos": [
       {
         "destino_id": "3",
-        "code_condicao": "Matar e saquear",
         "descricao_opcao": "Você ataca o jovem sem aviso, decidido a tomar tudo e seguir sozinho, com seus poderes um estalar de dedos e o mundo responde a seu chamado e torna pó."
       },
       {
         "destino_id": "4",
-        "code_condicao": "Aceitar a Carona",
         "descricao_opcao": "Você sobe na carroça em silêncio e parte com ele rumo à cidade."
       }
     ]
@@ -54,12 +49,10 @@ export const jsonData: GameData = [
     "possiveis_destinos": [
       {
         "destino_id": "5",
-        "code_condicao": "Seguir viagem em silêncio",
         "descricao_opcao": "Você permanece calado enquanto o jovem fala sobre sua irmã, Lina."
       },
       {
         "destino_id": "6",
-        "code_condicao": "Compartilhar a dor",
         "descricao_opcao": "Você compartilha a história da destruição de Naríbia e de Felícia."
       }
     ]
@@ -71,12 +64,10 @@ export const jsonData: GameData = [
     "possiveis_destinos": [
       {
         "destino_id": "5",
-        "code_condicao": "Permanecer em Silêncio",
         "descricao_opcao": "Você desvia o olhar e deixa que o passado continue te corroendo por dentro."
       },
       {
         "destino_id": "6",
-        "code_condicao": "Compartilhar sua dor",
         "descricao_opcao": "Você conta ao jovem o que aconteceu em Naríbia e sobre sua filha Felícia."
       }
     ]
@@ -88,12 +79,10 @@ export const jsonData: GameData = [
     "possiveis_destinos": [
       {
         "destino_id": "94",
-        "code_condicao": "Se tornar em corpo e alma Sin",
         "descricao_opcao": "Você abraça a destruição e se torna O Tabu do Mundo."
       },
       {
         "destino_id": "95",
-        "code_condicao": "O Guardião Silencioso",
         "descricao_opcao": "Você se torna uma vontade protetora, um monumento à vigília."
       }
     ]
@@ -105,7 +94,6 @@ export const jsonData: GameData = [
     "possiveis_destinos": [
       {
         "destino_id": "RESTART",
-        "code_condicao": "Final: O Tabu do Mundo",
         "descricao_opcao": "Você se tornou uma força de destruição, um lembrete do que foi perdido."
       }
     ]
@@ -117,7 +105,6 @@ export const jsonData: GameData = [
     "possiveis_destinos": [
       {
         "destino_id": "RESTART",
-        "code_condicao": "Final: O Guardião Silencioso",
         "descricao_opcao": "Você se tornou um monumento, um protetor eterno da cidade."
       }
     ]
@@ -129,12 +116,10 @@ export const jsonData: GameData = [
     "possiveis_destinos": [
       {
         "destino_id": "7",
-        "code_condicao": "Guardar o laço",
         "descricao_opcao": "Você mantém o laço consigo — a dor ainda é parte de quem você é."
       },
       {
         "destino_id": "8",
-        "code_condicao": "Deixar o laço de cabelo",
         "descricao_opcao": "Você deposita o laço de cabelo no altar como um gesto de despedida."
       }
     ]
@@ -146,7 +131,6 @@ export const jsonData: GameData = [
     "possiveis_destinos": [
       {
         "destino_id": "GAME_OVER_NO_FINAL_7",
-        "code_condicao": "Continuar a jornada com o laço",
         "descricao_opcao": "Sua jornada continua, mas o laço te lembra constantemente do que você perdeu."
       }
     ]
@@ -158,12 +142,10 @@ export const jsonData: GameData = [
     "possiveis_destinos": [
       {
         "destino_id": "92",
-        "code_condicao": "Desaparecer nas colinas",
         "descricao_opcao": "Você vira para o outro lado e some entre as pastagens — talvez o mundo o esqueça, e você também."
       },
       {
         "destino_id": "91",
-        "code_condicao": "Seguir Para a Torre",
         "descricao_opcao": "Você segue em direção à torre — pronto para contar sua história, mesmo que ninguém ouça."
       }
     ]
@@ -175,7 +157,6 @@ export const jsonData: GameData = [
     "possiveis_destinos": [
       {
         "destino_id": "RESTART",
-        "code_condicao": "Final: O Último Canto",
         "descricao_opcao": "Você encontra paz ao contar sua história, e o tempo se silencia para ouvi-la."
       }
     ]
@@ -187,7 +168,6 @@ export const jsonData: GameData = [
     "possiveis_destinos": [
       {
         "destino_id": "RESTART",
-        "code_condicao": "Final: A Paz do Esquecimento",
         "descricao_opcao": "Você encontra a paz no anonimato, e o mundo começa a curar suas feridas."
       }
     ]
@@ -199,7 +179,6 @@ export const jsonData: GameData = [
     "possiveis_destinos": [
       {
         "destino_id": "0",
-        "code_condicao": "Sim",
         "descricao_opcao": "Começar do início"
       }
     ]
@@ -211,7 +190,6 @@ export const jsonData: GameData = [
     "possiveis_destinos": [
       {
         "destino_id": "RESTART",
-        "code_condicao": "Reiniciar jogo",
         "descricao_opcao": "Tentar novamente"
       }
     ]
