@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Image, TouchableOpacity, Text, Animated } from 'react-native'; // Image foi adicionado, ImageBackground removido
+import { View, Image, TouchableOpacity, Text, Animated } from 'react-native'; 
 import { useNavigation } from '@react-navigation/native';
 import { styles } from './styleHome';
 

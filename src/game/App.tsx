@@ -4,7 +4,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useFonts } from 'expo-font';
 import Home from '../home'; 
 import Game from './AppGame'; 
-import { Text, View } from 'react-native'; 
 
 const Stack = createStackNavigator();
 

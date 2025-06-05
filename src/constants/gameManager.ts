@@ -1,5 +1,28 @@
-import { Scene, GameData } from '../../types/gameTypes';
-import { gameStories, INITIAL_SCENE_ID } from '../gameData';
+import { jsonData as gameData } from '../escolhas/escolhas';
+
+
+export interface PossibleDestiny { // trazendo modos e cenas de types e fundindo com gameManager
+  destino_id: string | number;
+  
+  descricao_opcao: string;
+
+  define_condicao?: string;
+}
+
+export interface Scene {
+  id: number | string;
+  mensagem: string;
+  possiveis_destinos: PossibleDestiny[];
+  imagem_url?: string; 
+}
+
+// Exportando os dados do jogo importados do arquivo escolhas.ts
+export const gameStories: GameData = gameData;
+
+// ID da cena inicial do jogo
+export const INITIAL_SCENE_ID = 0;
+
+export type GameData = Scene[];
 
 export class GameManager {
   private scenes: GameData;
@@ -12,10 +35,6 @@ export class GameManager {
     this.currentScene = this.findSceneById(INITIAL_SCENE_ID) || this.scenes[0];
     
   }
-
-  
-
-  
 
   private findSceneById(id: number | string): Scene | undefined {
     return this.scenes.find(scene => scene.id === id);
@@ -40,12 +59,9 @@ export class GameManager {
     }
 
     const choices = this.currentScene.possiveis_destinos
-      
-
    
     return choices;
   }
-
   public makeChoice(choiceDestinoId: number | string): Scene | null {
     
     
@@ -78,7 +94,5 @@ export class GameManager {
   public isVictory(): boolean {
     return typeof this.currentScene.id === 'string' && this.currentScene.id.startsWith('VITORIA');
   }
-
-
   
 }
