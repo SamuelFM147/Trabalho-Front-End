@@ -10,6 +10,7 @@ interface ChoiceItemProps {
   isRestartButton?: boolean;
   isVictory?: boolean;
   disabled?: boolean;
+  isLast?: boolean;
 }
 
 const ChoiceItem: React.FC<ChoiceItemProps> = ({ label, onPress, isRestartButton, isVictory, disabled }) => (
