@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { colors } from '../constants/colors';
+import { colors } from '../game/styles';
 
 interface SceneDividerProps {
   sceneNumber: string | number;

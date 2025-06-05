@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable, Text, StyleSheet, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { colors } from '../constants/colors';
+import { colors } from '../game/styles';
 
 interface ChoiceItemProps {
   label: string;
