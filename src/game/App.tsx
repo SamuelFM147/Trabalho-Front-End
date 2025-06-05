@@ -9,18 +9,12 @@ import { Text, View } from 'react-native';
 const Stack = createStackNavigator();
 
 export default function App() {
-  const [fontsLoaded, fontError] = useFonts({
+  const [fontsLoaded] = useFonts({
     'FonteHome': require('../assets/Fonts/teste.ttf'),
   });
 
-  console.log('Fontes carregadas:', fontsLoaded, 'Erro na fonte:', fontError);
-
-  if (fontError) {
-    return <Text>Erro ao carregar fonte: {fontError.message}</Text>;
-  }
-
   if (!fontsLoaded) {
-    return <Text>Carregando fontes...</Text>; 
+    return null; // EXTREMAMENTE IMPORTANTE NÃO APAGAR
   }
 
   return (
