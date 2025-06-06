@@ -4,11 +4,11 @@
     "slug": "SinCase",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/SinIcon.png",
+    "icon": "src/assets/SinIcon.png",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./src/assets/SinSplash.png",
+      "image": "src/assets/SinSplash.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },
@@ -17,14 +17,14 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/SinIcon.png",
+        "foregroundImage": "src/assets/SinIcon.png",
         "resizeMode": "contain",
         "backgroundColor": "#000000"
       },
       "edgeToEdgeEnabled": true
     },
     "web": {
-      "favicon": "./src/assets/SinIcon.png"
+      "favicon": "src/assets/SinIcon.png"
     },
     "plugins": [
       "expo-font"
