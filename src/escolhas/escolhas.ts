@@ -22,7 +22,7 @@ export const jsonData: GameData = [
     "imagem_url": "/assets/id90.png",
     "possiveis_destinos": [
       {
-        "destino_id": "RESTART",
+        "destino_id": "GAME_OVER_FINAL_7",
         "descricao_opcao": "Sua vontade se dispersou, mas sua essência se tornou parte do mundo."
       }
     ]
@@ -93,7 +93,7 @@ export const jsonData: GameData = [
     "imagem_url": "/assets/id94.png",
     "possiveis_destinos": [
       {
-        "destino_id": "RESTART",
+        "destino_id": "GAME_OVER_FINAL_7",
         "descricao_opcao": "Você se tornou uma força de destruição, um lembrete do que foi perdido."
       }
     ]
@@ -104,7 +104,7 @@ export const jsonData: GameData = [
     "imagem_url": "/assets/id95.png",
     "possiveis_destinos": [
       {
-        "destino_id": "RESTART",
+        "destino_id": "GAME_OVER_FINAL_7",
         "descricao_opcao": "Você se tornou um monumento, um protetor eterno da cidade."
       }
     ]
@@ -130,7 +130,7 @@ export const jsonData: GameData = [
     "imagem_url": "/assets/id6.png",
     "possiveis_destinos": [
       {
-        "destino_id": "GAME_OVER_NO_FINAL_7",
+        "destino_id": "GAME_OVER_FINAL_7",
         "descricao_opcao": "Sua jornada continua, mas o laço te lembra constantemente do que você perdeu."
       }
     ]
@@ -156,7 +156,7 @@ export const jsonData: GameData = [
     "imagem_url": "/assets/id91.png",
     "possiveis_destinos": [
       {
-        "destino_id": "RESTART",
+        "destino_id": "GAME_OVER_FINAL_7",
         "descricao_opcao": "Você encontra paz ao contar sua história, e o tempo se silencia para ouvi-la."
       }
     ]
@@ -167,30 +167,19 @@ export const jsonData: GameData = [
     "imagem_url": "/assets/id92.png",
     "possiveis_destinos": [
       {
-        "destino_id": "RESTART",
+        "destino_id": "GAME_OVER_FINAL_7",
         "descricao_opcao": "Você encontra a paz no anonimato, e o mundo começa a curar suas feridas."
       }
     ]
   },
   {
-    "id": "RESTART",
-    "mensagem": "Deseja começar uma nova jornada? [IMAGEM]",
+    "id": "GAME_OVER_FINAL_7",
+    "mensagem": "Deseja começar uma nova jornada?",
     "imagem_url": "/assets/id0.jpeg",
     "possiveis_destinos": [
       {
         "destino_id": "0",
         "descricao_opcao": "Começar do início"
-      }
-    ]
-  },
-  {
-    "id": "GAME_OVER_NO_FINAL_7",
-    "mensagem": "Sua jornada termina com o fardo do laço em seu peito, sem um caminho claro a seguir. O peso da memória é grande demais para avançar. (Este é um final provisório, pois a história não teve continuidade a partir do ID 7.) [IMAGEM]",
-    "imagem_url": "/assets/id6.png",
-    "possiveis_destinos": [
-      {
-        "destino_id": "RESTART",
-        "descricao_opcao": "Tentar novamente"
       }
     ]
   }

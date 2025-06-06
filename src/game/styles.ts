@@ -21,7 +21,6 @@ export const colors = {
   white: '#FFFFFF',
   black: '#000000',
   disabledButtonBg: '#1C2126',
-  // Adicione mais cores conforme necessário
 };
 
 export const typography = {
@@ -54,7 +53,6 @@ export const typography = {
     textShadowRadius: 4,
     letterSpacing: 2,
   } as TextStyle,
-  // Adicione mais estilos de texto conforme necessário
 };
 
 export const styles = StyleSheet.create({

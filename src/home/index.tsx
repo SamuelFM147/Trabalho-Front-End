@@ -8,16 +8,16 @@ export default function Home() {
   const fadeAnim = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
-    const blinkAnimation = Animated.sequence([ // não faço ideia do pq mas se tirar crasha 
+    const blinkAnimation = Animated.sequence([
       Animated.timing(fadeAnim, {
         toValue: 0,
         duration: 2000,
-        useNativeDriver: true,
+        useNativeDriver: false,
       }),
       Animated.timing(fadeAnim, {
         toValue: 1,
         duration: 2000,
-        useNativeDriver: true,
+        useNativeDriver: false,
       }),
     ]);
 

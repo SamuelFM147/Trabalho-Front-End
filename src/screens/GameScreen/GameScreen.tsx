@@ -46,7 +46,7 @@ const GameScreen: React.FC = () => {
     Animated.timing(fadeAnim, {
       toValue: 0,
       duration: 300,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start(async () => {
       // Rola para o topo
       if (scrollViewRef.current) {
@@ -60,7 +60,7 @@ const GameScreen: React.FC = () => {
       Animated.timing(fadeAnim, {
         toValue: 1,
         duration: 300,
-        useNativeDriver: true,
+        useNativeDriver: false,
       }).start(() => {
         setIsTransitioning(false);
       });
