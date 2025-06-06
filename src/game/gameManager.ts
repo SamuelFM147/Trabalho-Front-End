@@ -1,11 +1,10 @@
 import { jsonData as gameData } from '../escolhas/escolhas';
+import { useState, useCallback, useMemo } from 'react';
 
 
 export interface PossibleDestiny { // trazendo modos e cenas de types e fundindo com gameManager
   destino_id: string | number;
-  
   descricao_opcao: string;
-
   define_condicao?: string;
 }
 
@@ -83,7 +82,6 @@ export class GameManager {
       return this.currentScene;
     }
 
-    
     return null;
   }
 
@@ -94,5 +92,46 @@ export class GameManager {
   public isVictory(): boolean {
     return typeof this.currentScene.id === 'string' && this.currentScene.id.startsWith('VITORIA');
   }
-  
 }
+
+// Passagem do HOOK inicia aqui NAO APAGUEM SEUS ARROMBADOS 
+
+export const useGameEngine = () => {
+  const gameManager = useMemo(() => new GameManager(), []);
+  
+  const [currentScene, setCurrentScene] = useState<Scene>(gameManager.getCurrentScene());
+  const [availableChoices, setAvailableChoices] = useState<PossibleDestiny[]>(gameManager.getAvailableChoices());
+
+  const makeChoice = useCallback((choice: PossibleDestiny) => {
+    const nextScene = gameManager.makeChoice(choice.destino_id); // Corrigido: apenas 1 argumento
+    if (nextScene) {
+      setCurrentScene(nextScene);
+      setAvailableChoices(gameManager.getAvailableChoices());
+    } else {
+      // Lidar com fim de jogo ou erro
+      const finalScene = gameManager.getCurrentScene();
+      if (finalScene && (finalScene.id.toString().startsWith('GAME_OVER') || finalScene.id.toString().startsWith('VITORIA'))) {
+        setCurrentScene(finalScene);
+        setAvailableChoices([]); // Não há mais escolhas
+      }
+    }
+  }, [gameManager]);
+
+  const restartGame = useCallback(() => {
+    const initialScene = gameManager.startGame(); // passagem para ter um novo game ao terminar cena 
+    setCurrentScene(initialScene);
+    setAvailableChoices(gameManager.getAvailableChoices());
+  }, [gameManager]);
+
+  const isGameOver = gameManager.isGameOver();
+  const isVictory = gameManager.isVictory();
+
+  return {
+    currentScene,
+    availableChoices,
+    makeChoice,
+    restartGame,
+    isGameOver,
+    isVictory,
+  };
+};

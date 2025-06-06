@@ -1,12 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { SafeAreaView, ScrollView, Image, Text, View, Animated } from 'react-native';
-import { useGameEngine } from '../../hooks/useGameEngine';
+import { useGameEngine } from '../../game/gameManager';
 import NarrativeText from '../../components/NarrativeText';
 import SceneDivider from '../../components/SceneDivider';
 import ChoiceList from '../../components/ChoiceList';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
-import EndGameScreen from './components/EndGameScreen';
+import EndGameScreen from './EndGameScreen';
 
 const localImages: Record<string, any> = {
   '/assets/id0.jpeg': require('../../assets/id0.png'),
