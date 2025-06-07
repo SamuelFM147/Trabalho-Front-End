@@ -8,7 +8,7 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": false,
     "splash": {
-      "image": "./src/assets/SinsSlash.png",
+      "image": "./src/assets/SinSlash.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },
