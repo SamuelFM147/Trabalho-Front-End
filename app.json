@@ -4,11 +4,11 @@
     "slug": "SinCase",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "src/assets/SinIcon.png",
+    "icon": "./src/assets/sinicon.png",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "splash": {
-      "image": "src/assets/SinSplash.png",
+      "image": "./src/assets/sinsplash.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },
@@ -16,18 +16,28 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.sincase.app",
+      "versionCode": 1,
+      "permissions": [],
       "adaptiveIcon": {
-        "foregroundImage": "src/assets/SinIcon.png",
-        "resizeMode": "contain",
+        "foregroundImage": "./src/assets/sinicon.png",
         "backgroundColor": "#000000"
       },
       "edgeToEdgeEnabled": true
     },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
     "web": {
-      "favicon": "src/assets/SinIcon.png"
+      "favicon": "./src/assets/sinicon.png"
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "e19aedf8-3663-40bc-a968-ee1df4749a44"
+      }
+    }
   }
 }
