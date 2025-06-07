@@ -21,7 +21,8 @@
         "resizeMode": "contain",
         "backgroundColor": "#000000"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.anonymous.SinCase"
     },
     "web": {
       "favicon": "src/assets/SinIcon.png"
