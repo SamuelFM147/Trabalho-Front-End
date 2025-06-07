@@ -9,8 +9,8 @@ import { useNavigation } from '@react-navigation/native';
 import EndGameScreen from './EndGameScreen';
 
 const localImages: Record<string, any> = {
-  '/assets/id0.jpeg': require('../../assets/id0.png'),
-  '/assets/id2.jpeg': require('../../assets/id2.png'),
+  '/assets/id0.png': require('../../assets/id0.png'),
+  '/assets/id2.png': require('../../assets/id2.png'),
   '/assets/id3.png': require('../../assets/id3.png'),
   '/assets/id4.png': require('../../assets/id4.png'),
   '/assets/id5.png': require('../../assets/id5.png'),

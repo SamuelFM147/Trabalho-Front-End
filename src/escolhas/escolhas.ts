@@ -4,7 +4,7 @@ export const jsonData: GameData = [
   {
     "id": "0",
     "mensagem": "O pó das cinzas do que um dia foi um corpo pequeno e frágil se esvaiu pela vila silenciosa, passando pelas paredes que uma vez confidenciou fofocas e brincadeiras das crianças. [IMAGEM] Acho que posso estar um pouco distraído...\n\nEsquecendo de respirar...\n\nOs ventos violentos que tornou tudo ao seu redor pó, incluindo a sua própria filha Felícia agora o saudava como um rei. \n\nMas tudo isso era sem sentido, o mundo pulsava assim como suas emoções que o levavam a querer destruir tudo, mas em sua mente uma sobriedade sem limites imperava... uma vontade que era maior do que ele mesmo se acomodava e reformava a sua vontade. \n\nSin... um bom nome e adequado, natural como sua respiração que respondia ao pulsar do mundo e as emoções de seu corpo. \n\ntOlhando ao redor era claro que o colapso nervoso de alguém destruiu toda a vila Naríbia, um som final do mundo o chamava para se tornar um com ele, mas o chão aos seus pés pulsava como correntes que o empurravam para outro local.",
-    "imagem_url": "/assets/id0.jpeg",
+    "imagem_url": "/assets/id0.png",
     "possiveis_destinos": [
       {
         "destino_id": "90",
@@ -30,7 +30,7 @@ export const jsonData: GameData = [
   {
     "id": "2",
     "mensagem": "A vila era abandonada conforme Sin caminhava pela estrada de terra. Após horas de viagem, ele já não sabia se o gosto em sua boca era poeira ou memória. Felícia. Ele não havia sequer recolhido as cinzas... mas isso podia não importar mais.\n\nA estrada antes familiar agora era completamente diferente, árvores altas e cheia de vida agora são retorcidas e frutos podres, a realidade se distorcia em seus olhos sem vida conforme observava sem animo o show que o mundo te apresentava. [IMAGEM] \n\nA estrada seguia silenciosa, até que o rangido de uma carroça quebrou o torpor. Um jovem conduzindo um velho cavalo parou ao avistar Sin. Seus olhos demonstravam uma cautela gentil.\n\n— Senhor, está perdido? Posso levá-lo até Abenra, a cidade próxima. Está a dois dias daqui.\n\nSin apenas o observou. Seu olhar era vazio como uma caverna sem eco, mas por dentro, um redemoinho de memórias, dor e confusão rugia. A voz dele saiu rouca e baixa como um sussuro:\n\n— Você carrega algo de valor?...\n\nO jovem sorriu sem escutar os murmúrios, acreditando tratar-se apenas de um velho exausto. Mas o olhar de Sin começava a oscilar — um lampejo de compaixão, outro de fome. Não por comida. Mas por silêncio. \n\nA mente dele ainda era sua. Mas até quando?",
-    "imagem_url": "/assets/id2.jpeg",
+    "imagem_url": "/assets/id2.png",
     "possiveis_destinos": [
       {
         "destino_id": "3",
@@ -175,7 +175,7 @@ export const jsonData: GameData = [
   {
     "id": "RESTART",
     "mensagem": "Deseja começar uma nova jornada? [IMAGEM]",
-    "imagem_url": "/assets/id0.jpeg",
+    "imagem_url": "/assets/id0.png",
     "possiveis_destinos": [
       {
         "destino_id": "0",
