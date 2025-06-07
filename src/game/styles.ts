@@ -54,7 +54,6 @@ export const typography = {
     textShadowRadius: 4,
     letterSpacing: 2,
   } as TextStyle,
-  // Adicione mais estilos de texto conforme necessário
 };
 
 export const styles = StyleSheet.create({

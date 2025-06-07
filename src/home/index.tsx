@@ -38,13 +38,13 @@ export default function Home() {
           resizeMode="contain"
         />
 
-        { /* aqui criei um novo estilo para o botao para caso seja necessario mudar-lo*/}
-        <View style={styles.containerDoBotao}>
+  
+        <View style={styles.containerDoBotao}> 
           <Animated.View style={{ opacity: fadeAnim }}>
             <Text style={styles.Textobotao}>Iniciar Jornada</Text>
           </Animated.View>
         </View>
       </View> 
-    </TouchableOpacity>
+    </TouchableOpacity>//Estilo do botão essa porrinha, da tela de home, foda bagarai
   );
 }
