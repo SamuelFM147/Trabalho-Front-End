@@ -42,7 +42,7 @@ const EndGameScreen: React.FC<EndGameScreenProps> = ({ message, onRestart, isVic
           {isVictory ? "Vitória!" : "Você Morreu!"}
         </Text>
         <Image
-          source={require('../../assets/sinlogo.png')}
+          source={require('../../assets/SinLogo.png')}
           style={styles.logo}
           resizeMode="contain"
         />

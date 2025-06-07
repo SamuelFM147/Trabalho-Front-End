@@ -4,11 +4,11 @@
     "slug": "SinCase",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/sinicon.png",
+    "icon": "./src/assets/SinIcon.png",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": false,
     "splash": {
-      "image": "./src/assets/sinsplash.png",
+      "image": "./src/assets/SinsSlash.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },
@@ -20,7 +20,7 @@
       "versionCode": 1,
       "permissions": [],
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/sinicon.png",
+        "foregroundImage": "./src/assets/SinIcon.png",
         "backgroundColor": "#000000"
       },
       "edgeToEdgeEnabled": true
@@ -29,7 +29,7 @@
       "fallbackToCacheTimeout": 0
     },
     "web": {
-      "favicon": "./src/assets/sinicon.png"
+      "favicon": "./src/assets/SinIcon.png"
     },
     "plugins": [
       "expo-font"

@@ -33,7 +33,7 @@ export default function Home() {
     >
       <View style={styles.telaInteiraPreta}> 
         <Image 
-          source={require('../assets/sinlogo.png')} //IMAGEM DO JOGO, FAZ PARTE DO HOME
+          source={require('../assets/SinLogo.png')} //IMAGEM DO JOGO, FAZ PARTE DO HOME
           style={styles.logoImagem}  //NÃO DELETAR
           resizeMode="contain"
         />
