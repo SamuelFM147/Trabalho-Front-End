@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Image, TouchableOpacity, Text, Animated } from 'react-native';
 import { StyleSheet } from 'react-native';
+import { audioManager, AudioAssets } from '../../../songGame/AudioSystem';
 
 interface EndGameScreenProps {
   message: string;
@@ -26,13 +27,43 @@ const EndGameScreen: React.FC<EndGameScreenProps> = ({ message, onRestart, isVic
     ]);
 
     Animated.loop(blinkAnimation).start();
-  }, []);
+
+    // Tocar o som apropriado
+    const playSound = async () => {
+      try {
+        await audioManager.stopSound();
+        if (isVictory) {
+          await audioManager.playSound(AudioAssets.FINAL_BOM, true);
+        } else {
+          await audioManager.playSound(AudioAssets.TEMA_PRINCIPAL, true);
+        }
+      } catch (error) {
+        console.error('Erro ao tocar áudio:', error);
+      }
+    };
+
+    playSound();
+
+    return () => {
+      audioManager.stopSound().catch(() => {});
+    };
+  }, [isVictory]);
+
+  const handleRestart = async () => {
+    try {
+      await audioManager.stopSound();
+      onRestart();
+    } catch (error) {
+      console.error('Erro ao parar o áudio:', error);
+      onRestart();
+    }
+  };
 
   return (
     <TouchableOpacity 
       style={styles.container} 
       activeOpacity={0.9}
-      onPress={onRestart}
+      onPress={handleRestart}
     >
       <View style={styles.content}>
         <Text style={[

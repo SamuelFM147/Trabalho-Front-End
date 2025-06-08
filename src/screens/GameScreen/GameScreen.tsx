@@ -7,6 +7,7 @@ import ChoiceList from '../../components/ChoiceList';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import EndGameScreen from './components/EndGameScreen';
+import { useAudioContext } from '../../songGame/AudioContext';
 
 const localImages: Record<string, any> = {
   '/assets/id0.jpeg': require('../../assets/id0.png'),
@@ -28,6 +29,7 @@ const GameScreen: React.FC = () => {
   const scrollViewRef = useRef<ScrollView>(null);
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const { stopAudio } = useAudioContext();
   
   const {
     currentScene,
@@ -38,8 +40,15 @@ const GameScreen: React.FC = () => {
     isVictory,
   } = useGameEngine();
 
+  // Efeito para parar o áudio quando o componente é montado
+  useEffect(() => {
+    stopAudio();
+  }, [stopAudio]);
+
   // Função para fazer a transição suave
   const handleSceneTransition = async (choice: any) => {
+    if (isTransitioning) return;
+    
     setIsTransitioning(true);
     
     // Fade out
