@@ -3,8 +3,13 @@ import { GameData } from '../game/gameManager';
 export const jsonData: GameData = [
   {
     "id": "0",
+<<<<<<< HEAD
     "mensagem": "O mundo não estremeceu por causa da força. \nEle tremeu por causa do vazio. \nSin, ajoelhado, não gritava para ser ouvido — ele gritava porque não conseguia mais segurar o que não existia. \nA filha estava morta. \nO som do seu nome não tinha mais onde ecoar. \nAo seu redor, o vento cessou. \nAs nuvens pararam de se mover. \nUm vale inteiro permaneceu imóvel, como se o tempo respeitasse o luto de um deus.",
     "imagem_url": "",
+=======
+    "mensagem": "O pó das cinzas do que um dia foi um corpo pequeno e frágil se esvaiu pela vila silenciosa, passando pelas paredes que uma vez confidenciou fofocas e brincadeiras das crianças. [IMAGEM] Acho que posso estar um pouco distraído...\n\nEsquecendo de respirar...\n\nOs ventos violentos que tornou tudo ao seu redor pó, incluindo a sua própria filha Felícia agora o saudava como um rei. \n\nMas tudo isso era sem sentido, o mundo pulsava assim como suas emoções que o levavam a querer destruir tudo, mas em sua mente uma sobriedade sem limites imperava... uma vontade que era maior do que ele mesmo se acomodava e reformava a sua vontade. \n\nSin... um bom nome e adequado, natural como sua respiração que respondia ao pulsar do mundo e as emoções de seu corpo. \n\ntOlhando ao redor era claro que o colapso nervoso de alguém destruiu toda a vila Naríbia, um som final do mundo o chamava para se tornar um com ele, mas o chão aos seus pés pulsava como correntes que o empurravam para outro local.",
+    "imagem_url": "/assets/id0.png",
+>>>>>>> eeb66cc3f14a7ab84e46de73fa972dfecebf3443
     "possiveis_destinos": [
       {
         "destino_id": "1",

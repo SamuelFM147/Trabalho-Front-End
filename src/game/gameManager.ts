@@ -19,7 +19,7 @@ export interface Scene {
 export const gameStories: GameData = gameData;
 
 // ID da cena inicial do jogo
-export const INITIAL_SCENE_ID = 0;
+export const INITIAL_SCENE_ID = "0";
 
 export type GameData = Scene[];
 
