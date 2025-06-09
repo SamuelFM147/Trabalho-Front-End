@@ -41,8 +41,12 @@ export default function Home() {
   
         <View style={styles.containerDoBotao}> 
           <Animated.View style={{ opacity: fadeAnim }}>
-            <Text style={styles.Textobotao}>Iniciar Jornada</Text>
-            <Text style={styles.Textobotao}>Iniciar Jornada 2</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Game')}>
+              <Text style={styles.Textobotao}>Iniciar Jornada</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('PlayGame')}>
+              <Text style={styles.Textobotao}>Iniciar Jornada 2</Text>
+            </TouchableOpacity>
           </Animated.View>
         </View>
       </View> 
