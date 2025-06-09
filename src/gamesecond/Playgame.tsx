@@ -7,6 +7,7 @@ import {
   PanResponder,
   Dimensions,
   ImageBackground,
+  Modal,
 } from 'react-native';
 import { styles } from './stylePlay';
 
@@ -17,12 +18,54 @@ export default function SinIntroScreen() {
   const pan = useRef(new Animated.ValueXY()).current;
   const [cardColor, setCardColor] = useState<'white' | 'green' | 'red'>('white');
   const [cardLabel, setCardLabel] = useState('Qual a sua resposta?');
+  const [savedCount, setSavedCount] = useState(12);
+  const [sacrificedCount, setSacrificedCount] = useState(3);
+
+  const [modalVisible, setModalVisible] = useState(false);
+  const [consequenceText, setConsequenceText] = useState('');
+  const modalOpacity = useRef(new Animated.Value(0)).current;
 
   const rotate = pan.x.interpolate({
     inputRange: [-SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2],
     outputRange: ['-20deg', '0deg', '20deg'],
     extrapolate: 'clamp',
   });
+
+  const showConsequenceModal = (label: string) => {
+    const simPhrases = [
+      'Bravo. Um mártir a caminho do esquecimento.',
+      'Vai carregar o mundo? Que nobre… que tolo.',
+    ];
+    const naoPhrases = [
+      'Corajoso. Deixou o mundo apodrecer com dignidade.',
+      'Sua fuga foi poética. Quase.',
+    ];
+
+    const text = label === 'SIM'
+      ? simPhrases[Math.floor(Math.random() * simPhrases.length)]
+      : naoPhrases[Math.floor(Math.random() * naoPhrases.length)];
+
+    setConsequenceText(text);
+    setModalVisible(true);
+
+    Animated.timing(modalOpacity, {
+      toValue: 1,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+
+    setTimeout(() => {
+      Animated.timing(modalOpacity, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: true,
+      }).start(() => {
+        setModalVisible(false);
+        setCardColor('white');
+        setCardLabel('Qual a sua resposta?');
+      });
+    }, 3000);
+  };
 
   const panResponder = useRef(
     PanResponder.create({
@@ -48,10 +91,8 @@ export default function SinIntroScreen() {
             duration: 200,
             useNativeDriver: false,
           }).start(() => {
-            console.log('➡️ Escolheu SIM');
             pan.setValue({ x: 0, y: 0 });
-            setCardColor('white');
-            setCardLabel('Qual a sua resposta?');
+            showConsequenceModal('SIM');
           });
         } else if (gesture.dx < -SWIPE_THRESHOLD) {
           Animated.timing(pan, {
@@ -59,10 +100,8 @@ export default function SinIntroScreen() {
             duration: 200,
             useNativeDriver: false,
           }).start(() => {
-            console.log('⬅️ Escolheu NÃO');
             pan.setValue({ x: 0, y: 0 });
-            setCardColor('white');
-            setCardLabel('Qual a sua resposta?');
+            showConsequenceModal('NÃO');
           });
         } else {
           Animated.spring(pan, {
@@ -100,9 +139,7 @@ export default function SinIntroScreen() {
           {...panResponder.panHandlers}
           style={[
             styles.card,
-            {
-              transform: [...pan.getTranslateTransform(), { rotate }],
-            },
+            { transform: [...pan.getTranslateTransform(), { rotate }] },
           ]}
         >
           <Image
@@ -117,8 +154,29 @@ export default function SinIntroScreen() {
           <Text style={styles.footerText}>Espírito do Esquecido</Text>
           <Text style={styles.footerSmall}>Sin</Text>
           <Text style={styles.footerSmall}>0 dias em vigília</Text>
+
+          <View style={styles.statsRow}>
+            <View style={styles.statBox}>
+              <Text style={[styles.statNumber, { color: 'green' }]}>{savedCount}</Text>
+              <Text style={styles.statLabel}>Pessoas salvas</Text>
+            </View>
+            <View style={styles.statBox}>
+              <Text style={[styles.statNumber, { color: 'red' }]}>{sacrificedCount}</Text>
+              <Text style={styles.statLabel}>Pessoas sacrificadas</Text>
+            </View>
+          </View>
         </View>
       </View>
+
+      {/* Modal de Zombaria */}
+      <Modal transparent visible={modalVisible} animationType="none">
+        <View style={styles.modalOverlay}>
+          <Animated.View style={[styles.modalContent, { opacity: modalOpacity }]}>
+            <Text style={styles.modalText}>{consequenceText}</Text>
+          </Animated.View>
+        </View>
+      </Modal>
     </ImageBackground>
   );
 }
+
