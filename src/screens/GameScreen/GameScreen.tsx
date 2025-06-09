@@ -13,15 +13,7 @@ const localImages: Record<string, any> = {
   '/assets/id0.png': require('../../assets/id0.png'),
   '/assets/id2.png': require('../../assets/id2.png'),
   '/assets/id3.png': require('../../assets/id3.png'),
-  '/assets/id4.png': require('../../assets/id4.png'),
-  '/assets/id5.png': require('../../assets/id5.png'),
-  '/assets/id6.png': require('../../assets/id6.png'),
-  '/assets/id8.png': require('../../assets/id8.png'),
   '/assets/id90.png': require('../../assets/id90.png'),
-  '/assets/id91.png': require('../../assets/id91.png'),
-  '/assets/id92.png': require('../../assets/id92.png'),
-  '/assets/id94.png': require('../../assets/id94.png'),
-  '/assets/id95.png': require('../../assets/id95.png'),
 };
 
 const GameScreen: React.FC = () => {
