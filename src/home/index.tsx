@@ -1,14 +1,17 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Image, TouchableOpacity, Text, Animated } from 'react-native'; 
+import { View, Image, TouchableOpacity, Text, Animated } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from './styleHome';
+import { useAudio } from '../songGame/AudioSystem';
 
 export default function Home() {
   const navigation = useNavigation<any>();
   const fadeAnim = useRef(new Animated.Value(1)).current;
+  const { playMainTheme } = useAudio();
 
   useEffect(() => {
-    const blinkAnimation = Animated.sequence([ // não faço ideia do pq mas se tirar crasha 
+    // Animação de piscar do botão
+    const blinkAnimation = Animated.sequence([
       Animated.timing(fadeAnim, {
         toValue: 0,
         duration: 2000,
@@ -22,34 +25,34 @@ export default function Home() {
     ]);
 
     Animated.loop(blinkAnimation).start();
+
+    // Tocar o tema principal
+    playMainTheme();
   }, []);
 
   return (
-    
-    <TouchableOpacity 
-      style={styles.telaInteiraPreta} //TELA PRETA PARA O FUNDO DA HOME 
-      activeOpacity={0.9}
-      onPress={() => navigation.navigate('Game')}
-    >
-      <View style={styles.telaInteiraPreta}> 
-        <Image 
-          source={require('../assets/SinLogo.png')} //IMAGEM DO JOGO, FAZ PARTE DO HOME
-          style={styles.logoImagem}  //NÃO DELETAR
-          resizeMode="contain"
-        />
+    <View style={styles.telaInteiraPreta}>
+      <Image
+        source={require('../assets/SinLogo.png')}
+        style={styles.logoImagem}
+        resizeMode="contain"
+      />
 
-  
-        <View style={styles.containerDoBotao}> 
-          <Animated.View style={{ opacity: fadeAnim }}>
-            <TouchableOpacity onPress={() => navigation.navigate('Game')}>
-              <Text style={styles.Textobotao}>Iniciar Jornada</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('PlayGame')}>
-              <Text style={styles.Textobotao}>Iniciar Jornada 2</Text>
-            </TouchableOpacity>
-          </Animated.View>
-        </View>
-      </View> 
-    </TouchableOpacity>//Estilo do botão essa porrinha, da tela de home, foda bagarai
+      <View style={styles.containerDoBotao}>
+        <Animated.View style={{ opacity: fadeAnim }}>
+          <TouchableOpacity 
+            onPress={() => navigation.navigate('Game')}
+          >
+            <Text style={styles.Textobotao}>Iniciar Jornada</Text>
+          </TouchableOpacity>
+          
+          <TouchableOpacity 
+            onPress={() => navigation.navigate('PlayGame')}
+          >
+            <Text style={styles.Textobotao}>Iniciar Jornada 2</Text>
+          </TouchableOpacity>
+        </Animated.View>
+      </View>
+    </View>
   );
 }

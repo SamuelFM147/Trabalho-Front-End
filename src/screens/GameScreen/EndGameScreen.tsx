@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Image, TouchableOpacity, Text, Animated } from 'react-native';
 import { StyleSheet } from 'react-native';
+import { useAudio } from '../../songGame/AudioSystem';
 
 interface EndGameScreenProps {
   message: string;
@@ -10,6 +11,7 @@ interface EndGameScreenProps {
 
 const EndGameScreen: React.FC<EndGameScreenProps> = ({ message, onRestart, isVictory }) => {
   const fadeAnim = useRef(new Animated.Value(1)).current;
+  const { playMainTheme } = useAudio();
 
   useEffect(() => {
     const blinkAnimation = Animated.sequence([
@@ -26,13 +28,18 @@ const EndGameScreen: React.FC<EndGameScreenProps> = ({ message, onRestart, isVic
     ]);
 
     Animated.loop(blinkAnimation).start();
-  }, []);
+    playMainTheme();
+  }, [isVictory]);
+
+  const handleRestart = () => {
+    onRestart();
+  };
 
   return (
     <TouchableOpacity 
       style={styles.container} 
       activeOpacity={0.9}
-      onPress={onRestart}
+      onPress={handleRestart}
     >
       <View style={styles.content}>
         <Text style={[
