@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Image, TouchableOpacity, Text, Animated } from 'react-native';
 import { StyleSheet } from 'react-native';
-import { audioManager, AudioAssets } from '../../../songGame/AudioSystem';
+import { useAudio } from '../../../songGame/AudioSystem';
 
 interface EndGameScreenProps {
   message: string;
@@ -11,6 +11,7 @@ interface EndGameScreenProps {
 
 const EndGameScreen: React.FC<EndGameScreenProps> = ({ message, onRestart, isVictory }) => {
   const fadeAnim = useRef(new Animated.Value(1)).current;
+  const { playMainTheme } = useAudio();
 
   useEffect(() => {
     const blinkAnimation = Animated.sequence([
@@ -27,36 +28,11 @@ const EndGameScreen: React.FC<EndGameScreenProps> = ({ message, onRestart, isVic
     ]);
 
     Animated.loop(blinkAnimation).start();
-
-    // Tocar o som apropriado
-    const playSound = async () => {
-      try {
-        await audioManager.stopSound();
-        if (isVictory) {
-          await audioManager.playSound(AudioAssets.FINAL_BOM, true);
-        } else {
-          await audioManager.playSound(AudioAssets.TEMA_PRINCIPAL, true);
-        }
-      } catch (error) {
-        console.error('Erro ao tocar áudio:', error);
-      }
-    };
-
-    playSound();
-
-    return () => {
-      audioManager.stopSound().catch(() => {});
-    };
+    playMainTheme();
   }, [isVictory]);
 
-  const handleRestart = async () => {
-    try {
-      await audioManager.stopSound();
-      onRestart();
-    } catch (error) {
-      console.error('Erro ao parar o áudio:', error);
-      onRestart();
-    }
+  const handleRestart = () => {
+    onRestart();
   };
 
   return (

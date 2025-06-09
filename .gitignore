@@ -1,3 +1,79 @@
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+expo-debug.log
+
+# Directories created by Metro, Expo, or React Native
+.expo/
+.expo-shared/
+.expo-packager-cache/
+.expo-cache/
+
+# iOS
+ios/build/
+ios/Pods/
+ios/Podfile.lock
+ios/.DS_Store
+ios/*.xcodeproj/project.xcworkspace/
+ios/*.xcworkspace/xcuserdata/
+ios/*.xcworkspace/xcshareddata/
+ios/*.xcodeproj/xcuserdata/
+ios/*.xcodeproj/project.xcworkspace/
+ios/.idea/
+
+# Android
+android/.gradle/
+android/app/build/
+android/.idea/
+android/local.properties
+android/gradle.properties
+android/gradlew
+android/gradlew.bat
+android/gradle/
+android/build/
+
+# macOS/Linux system files
 .DS_Store
-.DS_Store
-/node_modules
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.iml
+
+# Environment variables
+.env
+.env.*
+
+# Misc
+*.bak
+*.tmp
+*.log
+
+# Output of `expo export`
+dist/
+web-build/
+
+# TypeScript
+*.tsbuildinfo
+
+# Coverage reports
+coverage/
+*.lcov
+
+# React Native cache
+__generated__/
+.cache/
+.babel.cache
+babel.config.js.cache
+
+# Prettier / ESLint
+.prettier-cache/
+.eslintcache
+
+# Firebase (optional)
+firebase-debug.log

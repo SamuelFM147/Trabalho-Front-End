@@ -1,65 +1,76 @@
-import React, { createContext, useContext, useCallback, useRef } from 'react';
-import { audioManager, AudioAssets } from './AudioSystem';
+import React, { createContext, useContext, useEffect, useRef } from 'react';
+import { Audio } from 'expo-av';
 
+// Caminho para o arquivo do tema principal
+const TEMA_PRINCIPAL = require('../assets/songs/Tema_Principal.mp3');
+
+// Define o tipo do contexto
 interface AudioContextType {
-  playSceneAudio: (sceneId: string | number) => Promise<void>;
   stopAudio: () => Promise<void>;
 }
 
+// Cria o contexto
 const AudioContext = createContext<AudioContextType | null>(null);
 
+// Provider global
 export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const isPlayingRef = useRef(false);
-  const isStoppingRef = useRef(false);
+  const soundRef = useRef<Audio.Sound | null>(null);
 
-  const playSceneAudio = useCallback(async (sceneId: string | number) => {
-    if (isPlayingRef.current) return;
-    
-    try {
-      isPlayingRef.current = true;
-      await stopAudio();
+  useEffect(() => {
+    let isMounted = true;
 
-      // Se for uma cena de vitória, toca o som de vitória
-      if (String(sceneId).startsWith('VITORIA')) {
-        await audioManager.playSound(AudioAssets.FINAL_BOM, true);
-        return;
+    const loadAndPlay = async () => {
+      try {
+        const { sound } = await Audio.Sound.createAsync(
+          TEMA_PRINCIPAL,
+          {
+            shouldPlay: true,
+            isLooping: true,
+            volume: 0.5,
+          }
+        );
+
+        if (isMounted) {
+          soundRef.current = sound;
+        }
+      } catch (error) {
+        console.error('Erro ao carregar o tema principal:', error);
       }
+    };
 
-      // Se for uma cena de game over ou restart, toca o tema principal
-      if (String(sceneId).startsWith('GAME_OVER') || String(sceneId) === 'RESTART') {
-        await audioManager.playSound(AudioAssets.TEMA_PRINCIPAL, true);
-        return;
+    loadAndPlay();
+
+    // Cleanup opcional ao desmontar o provider
+    return () => {
+      isMounted = false;
+      if (soundRef.current) {
+        soundRef.current.stopAsync();
+        soundRef.current.unloadAsync();
       }
-
-      // Para as outras cenas, toca um som aleatório
-      await audioManager.playRandomSound(true);
-    } finally {
-      isPlayingRef.current = false;
-    }
+    };
   }, []);
 
-  const stopAudio = useCallback(async () => {
-    if (isStoppingRef.current) return;
-    
-    try {
-      isStoppingRef.current = true;
-      await audioManager.stopSound();
-    } finally {
-      isStoppingRef.current = false;
+  // Método opcional para parar o som manualmente
+  const stopAudio = async () => {
+    if (soundRef.current) {
+      await soundRef.current.stopAsync();
+      await soundRef.current.unloadAsync();
+      soundRef.current = null;
     }
-  }, []);
+  };
 
   return (
-    <AudioContext.Provider value={{ playSceneAudio, stopAudio }}>
+    <AudioContext.Provider value={{ stopAudio }}>
       {children}
     </AudioContext.Provider>
   );
 };
 
+// Hook para usar o áudio em qualquer lugar
 export const useAudioContext = () => {
   const context = useContext(AudioContext);
   if (!context) {
     throw new Error('useAudioContext must be used within an AudioProvider');
   }
   return context;
-}; 
+};
