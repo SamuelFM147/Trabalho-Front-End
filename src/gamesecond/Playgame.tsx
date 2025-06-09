@@ -22,7 +22,7 @@ export default function SinIntroScreen() {
 
       <TouchableOpacity style={styles.card}>
         <Image
-          source={require('../assets/sinIcon.png')} // coloque aqui sua imagem
+          source={require('../assets/SinIcon.png')}
           style={styles.cardImage}
           resizeMode="contain"
         />
