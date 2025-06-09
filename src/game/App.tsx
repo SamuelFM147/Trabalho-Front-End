@@ -7,7 +7,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useFonts } from 'expo-font';
 import Home from '../home'; 
-import Game from './AppGame'; 
+import Game from './AppGame';
+import PlayGame from '../gamesecond/Playgame';
 import { AudioProvider } from '../songGame/AudioContext';
 // import { SafeAreaProvider } from 'react-native-safe-area-context'; // Descomente se usar
 
@@ -23,15 +24,14 @@ export default function App() {
   }
 
   return (
-    // <SafeAreaProvider> // Descomente se usar SafeAreaProvider
-      <NavigationContainer>
-        <AudioProvider>
-          <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Game" component={Game} />
-          </Stack.Navigator>
-        </AudioProvider>
-      </NavigationContainer>
-    // </SafeAreaProvider>
+    <NavigationContainer>
+      <AudioProvider>
+        <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Game" component={Game} />
+          <Stack.Screen name="PlayGame" component={PlayGame} />
+        </Stack.Navigator>
+      </AudioProvider>
+    </NavigationContainer>
   );
 }

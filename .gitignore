@@ -38,42 +38,113 @@ android/build/
 
 # macOS/Linux system files
 .DS_Store
+/node_modules
+ios/
+
+# ───── Node ───── #
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.pnpm-debug.log*
+
+# ───── OS ───── #
+.DS_Store
 Thumbs.db
 
-# IDEs and editors
+# ───── IDEs ───── #
 .vscode/
 .idea/
-*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 
-# Environment variables
-.env
-.env.*
+# ───── Metro ───── #
+.expo/
+.expo-shared/
+*.expo
+babel.config.js
+metro.config.js
+react-native.config.js
 
-# Misc
-*.bak
-*.tmp
-*.log
-
-# Output of `expo export`
+# ───── Build ───── #
 dist/
-web-build/
+build/
+tmp/
+temp/
 
-# TypeScript
-*.tsbuildinfo
-
-# Coverage reports
+# ───── Test / Coverage ───── #
 coverage/
 *.lcov
 
-# React Native cache
-__generated__/
-.cache/
-.babel.cache
-babel.config.js.cache
+# ───── Android ───── #
+android/.gradle/
+android/.idea/
+android/app/build/
+android/build/
+android/local.properties
+android/.cxx/
+android/.DS_Store
+*.iml
+*.log
 
-# Prettier / ESLint
-.prettier-cache/
-.eslintcache
+# ───── iOS ───── #
+ios/build/
+ios/Pods/
+ios/Podfile.lock
+ios/DerivedData/
+ios/.DS_Store
+ios/.idea/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xcuserstate
 
-# Firebase (optional)
-firebase-debug.log
+# ───── React Native ───── #
+*.keystore
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+.env
+.env.*
+
+# ───── Xcode ───── #
+*.xcworkspace
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcuserdatad/
+project.xcworkspace/
+
+# ───── Logs ───── #
+*.log
+*.log.*
+
+# ───── Misc ───── #
+*.swp
+*.lock
+*.bak
+*.tmp
+*.orig
+*.rej
+
+# ───── Fastlane (caso use para builds) ───── #
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# ───── EAS (Expo Application Services) ───── #
+*.tar.gz
+*.apk
+*.aab
+*.ipa

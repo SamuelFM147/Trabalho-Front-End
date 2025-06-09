@@ -1,17 +1,17 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { SafeAreaView, ScrollView, Image, Text, View, Animated } from 'react-native';
-import { useGameEngine } from '../../hooks/useGameEngine';
+import { useGameEngine } from '../../game/gameManager';
 import NarrativeText from '../../components/NarrativeText';
 import SceneDivider from '../../components/SceneDivider';
 import ChoiceList from '../../components/ChoiceList';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
-import EndGameScreen from './components/EndGameScreen';
+import EndGameScreen from './EndGameScreen';
 import { useAudioContext } from '../../songGame/AudioContext';
 
 const localImages: Record<string, any> = {
-  '/assets/id0.jpeg': require('../../assets/id0.png'),
-  '/assets/id2.jpeg': require('../../assets/id2.png'),
+  '/assets/id0.png': require('../../assets/id0.png'),
+  '/assets/id2.png': require('../../assets/id2.png'),
   '/assets/id3.png': require('../../assets/id3.png'),
   '/assets/id4.png': require('../../assets/id4.png'),
   '/assets/id5.png': require('../../assets/id5.png'),

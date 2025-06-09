@@ -30,28 +30,29 @@ export default function Home() {
     playMainTheme();
   }, []);
 
-  const handleStartGame = () => {
-    navigation.navigate('Game');
-  };
-
   return (
-    <TouchableOpacity
-      style={styles.telaInteiraPreta}
-      activeOpacity={0.9}
-      onPress={handleStartGame}
-    >
-      <View style={styles.telaInteiraPreta}>
-        <Image
-          source={require('../assets/SinLOGO.png')}
-          style={styles.logoImagem}
-          resizeMode="contain"
-        />
-        <View style={styles.containerDoBotao}>
-          <Animated.View style={{ opacity: fadeAnim }}>
+    <View style={styles.telaInteiraPreta}>
+      <Image
+        source={require('../assets/SinLogo.png')}
+        style={styles.logoImagem}
+        resizeMode="contain"
+      />
+
+      <View style={styles.containerDoBotao}>
+        <Animated.View style={{ opacity: fadeAnim }}>
+          <TouchableOpacity 
+            onPress={() => navigation.navigate('Game')}
+          >
             <Text style={styles.Textobotao}>Iniciar Jornada</Text>
-          </Animated.View>
-        </View>
+          </TouchableOpacity>
+          
+          <TouchableOpacity 
+            onPress={() => navigation.navigate('PlayGame')}
+          >
+            <Text style={styles.Textobotao}>Iniciar Jornada 2</Text>
+          </TouchableOpacity>
+        </Animated.View>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 }
