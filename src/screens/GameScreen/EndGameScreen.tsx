@@ -1,29 +1,42 @@
+// Importa as bibliotecas e componentes necessários do React e React Native.
 import React, { useEffect, useRef } from 'react';
 import { View, Image, TouchableOpacity, Text, Animated } from 'react-native';
 import { StyleSheet } from 'react-native';
 import { useAudio } from '../../songGame/AudioSystem';
 
+// Define a "interface" para as propriedades (props) que o componente espera receber.
+// Isso ajuda a garantir que estamos usando o componente corretamente, com os tipos de dados certos.
 interface EndGameScreenProps {
-  message: string;
-  onRestart: () => void;
-  isVictory: boolean;
+  message: string;      // A mensagem de vitória ou derrota a ser exibida.
+  onRestart: () => void; // A função a ser chamada quando o usuário tocar na tela para reiniciar.
+  isVictory: boolean;   // Um booleano que indica se é uma tela de vitória ou derrota.
 }
 
+// Declaração do componente funcional 'EndGameScreen'.
+// Ele recebe as props 'message', 'onRestart' e 'isVictory'.
 const EndGameScreen: React.FC<EndGameScreenProps> = ({ message, onRestart, isVictory }) => {
+  
+  // 'useRef' é usado para armazenar o valor da animação.
+  // Usamos useRef em vez de useState para que o valor persista entre as renderizações
+  // sem fazer o componente renderizar novamente toda vez que a animação muda.
+  // .current acessa o valor real armazenado pelo ref.
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const { playMainTheme } = useAudio();
 
+  // 'useEffect' é usado para lidar com "efeitos colaterais", como iniciar animações.
+  // O array vazio [] no final significa que este efeito será executado apenas uma vez,
+  // quando o componente for "montado" (aparecer na tela).
   useEffect(() => {
     const blinkAnimation = Animated.sequence([
       Animated.timing(fadeAnim, {
         toValue: 0.3,
         duration: 2000,
-        useNativeDriver: true,
+        useNativeDriver: false,
       }),
       Animated.timing(fadeAnim, {
         toValue: 1,
         duration: 2000,
-        useNativeDriver: true,
+        useNativeDriver: false,
       }),
     ]);
 
@@ -35,35 +48,46 @@ const EndGameScreen: React.FC<EndGameScreenProps> = ({ message, onRestart, isVic
     onRestart();
   };
 
+  // O JSX que define a aparência do componente.
   return (
+    // 'TouchableOpacity' é um container que responde a toques, tornando a tela inteira clicável.
     <TouchableOpacity 
       style={styles.container} 
       activeOpacity={0.9}
       onPress={handleRestart}
     >
       <View style={styles.content}>
+        {/* Exibe o status de "Vitória!" ou "Você Morreu!" com estilo condicional. */}
         <Text style={[
           styles.statusText,
-          isVictory ? styles.victoryStatus : styles.defeatStatus
+          isVictory ? styles.victoryStatus : styles.defeatStatus // Aplica estilo de vitória ou derrota.
         ]}>
-          {isVictory ? "Vitória!" : "Você Morreu!"}
+          {isVictory ? "Vitória!" : "Sua jornada acabou!"}
         </Text>
+        
+        {/* Exibe a imagem do logo. */}
         <Image
           source={require('../../assets/SinLogo.png')}
           style={styles.logo}
-          resizeMode="contain"
+          resizeMode="contain" // Garante que a imagem se ajuste sem distorcer.
         />
+        
+        {/* Exibe a mensagem principal. */}
         <Text style={[
           styles.message,
           isVictory ? styles.victoryMessage : styles.defeatMessage
         ]}>{message}</Text>
+        
+        {/* Container para o texto do botão. */}
         <View style={styles.buttonContainer}>
+          {/* 'Animated.View' é um componente que pode ser animado.
+              Sua opacidade está ligada ao nosso valor 'fadeAnim'. */}
           <Animated.View style={{ opacity: fadeAnim }}>
             <Text style={[
               styles.buttonText,
               isVictory ? styles.victoryButton : styles.defeatButton
             ]}>
-              {isVictory ? "Jogar Novamente" : "Tentar Novamente"}
+              {isVictory ? "Jogar Novamente" : "Tentar Novamente?"}
             </Text>
           </Animated.View>
         </View>
@@ -72,6 +96,7 @@ const EndGameScreen: React.FC<EndGameScreenProps> = ({ message, onRestart, isVic
   );
 };
 
+// 'StyleSheet.create' otimiza os estilos, enviando-os para a parte nativa apenas uma vez.
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -92,7 +117,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: 'center',
     marginBottom: 40,
-    fontFamily: 'serif',
+    fontFamily: 'FonteHome',
     color: '#FFFFFF',
     textShadowColor: 'rgba(0, 0, 0, 0.5)',
     textShadowOffset: { width: 2, height: 2 },
@@ -112,7 +137,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 24,
     fontWeight: 'bold',
-    fontFamily: 'serif',
+    fontFamily: 'FonteHome',
     textAlign: 'center',
     paddingHorizontal: 40,
     paddingVertical: 15,
@@ -133,10 +158,11 @@ const styles = StyleSheet.create({
   statusText: {
     fontSize: 36,
     fontWeight: 'bold',
-    fontFamily: 'serif',
+    fontFamily: 'FonteHome',
     marginBottom: 20,
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 4,
+    textAlign: 'center',
   },
   victoryStatus: {
     color: '#00FF00',
@@ -148,4 +174,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EndGameScreen; 
+// Exporta o componente para que ele possa ser usado em outras partes do aplicativo.
+export default EndGameScreen;

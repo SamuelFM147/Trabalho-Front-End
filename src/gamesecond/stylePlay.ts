@@ -104,4 +104,58 @@ export const styles = StyleSheet.create({
     textShadowRadius: 2,
     marginBottom: 3,
   },
+  statsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 12,
+    gap: 20,
+  },
+  
+  statBox: {
+    alignItems: 'center',
+  },
+  
+  statNumber: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  
+  statLabel: {
+    fontSize: 14,
+    color: '#ccc',
+    textAlign: 'center',
+  },
+  consequenceText: {
+    color: '#aa3333',
+    fontSize: 16,
+    textAlign: 'center',
+    marginTop: 40,
+    lineHeight: 24,
+    fontStyle: 'italic',
+    fontWeight: 'bold',
+    paddingHorizontal: 20,
+  },
+  modalOverlay: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+  },
+  
+  modalContent: {
+    backgroundColor: '#1c1c1c',
+    padding: 30,
+    borderRadius: 12,
+    borderColor: '#aa3333',
+    borderWidth: 2,
+    maxWidth: '85%',
+  },
+  
+  modalText: {
+    color: '#f0f0f0',
+    fontSize: 16,
+    fontStyle: 'italic',
+    textAlign: 'center',
+    lineHeight: 24,
+  },
 });
