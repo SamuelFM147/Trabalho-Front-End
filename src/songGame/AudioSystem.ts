@@ -1,24 +1,29 @@
 import { Audio } from 'expo-av';
 import { useEffect } from 'react';
 
-// Constante com o nome do arquivo do tema principal
+// Array com todas as músicas disponíveis
 export const AudioAssets = {
-  TEMA_PRINCIPAL: 'Tema_Principal.mp3',
+  TEMA_PRINCIPAL: require('../assets/songs/Tema_Principal.mp3'),
+  ID_95: require('../assets/songs/ID_95.mp3'),
+  ID_94: require('../assets/songs/ID_94.mp3'),
+  ID_92: require('../assets/songs/ID_92.mp3'),
+  ID_91: require('../assets/songs/ID_91.mp3'),
+  ID_4_A_6: require('../assets/songs/ID_4_a_6.mp3'),
+  ID_3: require('../assets/songs/ID_3.mp3'),
+  ID_2: require('../assets/songs/ID_2.mp3'),
+  ID_1: require('../assets/songs/ID_1.mp3'),
+  ID_0: require('../assets/songs/ID_0.mp3'),
+  FINAL_BOM: require('../assets/songs/Final_Bom.mp3'),
 } as const;
-
-// Caminho real do recurso de áudio
-const audioResources: { [key: string]: any } = {
-  'Tema_Principal.mp3': require('../assets/songs/Tema_Principal.mp3'),
-};
 
 // Classe para controle do áudio
 class AudioManager {
   private static instance: AudioManager;
   private currentSound: Audio.Sound | null = null;
   private isPlaying: boolean = false;
-  private lastPlayed: string | null = null;
+  private currentMusicIndex: number = 0;
   private isInitialized: boolean = false;
-  private isMainThemePlaying: boolean = false;
+  private nextSoundPromise: Promise<void> | null = null;
 
   private constructor() {}
 
@@ -44,48 +49,79 @@ class AudioManager {
     }
   }
 
-  // Inicia o tema principal em loop com volume 50%
-  public async playMainTheme(): Promise<void> {
-    if (this.isMainThemePlaying) return;
-
-    await this.initialize();
-    const resource = audioResources[AudioAssets.TEMA_PRINCIPAL];
-
-    try {
-      if (this.currentSound) {
-        await this.currentSound.unloadAsync();
-      }
-
-      const { sound } = await Audio.Sound.createAsync(
-        resource,
-        {
-          shouldPlay: true,
-          isLooping: true,
-          volume: 0.5,
-        }
-      );
-
-      this.currentSound = sound;
-      this.isPlaying = true;
-      this.isMainThemePlaying = true;
-      this.lastPlayed = AudioAssets.TEMA_PRINCIPAL;
-    } catch (error) {
-      console.error('Erro ao tocar o tema principal:', error);
-    }
+  private getRandomMusicIndex(): number {
+    const musicList = Object.values(AudioAssets);
+    return Math.floor(Math.random() * musicList.length);
   }
 
-  // Para o som atual
-  public async stopSound(): Promise<void> {
+  private async unloadCurrentSound(): Promise<void> {
     if (this.currentSound) {
       try {
         await this.currentSound.stopAsync();
         await this.currentSound.unloadAsync();
         this.currentSound = null;
-        this.isPlaying = false;
-        this.isMainThemePlaying = false;
       } catch (error) {
-        console.error('Erro ao parar o som:', error);
+        console.error('Erro ao descarregar som:', error);
       }
+    }
+  }
+
+  // Inicia uma música aleatória com volume 50%
+  public async playMainTheme(): Promise<void> {
+    // Se já estiver tocando, não faz nada
+    if (this.isPlaying) {
+      return;
+    }
+
+    // Se houver uma próxima música sendo carregada, espera ela terminar
+    if (this.nextSoundPromise) {
+      await this.nextSoundPromise;
+    }
+
+    await this.initialize();
+    
+    try {
+      // Marca que está tocando antes de começar o processo
+      this.isPlaying = true;
+
+      await this.unloadCurrentSound();
+
+      const musicList = Object.values(AudioAssets);
+      this.currentMusicIndex = this.getRandomMusicIndex();
+      
+      const { sound } = await Audio.Sound.createAsync(
+        musicList[this.currentMusicIndex],
+        {
+          shouldPlay: true,
+          volume: 0.5,
+        }
+      );
+
+      // Configura o evento para tocar a próxima música quando a atual terminar
+      sound.setOnPlaybackStatusUpdate(async (status) => {
+        if (status.isLoaded && status.didJustFinish) {
+          this.currentMusicIndex = (this.currentMusicIndex + 1) % musicList.length;
+          // Armazena a promessa da próxima música
+          this.nextSoundPromise = this.playMainTheme();
+          await this.nextSoundPromise;
+          this.nextSoundPromise = null;
+        }
+      });
+
+      this.currentSound = sound;
+    } catch (error) {
+      console.error('Erro ao tocar música:', error);
+      this.isPlaying = false;
+    }
+  }
+
+  // Para o som atual
+  public async stopSound(): Promise<void> {
+    try {
+      await this.unloadCurrentSound();
+      this.isPlaying = false;
+    } catch (error) {
+      console.error('Erro ao parar o som:', error);
     }
   }
 
@@ -99,13 +135,14 @@ class AudioManager {
       }
     }
   }
-  getLastPlayedSound(): string | null {
-    return this.lastPlayed;
+
+  // Retorna se está tocando ou não
+  public isCurrentlyPlaying(): boolean {
+    return this.isPlaying;
   }
 }
 
-
-// Exporta a instância única do gerenciador
+// Singleton instance
 export const audioManager = AudioManager.getInstance();
 
 // Hook para controlar áudio no React
@@ -119,5 +156,6 @@ export const useAudio = () => {
     playMainTheme: () => audioManager.playMainTheme(),
     stopSound: () => audioManager.stopSound(),
     setVolume: (volume: number) => audioManager.setVolume(volume),
+    isPlaying: () => audioManager.isCurrentlyPlaying(),
   };
 };

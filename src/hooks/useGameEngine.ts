@@ -1,26 +1,12 @@
 // --- INÍCIO DO ARQUIVO: src/hooks/useGameEngine.ts ---
-import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { Scene, PossibleDestiny } from '../game/gameManager';
 import { GameManager } from '../game/gameManager';
-import { useAudio } from '../songGame/AudioSystem';
 
 export const useGameEngine = () => {
   const gameManager = useMemo(() => new GameManager(), []);
   const [currentScene, setCurrentScene] = useState<Scene>(gameManager.getCurrentScene());
   const [availableChoices, setAvailableChoices] = useState<PossibleDestiny[]>(gameManager.getAvailableChoices());
-  const isFirstScene = useRef(true);
-  const { playMainTheme } = useAudio();
-
-  useEffect(() => {
-    const setupTheme = async () => {
-      if (isFirstScene.current) {
-        isFirstScene.current = false;
-        await playMainTheme();
-      }
-    };
-
-    setupTheme();
-  }, []);
 
   const makeChoice = useCallback((choice: PossibleDestiny) => {
     const nextScene = gameManager.makeChoice(choice.destino_id);
