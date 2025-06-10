@@ -15,6 +15,57 @@ import { getRandomEscolha, Escolha, escolhas } from '../escolhas/escolhas2';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SWIPE_THRESHOLD = 80;
 
+// Função para carregar todas as imagens disponíveis
+const loadImages = () => {
+  const images: { [key: string]: any } = {};
+  
+  // Tenta carregar todas as imagens possíveis
+  const possibleImages = {
+    // Imagens do id301 ao id320
+    'id301.png': require('../assets/id301.png'),
+    'id302.png': require('../assets/id302.png'),
+    'id303.png': require('../assets/id303.png'),
+    'id304.png': require('../assets/id304.png'),
+    'id305.png': require('../assets/id305.png'),
+    'id306.png': require('../assets/id306.png'),
+    'id307.png': require('../assets/id307.png'),
+    'id308.png': require('../assets/id308.png'),
+    'id309.png': require('../assets/id309.png'),
+    'id310.png': require('../assets/id310.png'),
+    'id311.png': require('../assets/id311.png'),
+    'id312.png': require('../assets/id312.png'),
+    'id313.png': require('../assets/id313.png'),
+    'id314.png': require('../assets/id314.png'),
+    'id315.png': require('../assets/id315.png'),
+    'id316.png': require('../assets/id316.png'),
+    'id317.png': require('../assets/id317.png'),
+    'id318.png': require('../assets/id318.png'),
+    'id319.png': require('../assets/id319.png'),
+    'id320.png': require('../assets/id320.png'),
+    // Imagens padrão
+    'SinIcon.png': require('../assets/SinIcon.png'),
+    'SinFundo.png': require('../assets/SinFundo.png'),
+    'SinLogo.png': require('../assets/SinLogo.png'),
+    // Mapeamento alternativo para imagens com nomes diferentes
+    'peste_poema.png': require('../assets/id309.png'), // Usando id309 como alternativa para peste_poema
+  };
+
+  // Adiciona todas as imagens disponíveis ao mapeamento
+  Object.entries(possibleImages).forEach(([key, value]) => {
+    try {
+      images[key] = value;
+    } catch (e) {
+      console.warn(`Imagem ${key} não encontrada, usando imagem padrão`);
+      images[key] = require('../assets/SinIcon.png'); // Fallback para imagem padrão
+    }
+  });
+
+  return images;
+};
+
+// Carrega todas as imagens disponíveis
+const imageMapping = loadImages();
+
 export default function SinIntroScreen() {
   const pan = useRef(new Animated.ValueXY()).current;
   const [cardColor, setCardColor] = useState<'white' | 'green' | 'red'>('white');
@@ -101,7 +152,7 @@ export default function SinIntroScreen() {
         setCardLabel('Qual a sua resposta?');
         loadNewChoice();
       });
-    }, 1500);
+    }, 2000);
   };
 
   const panResponder = useRef(
@@ -180,9 +231,14 @@ export default function SinIntroScreen() {
           ]}
         >
           <Image
-            source={require('../assets/SinIcon.png')}
+            source={
+              currentEscolha?.imagem && imageMapping[currentEscolha.imagem]
+                ? imageMapping[currentEscolha.imagem]
+                : imageMapping['SinIcon.png']
+            }
             style={styles.cardImage}
             resizeMode="contain"
+            onError={() => console.warn(`Erro ao carregar imagem: ${currentEscolha?.imagem}`)}
           />
           <Text style={[styles.cardTitle, { color: cardColor }]}>{cardLabel}</Text>
         </Animated.View>

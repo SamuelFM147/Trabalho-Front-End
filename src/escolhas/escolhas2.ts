@@ -19,76 +19,76 @@ export interface Escolha {
 export const escolhas: Escolha[] = [
   {
     "id": "001",
-    "pergunta": "Você é o novo Vigia?",
-    "imagem": "vigia_duvida.png",
+    "pergunta": "As palavras fugiram do idioma. Você as captura?",
+    "imagem": "id301.png",
     "escolhas": {
       "SIM": {
-        "consequencia": "Bravo. Um mártir a caminho do esquecimento.",
-        "salvos": 5,
-        "sacrificados": 1
+        "consequencia": "Você as caçou. Mas elas agora te falam o tempo todo.",
+        "salvos": 0,
+        "sacrificados": 0
       },
       "NAO": {
-        "consequencia": "Sua fuga foi poética. Quase.",
+        "consequencia": "As palavras fugiram para sempre. Agora o mundo grita.",
         "salvos": 0,
-        "sacrificados": 3
+        "sacrificados": 48
       }
     }
   },
   {
     "id": "002",
-    "pergunta": "A criança perdida precisa de ajuda. Vai salvá-la?",
-    "imagem": "crianca_perdida.png",
+    "pergunta": "Um rato oferece um tratado de paz. Você assina?",
+    "imagem": "id302.png",
     "escolhas": {
       "SIM": {
-        "consequencia": "Sua compaixão ecoa através das sombras.",
-        "salvos": 8,
+        "consequencia": "Ele chorou. Paz foi assinada. E você virou embaixador das tocas.",
+        "salvos": 0,
         "sacrificados": 0
       },
       "NAO": {
-        "consequencia": "O silêncio das crianças é ensurdecedor.",
-        "salvos": 2,
-        "sacrificados": 5
+        "consequencia": "Ele se foi. Mas ratos agora murmuram seu nome.",
+        "salvos": 0,
+        "sacrificados": 0
       }
     }
   },
   {
     "id": "003",
-    "pergunta": "O portal para o vazio se abre. Vai atravessá-lo?",
-    "imagem": "portal_vazio.png",
+    "pergunta": "O mar recita seu nome em cada onda. Você mergulha?",
+    "imagem": "id303.png",
     "escolhas": {
       "SIM": {
-        "consequencia": "Você dança no limiar entre mundos.",
-        "salvos": 3,
-        "sacrificados": 2
+        "consequencia": "Você afundou. E renasceu feito maré.",
+        "salvos": 1500,
+        "sacrificados": 1
       },
       "NAO": {
-        "consequencia": "A covardia às vezes é sabedoria disfarçada.",
-        "salvos": 6,
-        "sacrificados": 1
+        "consequencia": "O mar se calou. Mas nunca mais trouxe peixes.",
+        "salvos": 0,
+        "sacrificados": 1500
       }
     }
   },
   {
     "id": "004",
-    "pergunta": "As memórias dolorosas se manifestam. Vai enfrentá-las?",
-    "imagem": "memorias_dor.png",
+    "pergunta": "A lua está se aproximando lentamente. Você interfere?",
+    "imagem": "id304.png",
     "escolhas": {
       "SIM": {
-        "consequencia": "A dor transformada em força é devastadora.",
-        "salvos": 7,
-        "sacrificados": 3
+        "consequencia": "A lua respondeu. Com um beijo e um colapso gravitacional.",
+        "salvos": 2937,
+        "sacrificados": 1830
       },
       "NAO": {
-        "consequencia": "Fugir das memórias é fugir de si mesmo.",
-        "salvos": 1,
-        "sacrificados": 4
+        "consequencia": "A lua se calou. Mas levou o mar junto.",
+        "salvos": 84870,
+        "sacrificados": 1550
       }
     }
   },
   {
     "id": "005",
     "pergunta": "O demônio oferece poder infinito. Vai aceitar?",
-    "imagem": "demonio_poder.png",
+    "imagem": "id305.png",
     "escolhas": {
       "SIM": {
         "consequencia": "O poder corrompe, mas às vezes é necessário.",
@@ -105,88 +105,259 @@ export const escolhas: Escolha[] = [
   {
     "id": "006",
     "pergunta": "Sua filha aparece em sonhos. Vai segui-la?",
-    "imagem": "filha_sonho.png",
+    "imagem": "id306.png",
     "escolhas": {
       "SIM": {
         "consequencia": "Algumas ilusões são mais reais que a realidade.",
-        "salvos": 2,
+        "salvos": 0,
         "sacrificados": 1
       },
       "NAO": {
         "consequencia": "Aceitar a perda é o primeiro passo para a redenção.",
-        "salvos": 5,
-        "sacrificados": 2
+        "salvos": 0,
+        "sacrificados": 0
       }
     }
   },
   {
     "id": "007",
-    "pergunta": "O mundo está em chamas. Vai tentar salvá-lo?",
-    "imagem": "mundo_chamas.png",
+    "pergunta": "Uma criança com olhos dourados diz ser seu avô. Você acredita?",
+    "imagem": "id307.png",
     "escolhas": {
       "SIM": {
-        "consequencia": "Heróis nascem das cinzas da destruição.",
-        "salvos": 15,
-        "sacrificados": 5
+        "consequencia": "Ele provou com uma canção esquecida. Você chorou.",
+        "salvos": 1,
+        "sacrificados": 0
       },
       "NAO": {
-        "consequencia": "Às vezes, é preciso deixar queimar para renascer.",
+        "consequencia": "Ele chorou. E desapareceu com o tempo.",
         "salvos": 0,
-        "sacrificados": 12
+        "sacrificados": 0
       }
     }
   },
   {
     "id": "008",
-    "pergunta": "O espelho mostra seu verdadeiro eu. Vai olhar?",
-    "imagem": "espelho_verdade.png",
+    "pergunta": "Um espelho começa a refletir o futuro de estranhos. Você olha?",
+    "imagem": "id308.png",
     "escolhas": {
       "SIM": {
-        "consequencia": "A verdade dói, mas liberta a alma.",
-        "salvos": 6,
-        "sacrificados": 2
+        "consequencia": "A visão mostrou o fim do mundo — você sorriu.",
+        "salvos": 63822,
+        "sacrificados": 116
       },
       "NAO": {
-        "consequencia": "A negação é uma prisão dourada.",
-        "salvos": 3,
-        "sacrificados": 3
+        "consequencia": "Você ficou cego para o amanhã. Mas em paz.",
+        "salvos": 60043,
+        "sacrificados": 77
       }
     }
   },
   {
     "id": "009",
-    "pergunta": "Os mortos sussurram segredos. Vai escutar?",
-    "imagem": "mortos_segredos.png",
+    "pergunta": "Você tentou curar a peste com poemas?",
+    "imagem": "peste_poema.png",
     "escolhas": {
       "SIM": {
-        "consequencia": "Os mortos falam verdades que os vivos temem.",
-        "salvos": 4,
-        "sacrificados": 6
+        "consequencia": "Os versos foram belos. Os cadáveres, também.",
+        "salvos": 0,
+        "sacrificados": 400
       },
       "NAO": {
-        "consequencia": "Silenciar os mortos é silenciar a história.",
-        "salvos": 7,
-        "sacrificados": 1
+        "consequencia": "Sem palavras, sem consolo. Só gemidos no escuro.",
+        "salvos": 0,
+        "sacrificados": 400
       }
     }
   },
   {
     "id": "010",
-    "pergunta": "O fim se aproxima. Vai abraçá-lo ou resistir?",
-    "imagem": "fim_chegando.png",
+    "pergunta": "Um Carrasco está deprimido você o consola?",
+    "imagem": "id310.png",
     "escolhas": {
       "SIM": {
-        "consequencia": "Aceitar o fim é o último ato de sabedoria.",
+        "consequencia": "Ele parou de matar por três dias. Um recorde.",
+        "salvos": 5,
+        "sacrificados": 0
+      },
+      "NAO": {
+        "consequencia": "Ele chorou. Depois te decapitou. Emoções são perigosas.",
+        "salvos": 0,
+        "sacrificados": 1
+      }
+    }
+  },
+  {
+    "id": "011",
+    "pergunta": "Um dragão sobrevoa as capitais. Você o ataca?",
+    "imagem": "id311.png",
+    "escolhas": {
+      "SIM": {
+        "consequencia": "Ele chorou. Só queria conselhos sobre alianças de casamento.",
+        "salvos": 80000,
+        "sacrificados": 0
+      },
+      "NAO": {
+        "consequencia": "Ele interpretou seu silêncio como fraqueza. Três províncias viraram cinzas.",
+        "salvos": 0,
+        "sacrificados": 42000
+      }
+    }
+  },
+  {
+    "id": "012",
+    "pergunta": "O céu se abriu. Mil demônios surgiram com rosas. Você os recebe?",
+    "imagem": "id312.png",
+    "escolhas": {
+      "SIM": {
+        "consequencia": "Era o Dia dos Namorados do Inferno. Vocês selaram uma trégua diplomática.",
+        "salvos": 100000,
+        "sacrificados": 0
+      },
+      "NAO": {
+        "consequencia": "Você ofendeu o embaixador infernal. Uma cidade virou jardim carnívoro.",
+        "salvos": 0,
+        "sacrificados": 18000
+      }
+    }
+  },
+  {
+    "id": "013",
+    "pergunta": "O mar se partiu. Uma serpente de quilômetros rasteja rumo à costa. Você ataca?",
+    "imagem": "id313.png",
+    "escolhas": {
+      "SIM": {
+        "consequencia": "Era surda e míope. Só queria praia. Mas agora está furiosa.",
+        "salvos": 0,
+        "sacrificados": 60000
+      },
+      "NAO": {
+        "consequencia": "Ela se bronzeou e voltou ao fundo do mar. Deixou pérolas.",
+        "salvos": 50000,
+        "sacrificados": 0
+      }
+    }
+  },
+  {
+    "id": "014",
+    "pergunta": "Um eclipse permanente cobre o império. Um profeta diz que você é a chave. Você o escuta?",
+    "imagem": "id314.png",
+    "escolhas": {
+      "SIM": {
+        "consequencia": "Você era só um fusível cósmico. O eclipse cessou, e você... também.",
+        "salvos": 200000,
+        "sacrificados": 1
+      },
+      "NAO": {
+        "consequencia": "O eclipse virou religião. O mundo esqueceu a luz. E você.",
+        "salvos": 0,
+        "sacrificados": 0
+      }
+    }
+  },
+  {
+    "id": "015",
+    "pergunta": "Gigantes emergem do norte, marchando com tambores. Você interfere?",
+    "imagem": "id315.png",
+    "escolhas": {
+      "SIM": {
+        "consequencia": "Os tambores eram convites para o Festival da Terra. Guerra começou por má tradução.",
+        "salvos": 0,
+        "sacrificados": 70000
+      },
+      "NAO": {
+        "consequencia": "Eles dançaram e foram embora. Um gigante tropeçou, demoliu uma vila.",
+        "salvos": 100000,
+        "sacrificados": 3000
+      }
+    }
+  },
+  {
+    "id": "016",
+    "pergunta": "Um anjo em prantos cai do céu. Ele diz que 'algo terrível está vindo'. Você o ajuda?",
+    "imagem": "id316.png",
+    "escolhas": {
+      "SIM": {
+        "consequencia": "O 'algo' era seu pai. Eles brigaram. Você foi atingido por acidente.",
+        "salvos": 20000,
+        "sacrificados": 1
+      },
+      "NAO": {
+        "consequencia": "O anjo virou pedra. Agora adoram a estátua. Nada veio.",
+        "salvos": 0,
+        "sacrificados": 0
+      }
+    }
+  },
+  {
+    "id": "017",
+    "pergunta": "Montanhas flutuam no horizonte. Chamam seu nome. Você escala?",
+    "imagem": "id317.png",
+    "escolhas": {
+      "SIM": {
+        "consequencia": "Lá em cima, um deus esquecido queria só um amigo. Agora ele te segue.",
         "salvos": 0,
         "sacrificados": 0
       },
       "NAO": {
-        "consequencia": "A resistência é a última chama da humanidade.",
-        "salvos": 12,
-        "sacrificados": 4
+        "consequencia": "A montanha ficou triste. Caiu. Sepultou uma cidade.",
+        "salvos": 0,
+        "sacrificados": 12000
+      }
+    }
+  },
+  {
+    "id": "018",
+    "pergunta": "O tempo parou por uma hora. Todos te olharam. Você sorri?",
+    "imagem": "id318.png",
+    "escolhas": {
+      "SIM": {
+        "consequencia": "O tempo gostou. Voltou. Mas agora você envelhece o triplo.",
+        "salvos": 1000000,
+        "sacrificados": 1
+      },
+      "NAO": {
+        "consequencia": "O tempo sentiu desprezo. Você virou estátua por 100 anos.",
+        "salvos": 0,
+        "sacrificados": 0
+      }
+    }
+  },
+  {
+    "id": "019",
+    "pergunta": "Um cometa negro vem em sua direção. Vozes pedem sacrifício. Você obedece?",
+    "imagem": "id319.png",
+    "escolhas": {
+      "SIM": {
+        "consequencia": "O cometa desviou. Mas a voz... ficou.",
+        "salvos": 300000,
+        "sacrificados": 9
+      },
+      "NAO": {
+        "consequencia": "O cometa caiu no oceano. Surgiu um novo continente. De carne.",
+        "salvos": 0,
+        "sacrificados": 0
+      }
+    }
+  },
+  {
+    "id": "020",
+    "pergunta": "Um portal púrpura surge na capital. Um bode gigante quer negociar. Você aceita?",
+    "imagem": "id320.png",
+    "escolhas": {
+      "SIM": {
+        "consequencia": "Ele comprou metade do reino com areia cósmica. E sumiu.",
+        "salvos": 50000,
+        "sacrificados": 0
+      },
+      "NAO": {
+        "consequencia": "Ele se ofendeu. Transformou ministros em cogumelos.",
+        "salvos": 0,
+        "sacrificados": 7
       }
     }
   }
+
 ];
 
 // Função para obter uma escolha aleatória
