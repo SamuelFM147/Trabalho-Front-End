@@ -68,13 +68,13 @@ export default function Home() {
           <TouchableOpacity 
             onPress={handleStartJourney}
           >
-            <Text style={styles.Textobotao}>Iniciar Jornada</Text>
+            <Text style={styles.Textobotao}>Story Game</Text>
           </TouchableOpacity>
           
           <TouchableOpacity 
             onPress={() => navigation.navigate('PlayGame')}
           >
-            <Text style={styles.Textobotao}>Iniciar Jornada 2</Text>
+            <Text style={styles.Textobotao}>Iniciar Jornada</Text>
           </TouchableOpacity>
         </Animated.View>
       </View>

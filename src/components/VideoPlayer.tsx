@@ -1,6 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
+import { audioManager } from '../songGame/AudioSystem';
 
 interface VideoPlayerProps {
   onSkip: () => void;
@@ -10,6 +11,16 @@ interface VideoPlayerProps {
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ onSkip, onComplete }) => {
   const videoRef = useRef<Video>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Pausa a música quando o componente é montado
+    audioManager.stopSound();
+
+    // Retoma a música quando o componente é desmontado
+    return () => {
+      audioManager.playMainTheme();
+    };
+  }, []);
 
   const handlePlaybackStatusUpdate = (status: any) => {
     if (status.didJustFinish) {
