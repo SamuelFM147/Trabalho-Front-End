@@ -7,7 +7,6 @@ import ChoiceList from '../../components/ChoiceList';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import EndGameScreen from './EndGameScreen';
-import { useAudioContext } from '../../songGame/AudioContext';
 
 const localImages: Record<string, any> = {
   '/assets/id0.png': require('../../assets/id0.png'),
@@ -21,7 +20,6 @@ const GameScreen: React.FC = () => {
   const scrollViewRef = useRef<ScrollView>(null);
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const { stopAudio } = useAudioContext();
   
   const {
     currentScene,
@@ -31,11 +29,6 @@ const GameScreen: React.FC = () => {
     isGameOver,
     isVictory,
   } = useGameEngine();
-
-  // Efeito para parar o áudio quando o componente é montado
-  useEffect(() => {
-    stopAudio();
-  }, [stopAudio]);
 
   // Função para fazer a transição suave
   const handleSceneTransition = async (choice: any) => {
@@ -88,13 +81,6 @@ const GameScreen: React.FC = () => {
     );
   }
 
-  
-  const messageParts = currentScene.mensagem.split('[IMAGEM]');
-  const textBeforeImage = messageParts[0] || '';
-  const textAfterImage = messageParts[1] || '';
-  const shouldRenderImageInline = messageParts.length > 1 && currentScene.imagem_url;
-
-  
   if (isGameOver || isVictory) {
     return (
       <EndGameScreen
@@ -104,6 +90,11 @@ const GameScreen: React.FC = () => {
       />
     );
   }
+
+  const messageParts = currentScene.mensagem.split('[IMAGEM]');
+  const textBeforeImage = messageParts[0] || '';
+  const textAfterImage = messageParts[1] || '';
+  const shouldRenderImageInline = messageParts.length > 1 && currentScene.imagem_url;
 
   const currentImageSource = currentScene.imagem_url && localImages[currentScene.imagem_url]
     ? localImages[currentScene.imagem_url]

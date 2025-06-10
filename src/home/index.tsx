@@ -8,40 +8,31 @@ import VideoPlayer from '../components/VideoPlayer';
 export default function Home() {
   const navigation = useNavigation<any>();
   const fadeAnim = useRef(new Animated.Value(1)).current;
-  const { playMainTheme } = useAudio();
+  const { playMainTheme, stopSound } = useAudio();
   const [showVideo, setShowVideo] = useState(false);
 
+  // Efeito para iniciar a música quando o componente monta
   useEffect(() => {
-    // Animação de piscar do botão
-    const blinkAnimation = Animated.sequence([
-      Animated.timing(fadeAnim, {
-        toValue: 0,
-        duration: 2000,
-        useNativeDriver: true,
-      }),
-      Animated.timing(fadeAnim, {
-        toValue: 1,
-        duration: 2000,
-        useNativeDriver: true,
-      }),
-    ]);
+    const setupAudio = async () => {
+      if (!showVideo) {
+        await stopSound(); // Garante que não há música tocando
+        await playMainTheme();
+      }
+    };
 
-    Animated.loop(blinkAnimation).start();
-
-    // Tocar o tema principal
-    playMainTheme();
-  }, []);
+    setupAudio();
+  }, [showVideo]);
 
   const handleStartJourney = () => {
     setShowVideo(true);
   };
 
-  const handleSkipVideo = () => {
+  const handleSkipVideo = async () => {
     setShowVideo(false);
     navigation.navigate('Game');
   };
 
-  const handleVideoComplete = () => {
+  const handleVideoComplete = async () => {
     setShowVideo(false);
     navigation.navigate('Game');
   };

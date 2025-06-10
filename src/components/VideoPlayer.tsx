@@ -13,19 +13,25 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ onSkip, onComplete }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Pausa a música quando o componente é montado
-    audioManager.stopSound();
-
-    // Retoma a música quando o componente é desmontado
-    return () => {
-      audioManager.playMainTheme();
+    const setupAudio = async () => {
+      // Pausa a música quando o componente é montado
+      await audioManager.stopSound();
     };
+
+    setupAudio();
+
+    // Não retomamos a música aqui, deixamos isso para o GameScreen
+    return () => {};
   }, []);
 
   const handlePlaybackStatusUpdate = (status: any) => {
     if (status.didJustFinish) {
       onComplete();
     }
+  };
+
+  const handleSkip = () => {
+    onSkip();
   };
 
   return (
@@ -41,7 +47,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ onSkip, onComplete }) => {
         onLoad={() => setIsLoaded(true)}
       />
       {isLoaded && (
-        <TouchableOpacity style={styles.skipButton} onPress={onSkip}>
+        <TouchableOpacity style={styles.skipButton} onPress={handleSkip}>
           <Text style={styles.skipText}>Pular</Text>
         </TouchableOpacity>
       )}
