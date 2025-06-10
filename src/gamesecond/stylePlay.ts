@@ -25,6 +25,7 @@ export const styles = StyleSheet.create({
   },
   statusBox: {
     alignItems: 'flex-end',
+    width: '100%',
   },
   statusLabel: {
     color: '#999',
@@ -35,12 +36,14 @@ export const styles = StyleSheet.create({
     textShadowRadius: 2,
   },
   sanityBar: {
-    flexDirection: 'row',
-    gap: 4,
+    width: '100%',
+    height: 15,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    borderRadius: 2,
+    overflow: 'hidden',
   },
   sanityUnit: {
-    width: 15,
-    height: 15,
+    height: '100%',
     backgroundColor: '#b3261e',
     borderRadius: 2,
   },
@@ -110,16 +113,13 @@ export const styles = StyleSheet.create({
     marginTop: 12,
     gap: 20,
   },
-  
   statBox: {
     alignItems: 'center',
   },
-  
   statNumber: {
     fontSize: 20,
     fontWeight: 'bold',
   },
-  
   statLabel: {
     fontSize: 14,
     color: '#ccc',
@@ -141,7 +141,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
   },
-  
   modalContent: {
     backgroundColor: '#1c1c1c',
     padding: 30,
@@ -150,7 +149,6 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     maxWidth: '85%',
   },
-  
   modalText: {
     color: '#f0f0f0',
     fontSize: 16,

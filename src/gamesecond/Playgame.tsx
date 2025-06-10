@@ -20,6 +20,7 @@ export default function SinIntroScreen() {
   const [cardLabel, setCardLabel] = useState('Qual a sua resposta?');
   const [savedCount, setSavedCount] = useState(12);
   const [sacrificedCount, setSacrificedCount] = useState(3);
+  const [sanityLevel, setSanityLevel] = useState(100);
 
   const [modalVisible, setModalVisible] = useState(false);
   const [consequenceText, setConsequenceText] = useState('');
@@ -30,6 +31,12 @@ export default function SinIntroScreen() {
     outputRange: ['-20deg', '0deg', '20deg'],
     extrapolate: 'clamp',
   });
+
+  const updateSanity = (choice: 'SIM' | 'NÃO') => {
+    if (choice === 'SIM') {
+      setSanityLevel(prevSanity => Math.max(0, prevSanity - 5));
+    }
+  };
 
   const showConsequenceModal = (label: string) => {
     const simPhrases = [
@@ -47,6 +54,7 @@ export default function SinIntroScreen() {
 
     setConsequenceText(text);
     setModalVisible(true);
+    updateSanity(label as 'SIM' | 'NÃO');
 
     Animated.timing(modalOpacity, {
       toValue: 1,
@@ -124,11 +132,9 @@ export default function SinIntroScreen() {
       <View style={styles.contentContainer}>
         <View style={styles.statusBar}>
           <View style={styles.statusBox}>
-            <Text style={styles.statusLabel}>Sanidade</Text>
+            <Text style={styles.statusLabel}>Sanidade: {sanityLevel}%</Text>
             <View style={styles.sanityBar}>
-              <View style={styles.sanityUnit} />
-              <View style={styles.sanityUnit} />
-              <View style={styles.sanityUnit} />
+              <View style={[styles.sanityUnit, { width: `${sanityLevel}%` }]} />
             </View>
           </View>
         </View>
@@ -168,13 +174,21 @@ export default function SinIntroScreen() {
         </View>
       </View>
 
-      {/* Modal de Zombaria */}
-      <Modal transparent visible={modalVisible} animationType="none">
-        <View style={styles.modalOverlay}>
-          <Animated.View style={[styles.modalContent, { opacity: modalOpacity }]}>
+      <Modal
+        visible={modalVisible}
+        transparent={true}
+        animationType="fade"
+      >
+        <Animated.View 
+          style={[
+            styles.modalOverlay,
+            { opacity: modalOpacity }
+          ]}
+        >
+          <View style={styles.modalContent}>
             <Text style={styles.modalText}>{consequenceText}</Text>
-          </Animated.View>
-        </View>
+          </View>
+        </Animated.View>
       </Modal>
     </ImageBackground>
   );
