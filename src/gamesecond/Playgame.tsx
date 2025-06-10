@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -10,9 +10,10 @@ import {
   Modal,
 } from 'react-native';
 import { styles } from './stylePlay';
+import { getRandomEscolha, Escolha, escolhas } from '../escolhas/escolhas2';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
-const SWIPE_THRESHOLD = 120;
+const SWIPE_THRESHOLD = 80;
 
 export default function SinIntroScreen() {
   const pan = useRef(new Animated.ValueXY()).current;
@@ -21,10 +22,33 @@ export default function SinIntroScreen() {
   const [savedCount, setSavedCount] = useState(12);
   const [sacrificedCount, setSacrificedCount] = useState(3);
   const [sanityLevel, setSanityLevel] = useState(100);
-
+  const [currentEscolha, setCurrentEscolha] = useState<Escolha | null>(null);
+  const currentEscolhaRef = useRef<Escolha | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [consequenceText, setConsequenceText] = useState('');
   const modalOpacity = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    const initialChoice = getRandomEscolha();
+    setCurrentEscolha(initialChoice);
+    currentEscolhaRef.current = initialChoice;
+  }, []);
+
+  useEffect(() => {
+    if (currentEscolha) {
+      currentEscolhaRef.current = currentEscolha;
+    }
+  }, [currentEscolha]);
+
+  const loadNewChoice = () => {
+    let newEscolha;
+    do {
+      newEscolha = getRandomEscolha();
+    } while (currentEscolhaRef.current && newEscolha.id === currentEscolhaRef.current.id && escolhas.length > 1);
+    
+    setCurrentEscolha(newEscolha);
+    currentEscolhaRef.current = newEscolha;
+  };
 
   const rotate = pan.x.interpolate({
     inputRange: [-SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2],
@@ -39,20 +63,24 @@ export default function SinIntroScreen() {
   };
 
   const showConsequenceModal = (label: string) => {
-    const simPhrases = [
-      'Bravo. Um mártir a caminho do esquecimento.',
-      'Vai carregar o mundo? Que nobre… que tolo.',
-    ];
-    const naoPhrases = [
-      'Corajoso. Deixou o mundo apodrecer com dignidade.',
-      'Sua fuga foi poética. Quase.',
-    ];
-
-    const text = label === 'SIM'
-      ? simPhrases[Math.floor(Math.random() * simPhrases.length)]
-      : naoPhrases[Math.floor(Math.random() * naoPhrases.length)];
-
-    setConsequenceText(text);
+    let escolhaParaUsar = currentEscolhaRef.current || currentEscolha;
+    
+    if (!escolhaParaUsar) {
+      escolhaParaUsar = getRandomEscolha();
+      setCurrentEscolha(escolhaParaUsar);
+      currentEscolhaRef.current = escolhaParaUsar;
+    }
+    
+    const normalizedLabel = label === 'NÃO' ? 'NAO' : label;
+    const escolhaData = escolhaParaUsar.escolhas[normalizedLabel as 'SIM' | 'NAO'];
+    
+    if (!escolhaData) {
+      return;
+    }
+    
+    setSavedCount(prev => prev + escolhaData.salvos);
+    setSacrificedCount(prev => prev + escolhaData.sacrificados);
+    setConsequenceText(escolhaData.consequencia);
     setModalVisible(true);
     updateSanity(label as 'SIM' | 'NÃO');
 
@@ -71,6 +99,7 @@ export default function SinIntroScreen() {
         setModalVisible(false);
         setCardColor('white');
         setCardLabel('Qual a sua resposta?');
+        loadNewChoice();
       });
     }, 1500);
   };
@@ -139,7 +168,9 @@ export default function SinIntroScreen() {
           </View>
         </View>
 
-        <Text style={styles.questionText}>Você é o novo Vigia?</Text>
+        <Text style={styles.questionText} key={currentEscolha?.id || 'loading'}>
+          {currentEscolha?.pergunta || 'Carregando...'}
+        </Text>
 
         <Animated.View
           {...panResponder.panHandlers}
@@ -160,7 +191,6 @@ export default function SinIntroScreen() {
           <Text style={styles.footerText}>Espírito do Esquecido</Text>
           <Text style={styles.footerSmall}>Sin</Text>
           <Text style={styles.footerSmall}>0 dias em vigília</Text>
-
           <View style={styles.statsRow}>
             <View style={styles.statBox}>
               <Text style={[styles.statNumber, { color: 'green' }]}>{savedCount}</Text>
@@ -174,21 +204,12 @@ export default function SinIntroScreen() {
         </View>
       </View>
 
-      <Modal
-        visible={modalVisible}
-        transparent={true}
-        animationType="fade"
-      >
-        <Animated.View 
-          style={[
-            styles.modalOverlay,
-            { opacity: modalOpacity }
-          ]}
-        >
-          <View style={styles.modalContent}>
+      <Modal transparent visible={modalVisible} animationType="none">
+        <View style={styles.modalOverlay}>
+          <Animated.View style={[styles.modalContent, { opacity: modalOpacity }]}>
             <Text style={styles.modalText}>{consequenceText}</Text>
-          </View>
-        </Animated.View>
+          </Animated.View>
+        </View>
       </Modal>
     </ImageBackground>
   );
