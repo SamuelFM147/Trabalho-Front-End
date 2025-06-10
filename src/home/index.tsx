@@ -1,13 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { View, Image, TouchableOpacity, Text, Animated } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from './styleHome';
 import { useAudio } from '../songGame/AudioSystem';
+import VideoPlayer from '../components/VideoPlayer';
 
 export default function Home() {
   const navigation = useNavigation<any>();
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const { playMainTheme } = useAudio();
+  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
     // Animação de piscar do botão
@@ -30,6 +32,29 @@ export default function Home() {
     playMainTheme();
   }, []);
 
+  const handleStartJourney = () => {
+    setShowVideo(true);
+  };
+
+  const handleSkipVideo = () => {
+    setShowVideo(false);
+    navigation.navigate('Game');
+  };
+
+  const handleVideoComplete = () => {
+    setShowVideo(false);
+    navigation.navigate('Game');
+  };
+
+  if (showVideo) {
+    return (
+      <VideoPlayer
+        onSkip={handleSkipVideo}
+        onComplete={handleVideoComplete}
+      />
+    );
+  }
+
   return (
     <View style={styles.telaInteiraPreta}>
       <Image
@@ -41,7 +66,7 @@ export default function Home() {
       <View style={styles.containerDoBotao}>
         <Animated.View style={{ opacity: fadeAnim }}>
           <TouchableOpacity 
-            onPress={() => navigation.navigate('Game')}
+            onPress={handleStartJourney}
           >
             <Text style={styles.Textobotao}>Iniciar Jornada</Text>
           </TouchableOpacity>
