@@ -72,7 +72,7 @@ export default function SinIntroScreen() {
         setCardColor('white');
         setCardLabel('Qual a sua resposta?');
       });
-    }, 3000);
+    }, 1500);
   };
 
   const panResponder = useRef(
