@@ -1,7 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
-import {View,Text,Image,Animated,PanResponder,Dimensions, ImageBackground,Modal,} from 'react-native';
+import {View,Text,Image,Animated,PanResponder,Dimensions, ImageBackground,Modal, StyleSheet} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { styles } from './stylePlay';
 import { getRandomEscolha, Escolha, escolhas } from '../escolhas/escolhas2';
+import NavigationControls from '../components/NavigationControls';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SWIPE_THRESHOLD = 80;
@@ -37,8 +39,6 @@ const loadImages = () => {
     'SinIcon.png': require('../assets/SinIcon.png'),
     'SinFundo.png': require('../assets/SinFundo.png'),
     'SinLogo.png': require('../assets/SinLogo.png'),
-    // Mapeamento alternativo para imagens com nomes diferentes
-    'peste_poema.png': require('../assets/id309.png'), // Usando id309 como alternativa para peste_poema
   };
 
   // Adiciona todas as imagens disponíveis ao mapeamento
@@ -58,17 +58,18 @@ const loadImages = () => {
 const imageMapping = loadImages();
 
 export default function SinIntroScreen() {
-  const pan = useRef(new Animated.ValueXY()).current;
-  const [cardColor, setCardColor] = useState<'white' | 'green' | 'red'>('white');
-  const [cardLabel, setCardLabel] = useState('Qual a sua resposta?');
-  const [savedCount, setSavedCount] = useState(0);
-  const [sacrificedCount, setSacrificedCount] = useState(2);
-  const [sanityLevel, setSanityLevel] = useState(100);
   const [currentEscolha, setCurrentEscolha] = useState<Escolha | null>(null);
-  const currentEscolhaRef = useRef<Escolha | null>(null);
+  const [cardLabel, setCardLabel] = useState('Qual a sua resposta?');
+  const [cardColor, setCardColor] = useState('white');
   const [modalVisible, setModalVisible] = useState(false);
   const [consequenceText, setConsequenceText] = useState('');
+  const [sanityLevel, setSanityLevel] = useState(100);
+  const [savedCount, setSavedCount] = useState(0);
+  const [sacrificedCount, setSacrificedCount] = useState(0);
+  const [numeroJogadas, setNumeroJogadas] = useState(0);
   const modalOpacity = useRef(new Animated.Value(0)).current;
+  const pan = useRef(new Animated.ValueXY()).current;
+  const currentEscolhaRef = useRef<Escolha | null>(null);
 
   useEffect(() => {
     const initialChoice = getRandomEscolha();
@@ -125,6 +126,7 @@ export default function SinIntroScreen() {
     setConsequenceText(escolhaData.consequencia);
     setModalVisible(true);
     updateSanity(label as 'SIM' | 'NÃO');
+    setNumeroJogadas(prev => prev + 1);
 
     Animated.timing(modalOpacity, {
       toValue: 1,
@@ -196,69 +198,78 @@ export default function SinIntroScreen() {
   ).current;
 
   return (
-    <ImageBackground
-      source={require('../assets/SinFundo.png')}
-      style={styles.container}
-    >
-      <View style={styles.contentContainer}>
-        <View style={styles.statusBar}>
-          <View style={styles.statusBox}>
-            <Text style={styles.statusLabel}>Sanidade: {sanityLevel}%</Text>
-            <View style={styles.sanityBar}>
-              <View style={[styles.sanityUnit, { width: `${sanityLevel}%` }]} />
-            </View>
-          </View>
-        </View>
-
-        <Text style={styles.questionText} key={currentEscolha?.id || 'loading'}>
-          {currentEscolha?.pergunta || 'Carregando...'}
-        </Text>
-
-        <Animated.View
-          {...panResponder.panHandlers}
-          style={[
-            styles.card,
-            { transform: [...pan.getTranslateTransform(), { rotate }] },
-          ]}
+    <View style={StyleSheet.absoluteFill}>
+      <LinearGradient
+        colors={['#000000', '#0b0f1a', '#1a1a1a']}
+        style={StyleSheet.absoluteFill}
+      >
+        <ImageBackground
+          source={require('../assets/SinFundo.png')}
+          style={styles.container}
         >
-          <Image
-            source={
-              currentEscolha?.imagem && imageMapping[currentEscolha.imagem]
-                ? imageMapping[currentEscolha.imagem]
-                : imageMapping['SinIcon.png']
-            }
-            style={styles.cardImage}
-            resizeMode="contain"
-            onError={() => console.warn(`Erro ao carregar imagem: ${currentEscolha?.imagem}`)}
-          />
-          <Text style={[styles.cardTitle, { color: cardColor }]}>{cardLabel}</Text>
-        </Animated.View>
-
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>Espírito do Esquecido</Text>
-          <Text style={styles.footerSmall}>Sin</Text>
-          <Text style={styles.footerSmall}>0 dias em vigília</Text>
-          <View style={styles.statsRow}>
-            <View style={styles.statBox}>
-              <Text style={[styles.statNumber, { color: 'green' }]}>{savedCount}</Text>
-              <Text style={styles.statLabel}>Pessoas salvas</Text>
+          <View style={styles.contentContainer}>
+            <View style={styles.statusBar}>
+              <View style={styles.statusBox}>
+                <Text style={styles.statusLabel}>Sanidade: {sanityLevel}%</Text>
+                <View style={styles.sanityBar}>
+                  <View style={[styles.sanityUnit, { width: `${sanityLevel}%` }]} />
+                </View>
+              </View>
             </View>
-            <View style={styles.statBox}>
-              <Text style={[styles.statNumber, { color: 'red' }]}>{sacrificedCount}</Text>
-              <Text style={styles.statLabel}>Pessoas sacrificadas</Text>
+
+            <Text style={styles.questionText} key={currentEscolha?.id || 'loading'}>
+              {currentEscolha?.pergunta || 'Carregando...'}
+            </Text>
+
+            <Animated.View
+              {...panResponder.panHandlers}
+              style={[
+                styles.card,
+                { transform: [...pan.getTranslateTransform(), { rotate }] },
+              ]}
+            >
+              <Image
+                source={
+                  currentEscolha?.imagem && imageMapping[currentEscolha.imagem]
+                    ? imageMapping[currentEscolha.imagem]
+                    : imageMapping['SinIcon.png']
+                }
+                style={styles.cardImage}
+                resizeMode="contain"
+                onError={() => console.warn(`Erro ao carregar imagem: ${currentEscolha?.imagem}`)}
+              />
+              <Text style={[styles.cardTitle, { color: cardColor }]}>{cardLabel}</Text>
+            </Animated.View>
+
+            <View style={styles.footer}>
+              <Text style={styles.footerText}>Espírito do Esquecido</Text>
+              <Text style={styles.footerSmall}>Sin</Text>
+              <Text style={styles.footerSmall}>{numeroJogadas} dias em vigília</Text>
+              <View style={styles.statsRow}>
+                <View style={styles.statBox}>
+                  <Text style={[styles.statNumber, { color: 'green' }]}>{savedCount}</Text>
+                  <Text style={styles.statLabel}>Pessoas salvas</Text>
+                </View>
+                <View style={styles.statBox}>
+                  <Text style={[styles.statNumber, { color: 'red' }]}>{sacrificedCount}</Text>
+                  <Text style={styles.statLabel}>Pessoas sacrificadas</Text>
+                </View>
+              </View>
             </View>
           </View>
-        </View>
-      </View>
+        </ImageBackground>
 
-      <Modal transparent visible={modalVisible} animationType="none">
-        <View style={styles.modalOverlay}>
-          <Animated.View style={[styles.modalContent, { opacity: modalOpacity }]}>
-            <Text style={styles.modalText}>{consequenceText}</Text>
-          </Animated.View>
-        </View>
-      </Modal>
-    </ImageBackground>
+        <Modal transparent visible={modalVisible} animationType="none">
+          <View style={styles.modalOverlay}>
+            <Animated.View style={[styles.modalContent, { opacity: modalOpacity }]}>
+              <Text style={styles.modalText}>{consequenceText}</Text>
+            </Animated.View>
+          </View>
+        </Modal>
+
+        <NavigationControls />
+      </LinearGradient>
+    </View>
   );
 }
 

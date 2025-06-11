@@ -1,6 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 import GameScreen from '../screens/GameScreen/GameScreen';
+import NavigationControls from '../components/NavigationControls';
 import { colors } from '../game/styles';
 
 const AppGame: React.FC = () => {
@@ -12,6 +13,7 @@ const AppGame: React.FC = () => {
         translucent={true}
       />
       <GameScreen />
+      <NavigationControls />
     </SafeAreaView>
   );
 };

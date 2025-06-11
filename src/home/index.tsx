@@ -7,6 +7,42 @@ import VideoPlayer from '../components/VideoPlayer';
 import { styles } from './styleHome';
 const { width, height } = Dimensions.get('window');
 
+const Particle = ({ left, delay }: { left: number; delay: number }) => {
+  const fallAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(fallAnim, {
+          toValue: height,
+          duration: 8000 + Math.random() * 3000,
+          delay,
+          useNativeDriver: true,
+        }),
+        Animated.timing(fallAnim, {
+          toValue: 0,
+          duration: 0,
+          useNativeDriver: true,
+        }),
+      ])
+    ).start();
+  }, [delay]);
+
+  return (
+    <Animated.View
+      style={{
+        position: 'absolute',
+        top: 0,
+        left,
+        width: 2,
+        height: 8,
+        backgroundColor: 'rgba(255,255,255,0.04)',
+        transform: [{ translateY: fallAnim }],
+      }}
+    />
+  );
+};
+
 export default function Home() {
   const navigation = useNavigation<any>();
   const fadeAnim = useRef(new Animated.Value(1)).current;
@@ -35,7 +71,6 @@ export default function Home() {
   useEffect(() => {
     const setupAudio = async () => {
       if (!showVideo) {
-        await stopSound();
         await playMainTheme();
       }
     };
@@ -79,42 +114,9 @@ export default function Home() {
       />
 
       {/* Partículas */}
-      {particles.map((p, i) => {
-        const fallAnim = useRef(new Animated.Value(0)).current;
-
-        useEffect(() => {
-          Animated.loop(
-            Animated.sequence([
-              Animated.timing(fallAnim, {
-                toValue: height,
-                duration: 8000 + Math.random() * 3000,
-                delay: p.delay,
-                useNativeDriver: true,
-              }),
-              Animated.timing(fallAnim, {
-                toValue: 0,
-                duration: 0,
-                useNativeDriver: true,
-              }),
-            ])
-          ).start();
-        }, []);
-
-        return (
-          <Animated.View
-            key={i}
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: p.left,
-              width: 2,
-              height: 8,
-              backgroundColor: 'rgba(255,255,255,0.04)',
-              transform: [{ translateY: fallAnim }],
-            }}
-          />
-        );
-      })}
+      {particles.map((p, i) => (
+        <Particle key={i} left={p.left} delay={p.delay} />
+      ))}
 
       {/* Conteúdo */}
       <View style={styles.containerDoConteudo}>

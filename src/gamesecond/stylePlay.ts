@@ -18,13 +18,13 @@ export const styles = StyleSheet.create({
   },
   statusBar: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     marginTop: 40,
     marginBottom: 40,
     paddingHorizontal: 20,
   },
   statusBox: {
-    alignItems: 'flex-end',
+    alignItems: 'flex-start',
     width: '100%',
   },
   statusLabel: {
