@@ -24,7 +24,7 @@ export const escolhas: Escolha[] = [
     "escolhas": {
       "SIM": {
         "consequencia": "Você as caçou. Mas elas agora te falam o tempo todo.",
-        "salvos": 0,
+        "salvos": 48,
         "sacrificados": 0
       },
       "NAO": {
@@ -75,8 +75,8 @@ export const escolhas: Escolha[] = [
     "escolhas": {
       "SIM": {
         "consequencia": "A lua respondeu. Com um beijo e um colapso gravitacional.",
-        "salvos": 2937,
-        "sacrificados": 1830
+        "salvos": 1550,
+        "sacrificados": 84870
       },
       "NAO": {
         "consequencia": "A lua se calou. Mas levou o mar junto.",
@@ -97,8 +97,8 @@ export const escolhas: Escolha[] = [
       },
       "NAO": {
         "consequencia": "A pureza tem seu próprio tipo de força.",
-        "salvos": 4,
-        "sacrificados": 0
+        "salvos": 8,
+        "sacrificados": 10
       }
     }
   },
@@ -132,7 +132,7 @@ export const escolhas: Escolha[] = [
       "NAO": {
         "consequencia": "Ele chorou. E desapareceu com o tempo.",
         "salvos": 0,
-        "sacrificados": 0
+        "sacrificados": 1
       }
     }
   },
@@ -148,8 +148,8 @@ export const escolhas: Escolha[] = [
       },
       "NAO": {
         "consequencia": "Você ficou cego para o amanhã. Mas em paz.",
-        "salvos": 60043,
-        "sacrificados": 77
+        "salvos": 116,
+        "sacrificados": 63822
       }
     }
   },
@@ -194,7 +194,7 @@ export const escolhas: Escolha[] = [
     "escolhas": {
       "SIM": {
         "consequencia": "Ele chorou. Só queria conselhos sobre alianças de casamento.",
-        "salvos": 80000,
+        "salvos": 42000,
         "sacrificados": 0
       },
       "NAO": {
@@ -217,7 +217,7 @@ export const escolhas: Escolha[] = [
       "NAO": {
         "consequencia": "Você ofendeu o embaixador infernal. Uma cidade virou jardim carnívoro.",
         "salvos": 0,
-        "sacrificados": 18000
+        "sacrificados": 100000
       }
     }
   },
@@ -233,7 +233,7 @@ export const escolhas: Escolha[] = [
       },
       "NAO": {
         "consequencia": "Ela se bronzeou e voltou ao fundo do mar. Deixou pérolas.",
-        "salvos": 50000,
+        "salvos": 60000,
         "sacrificados": 0
       }
     }
@@ -245,7 +245,7 @@ export const escolhas: Escolha[] = [
     "escolhas": {
       "SIM": {
         "consequencia": "Você era só um fusível cósmico. O eclipse cessou, e você... também.",
-        "salvos": 200000,
+        "salvos": 0,
         "sacrificados": 1
       },
       "NAO": {
@@ -267,7 +267,7 @@ export const escolhas: Escolha[] = [
       },
       "NAO": {
         "consequencia": "Eles dançaram e foram embora. Um gigante tropeçou, demoliu uma vila.",
-        "salvos": 100000,
+        "salvos": 40000,
         "sacrificados": 3000
       }
     }
@@ -279,7 +279,7 @@ export const escolhas: Escolha[] = [
     "escolhas": {
       "SIM": {
         "consequencia": "O 'algo' era seu pai. Eles brigaram. Você foi atingido por acidente.",
-        "salvos": 20000,
+        "salvos": 0,
         "sacrificados": 1
       },
       "NAO": {
@@ -296,7 +296,7 @@ export const escolhas: Escolha[] = [
     "escolhas": {
       "SIM": {
         "consequencia": "Lá em cima, um deus esquecido queria só um amigo. Agora ele te segue.",
-        "salvos": 0,
+        "salvos": 12000,
         "sacrificados": 0
       },
       "NAO": {
@@ -319,7 +319,7 @@ export const escolhas: Escolha[] = [
       "NAO": {
         "consequencia": "O tempo sentiu desprezo. Você virou estátua por 100 anos.",
         "salvos": 0,
-        "sacrificados": 0
+        "sacrificados": 1
       }
     }
   },
@@ -330,12 +330,12 @@ export const escolhas: Escolha[] = [
     "escolhas": {
       "SIM": {
         "consequencia": "O cometa desviou. Mas a voz... ficou.",
-        "salvos": 300000,
+        "salvos": 30000,
         "sacrificados": 9
       },
       "NAO": {
         "consequencia": "O cometa caiu no oceano. Surgiu um novo continente. De carne.",
-        "salvos": 0,
+        "salvos": 30009,
         "sacrificados": 0
       }
     }
@@ -347,7 +347,7 @@ export const escolhas: Escolha[] = [
     "escolhas": {
       "SIM": {
         "consequencia": "Ele comprou metade do reino com areia cósmica. E sumiu.",
-        "salvos": 50000,
+        "salvos": 7,
         "sacrificados": 0
       },
       "NAO": {
@@ -360,17 +360,32 @@ export const escolhas: Escolha[] = [
 
 ];
 
-// Função para obter uma escolha aleatória
+// Array para armazenar as escolhas já utilizadas
+let escolhasUtilizadas: string[] = [];
+
 export const getRandomEscolha = (): Escolha => {
-  if (escolhas.length === 0) {
-    throw new Error('Nenhuma escolha disponível!');
+  // Se todas as escolhas já foram utilizadas, reinicia o array
+  if (escolhasUtilizadas.length === escolhas.length) {
+    escolhasUtilizadas = [];
   }
-  
-  const randomIndex = Math.floor(Math.random() * escolhas.length);
-  const escolhaSelecionada = escolhas[randomIndex];
-  
-  console.log(`Escolha aleatória selecionada: ID ${escolhaSelecionada.id} - ${escolhaSelecionada.pergunta}`);
-  
+
+  // Filtra as escolhas que ainda não foram utilizadas
+  const escolhasDisponiveis = escolhas.filter(
+    escolha => !escolhasUtilizadas.includes(escolha.id)
+  );
+
+  // Seleciona uma escolha aleatória das disponíveis
+  const randomIndex = Math.floor(Math.random() * escolhasDisponiveis.length);
+  const escolhaSelecionada = escolhasDisponiveis[randomIndex];
+
+  // Adiciona a escolha ao array de utilizadas
+  escolhasUtilizadas.push(escolhaSelecionada.id);
+
   return escolhaSelecionada;
+};
+
+// Função para reiniciar o ciclo de escolhas manualmente
+export const reiniciarEscolhas = () => {
+  escolhasUtilizadas = [];
 };
   
