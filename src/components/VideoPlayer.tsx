@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
-import { audioManager } from '../songGame/AudioSystem';
+import { audioManager } from '../components/AudioSystem';
 
 interface VideoPlayerProps {
   onSkip: () => void;
