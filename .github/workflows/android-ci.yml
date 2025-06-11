@@ -1,0 +1,47 @@
+name: React Native Android CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Android
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Pods (caso use)
+        run: |
+          cd ios
+          pod install || true
+        continue-on-error: true
+
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x android/gradlew
+
+      - name: Build Release AAB
+        run: cd android && ./gradlew bundleRelease
+
+      - name: Upload Artifact (AAB)
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-bundle
+          path: android/app/build/outputs/bundle/release/app-release.aab
