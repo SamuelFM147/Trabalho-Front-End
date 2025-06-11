@@ -22,7 +22,7 @@ export const jsonData: GameData = [
     "imagem_url": "/assets/id90.png",
     "possiveis_destinos": [
       {
-        "destino_id": "RESTART",
+        "destino_id": "GAME_OVER_NO_FINAL_7",
         "descricao_opcao": "Sua vontade se dispersou, mas sua essência se tornou parte do mundo."
       }
     ]
@@ -347,7 +347,10 @@ export const jsonData: GameData = [
   "mensagem": "O Mundo o engoliu.\nA vontade de outro ser antigo nasceu.\nSeu nome nunca será lembrado pela eternidade.\n[IMAGEM]",
   "imagem_url": "/assets/id38.png",
   "possiveis_destinos": [
-    //um final
+    {
+      "destino_id": "GAME_OVER_NO_FINAL_7",
+      "descricao_opcao": "Continuar"
+    }
   ]
 },
 {
@@ -385,7 +388,10 @@ export const jsonData: GameData = [
   "mensagem": "O vidro explodiu em mil cortes.\nCada um entrou em sua pele,\ne ali ficaram, pulsando como brasas.\nO mundo, que ainda tentava resistir,\nfinalmente cedeu.\nSin tornou-se mais do que uma entidade.\nEle era agora o ciclo final:\nA última estação.\nA última noite.\nO que vem depois da perda, quando nem a lembrança resta.\nNão era ódio.\nNem loucura.\nEra o puro fim.\nUm nome apagado pelo próprio luto.\nE com isso,\na vigília terminou.\nNão em silêncio.\nMas em esquecimento.",
   "imagem_url": "",
   "possiveis_destinos": [
-    //um final
+    {
+      "destino_id": "GAME_OVER_NO_FINAL_7",
+      "descricao_opcao": "Continuar"
+    }
   ]
 },
 {
@@ -393,7 +399,10 @@ export const jsonData: GameData = [
   "mensagem": "O mundo estava em silêncio.\nMas não aquele silêncio de paz —\no silêncio que vem quando tudo já gritou, já queimou,\njá implorou por fim.\nSin, envolto em brasas apagadas e cinzas que nem o tempo ousava recolher,\nparou diante do nada.\nAtrás dele: cidades viradas em pó.\nÀ frente: um campo onde não nasceria mais som.\nEle se ajoelhou.\nNão por arrependimento.\nNão por cansaço.\nMas porque, naquele instante… ele ouviu.\nUm sopro.\nFrágil.\nQuase inexistente.\nO tipo de vento que carrega poeira de nomes esquecidos,\no rastro do toque de uma criança que nunca cresceu.\nEle não tentou segurá-lo.\nNem se escondeu.\nApenas fechou os olhos.\nE permitiu.\nO vento passou por ele como quem limpa o altar de um templo morto.\nE tudo — absolutamente tudo — começou a sumir.\nO chão.\nO céu.\nO nome.\nA dor.\nO poder.\nO próprio conceito de Sin.\nNada restaria.\nNem sombra.\nNem ruína.\nNem vestígio.\nSó o silêncio verdadeiro.\nA ausência perfeita.\nE talvez,\nem algum lugar inalcançável,\numa única nota —\ntão leve que o universo nem percebeu —\ncantasse:\n\"Ela foi amada.\"",
   "imagem_url": "",
   "possiveis_destinos": [
-    //um final
+    {
+      "destino_id": "GAME_OVER_NO_FINAL_7",
+      "descricao_opcao": "Continuar"
+    }
   ]
 },
 {
@@ -618,7 +627,10 @@ export const jsonData: GameData = [
   "mensagem": "Ele caminhava entre os séculos.\nNunca interferia.\nNunca falava.\nApenas observava.\nO tempo passava.\nO mundo mudava.\nE ele… apenas era.\nAlguns ainda sonhavam com sua imagem.\nMas cada geração sonhava menos.\nAté que ninguém mais pronunciava seu nome.\nE isso não o feriu.\nNem o aliviou.\nApenas… foi.\nUma última lembrança ardia no canto de um santuário.\nUm altar com uma vela.\n[IMAGEM]\nEle soprou.\nE a chama se apagou.\nNo lugar onde ele esteve, nada nasceu.\nMas também nada morreu.\nEra só espaço.\nVazio.\nSilêncio.\nPerfeita ausência.\nE assim terminou.\nSem estátua.\nSem jardim.\nSem ruína.\nSem adoração.\nSin não foi lembrado como herói.\nNem temido como monstro.\nNem reverenciado como mártir.\nEle apenas…\ndeixou de ser.\nE por um tempo,\nisso foi suficiente.",
   "imagem_url": "/assets/id43.png",
   "possiveis_destinos": [
-    // um final
+    {
+      "destino_id": "GAME_OVER_NO_FINAL_7",
+      "descricao_opcao": "Continuar"
+    }
   ]
 },
 
@@ -627,7 +639,10 @@ export const jsonData: GameData = [
   "mensagem": "Sin voltou ao lugar onde tudo havia terminado.\nNão para reerguer, mas para lembrar.\nCom mãos feridas, empilhou pedras.\nOnde havia ruína, desenhou símbolos.\nOnde havia dor, deixou silêncio.\nNenhum nome foi esculpido.\nNenhuma estátua foi erguida.\n[IMAGEM]\nApenas um espaço —\nquieto, firme, vivo.\nCom o tempo, outros vieram.\nNão sabiam por quê, mas choravam.\nE deixavam flores onde um dia houve fogo.\nSin permaneceu ali.\nNão como guardião.\nMas como parte do lugar.\nE assim, o mundo não o celebrou.\nMas lembrou-se pois assim ele decidiu que seria.",
   "imagem_url": "/assets/id31.png",
   "possiveis_destinos": [
-    // um final
+    {
+      "destino_id": "GAME_OVER_NO_FINAL_7",
+      "descricao_opcao": "Continuar"
+    }
   ]
 },
 
@@ -636,7 +651,10 @@ export const jsonData: GameData = [
   "mensagem": "O tempo não apressou Sin.\nEle não conjurou o jardim com poder.\nEle não o forçou a nascer.\nEle apenas... ficou.\nOnde o corpo da filha caíra, ele limpou o solo com as próprias mãos.\nOnde a cidade desabara, ele empilhou pedra sobre pedra, em silêncio.\nOnde havia pó e ossos, ele os enterrou com cuidado — um por um.\nNão para esquecer,\nmas para dar descanso.\nO vale se transformou lentamente.\nNão era belo como antes,\nmas era verdadeiro.\nCaminhos de terra levavam a pequenas placas — sem nomes, apenas símbolos.\nÁrvores retorcidas floresciam com pétalas feitas de vidro.\nLágrimas plantadas germinavam como musgo nas rochas.\nE no centro, um pilar de pedra.\nSem rosto.\nSem título.\nMas carregando marcas de mãos pequenas...\ne uma frase, cravada em silêncio:\n\"A memória não precisa de altar — precisa de espaço para respirar.\"\n[IMAGEM]\nSin não se tornou estátua.\nNem deus.\nNem sombra.\nEle ficou ali.\nNão como vigia, mas como parte do lugar.\nUm andarilho que nunca parte.\nQue ouve.\nQue cuida.\nQue não precisa ser lembrado para que outros possam lembrar.\nCrianças virão.\nChorarão sem entender por quê.\nSábios escreverão sobre aquele que deu nome ao luto.\nMas nunca encontrarão seu rosto.\nE está tudo bem.\nPorque o mundo precisa de cura,\nnão de heróis.",
   "imagem_url": "/assets/id32.png",
   "possiveis_destinos": [
-    // um final
+    {
+      "destino_id": "GAME_OVER_NO_FINAL_7",
+      "descricao_opcao": "Continuar"
+    }
   ]
 },
 
@@ -645,27 +663,30 @@ export const jsonData: GameData = [
   "mensagem": "Ele parou onde tudo começou.\nO chão rachado. O céu em silêncio.\nNada mais pesava — nem mesmo a dor.\nSin olhou ao redor e não viu ruína.\nNem vida.\nApenas um mundo cansado de lembrar.\nFechou os olhos.\nRespirou uma última vez.\nE soltou.\nO vento soprou fraco, como se tivesse esperado por isso.\nCarregou sua capa, sua sombra, sua forma.\nCada parte dele — nome, rosto, lembrança —\nfoi levada sem resistência.\nNenhuma pedra foi deixada.\nNenhum eco.\nNenhuma palavra.\nO mundo seguiu.\nSem história.\nSem luto.\nSem ele.\n[IMAGEM]",
   "imagem_url": "/assets/id34.png",
   "possiveis_destinos": [
-    // um final
+    {
+        "destino_id": "GAME_OVER_NO_FINAL_7",
+        "descricao_opcao": "Continuar"
+    }
   ]
 },
 
-{
-    "id": "RESTART",
-    "mensagem": "Deseja começar uma nova jornada? [IMAGEM]",
-    "imagem_url": "/assets/id0.png",
-    "possiveis_destinos": [
-      {
-        "destino_id": "0",
-        "descricao_opcao": "Começar do início"
-      }
-    ]
-  },
+// {
+//     "id": "RESTART",
+//     "mensagem": "Deseja começar uma nova jornada? [IMAGEM]",
+//     "imagem_url": "/assets/id0.png",
+//     "possiveis_destinos": [
+//       {
+//         "destino_id": "0",
+//         "descricao_opcao": "Começar do início"
+//       }
+//     ]
+//   },
 
   
   {
     "id": "GAME_OVER_NO_FINAL_7",
-    "mensagem": "Sua jornada termina com o fardo do laço em seu peito, sem um caminho claro a seguir. O peso da memória é grande demais para avançar. (Este é um final provisório, pois a história não teve continuidade a partir do ID 7.) [IMAGEM]",
-    "imagem_url": "/assets/id6.png",
+    "mensagem": "",
+    "imagem_url": "/assets/SinLogo.png",
     "possiveis_destinos": [
       {
         "destino_id": "RESTART",

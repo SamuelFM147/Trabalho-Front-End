@@ -1,7 +1,6 @@
 // Importa as bibliotecas e componentes necessários do React e React Native.
-import React, { useRef, useEffect } from 'react';
-import { View, Image, TouchableOpacity, Text, Animated } from 'react-native';
-import { StyleSheet } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { View, Image, TouchableOpacity, Text, Animated, StyleSheet } from 'react-native';
 
 // Define a "interface" para as propriedades (props) que o componente espera receber.
 // Isso ajuda a garantir que estamos usando o componente corretamente, com os tipos de dados certos.
@@ -14,8 +13,17 @@ interface EndGameScreenProps {
 // Declaração do componente funcional 'EndGameScreen'.
 // Ele recebe as props 'message', 'onRestart' e 'isVictory'.
 const EndGameScreen: React.FC<EndGameScreenProps> = ({ message, onRestart, isVictory }) => {
+  
+  // 'useRef' é usado para armazenar o valor da animação.
+  // Usamos useRef em vez de useState para que o valor persista entre as renderizações
+  // sem fazer o componente renderizar novamente toda vez que a animação muda.
+  // .current acessa o valor real armazenado pelo ref.
   const fadeAnim = useRef(new Animated.Value(1)).current;
+  const statusFadeAnim = useRef(new Animated.Value(1)).current;
 
+  // 'useEffect' é usado para lidar com "efeitos colaterais", como iniciar animações.
+  // O array vazio `[]` no final significa que este efeito será executado apenas uma vez,
+  // quando o componente for "montado" (aparecer na tela).
   useEffect(() => {
     const blinkAnimation = Animated.sequence([
       Animated.timing(fadeAnim, {
@@ -30,33 +38,53 @@ const EndGameScreen: React.FC<EndGameScreenProps> = ({ message, onRestart, isVic
       }),
     ]);
 
-    Animated.loop(blinkAnimation).start();
-  }, [isVictory]);
+    const statusBlinkAnimation = Animated.sequence([
+      Animated.timing(statusFadeAnim, {
+        toValue: 0.3,
+        duration: 2000,
+        useNativeDriver: false,
+      }),
+      Animated.timing(statusFadeAnim, {
+        toValue: 1,
+        duration: 2000,
+        useNativeDriver: false,
+      }),
+    ]);
 
-  const handleRestart = () => {
-    onRestart();
-  };
+    const loop = Animated.loop(blinkAnimation);
+    const statusLoop = Animated.loop(statusBlinkAnimation);
+    
+    loop.start();
+    statusLoop.start();
+
+    return () => {
+      loop.stop();
+      statusLoop.stop();
+    };
+  }, [fadeAnim, statusFadeAnim]);
 
   // O JSX que define a aparência do componente.
   return (
     // 'TouchableOpacity' é um container que responde a toques, tornando a tela inteira clicável.
     <TouchableOpacity 
       style={styles.container} 
-      activeOpacity={0.9}
-      onPress={handleRestart}
+      activeOpacity={0.9} // Controla a opacidade ao tocar.
+      onPress={onRestart}   // Chama a função onRestart ao ser tocado.
     >
       <View style={styles.content}>
         {/* Exibe o status de "Vitória!" ou "Você Morreu!" com estilo condicional. */}
-        <Text style={[
-          styles.statusText,
-          isVictory ? styles.victoryStatus : styles.defeatStatus // Aplica estilo de vitória ou derrota.
-        ]}>
-          {isVictory ? "Vitória!" : "Sua jornada acabou!"}
-        </Text>
+        <Animated.View style={{ opacity: statusFadeAnim }}>
+          <Text style={[
+            styles.statusText,
+            isVictory ? styles.victoryStatus : styles.defeatStatus // Aplica estilo de vitória ou derrota.
+          ]}>
+            {isVictory ? "Vitória!" : "Sua jornada acabou!"}
+          </Text>
+        </Animated.View>
         
         {/* Exibe a imagem do logo. */}
         <Image
-          source={require('../../assets/SinLogo.png')}
+          source={require('src/assets/SinLogo.png')}
           style={styles.logo}
           resizeMode="contain" // Garante que a imagem se ajuste sem distorcer.
         />
