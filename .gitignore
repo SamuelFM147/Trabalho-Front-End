@@ -1,3 +1,155 @@
-.DS_Store
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+expo-debug.log
+
+# Directories created by Metro, Expo, or React Native
+.expo
+.expo/
+.expo-shared/
+.expo-packager-cache/
+.expo-cache/
+
+# iOS
+ios/build/
+ios/Pods/
+ios/Podfile.lock
+ios/.DS_Store
+ios/*.xcodeproj/project.xcworkspace/
+ios/*.xcworkspace/xcuserdata/
+ios/*.xcworkspace/xcshareddata/
+ios/*.xcodeproj/xcuserdata/
+ios/*.xcodeproj/project.xcworkspace/
+ios/.idea/
+
+# Android
+android/.gradle/
+android/app/build/
+android/.idea/
+android/local.properties
+android/gradle.properties
+android/gradlew
+android/gradlew.bat
+android/gradle/
+android/build/
+
+# macOS/Linux system files
 .DS_Store
 /node_modules
+ios/
+
+# ───── Node ───── #
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.pnpm-debug.log*
+
+# ───── OS ───── #
+.DS_Store
+Thumbs.db
+
+# ───── IDEs ───── #
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# ───── Metro ───── #
+.expo/
+.expo-shared/
+*.expo
+babel.config.js
+metro.config.js
+react-native.config.js
+
+# ───── Build ───── #
+dist/
+build/
+tmp/
+temp/
+
+# ───── Test / Coverage ───── #
+coverage/
+*.lcov
+
+# ───── Android ───── #
+android/.gradle/
+android/.idea/
+android/app/build/
+android/build/
+android/local.properties
+android/.cxx/
+android/.DS_Store
+*.iml
+*.log
+
+# ───── iOS ───── #
+ios/build/
+ios/Pods/
+ios/Podfile.lock
+ios/DerivedData/
+ios/.DS_Store
+ios/.idea/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xcuserstate
+
+# ───── React Native ───── #
+*.keystore
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+.env
+.env.*
+
+# ───── Xcode ───── #
+*.xcworkspace
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcuserdatad/
+project.xcworkspace/
+
+# ───── Logs ───── #
+*.log
+*.log.*
+
+# ───── Misc ───── #
+*.swp
+*.lock
+*.bak
+*.tmp
+*.orig
+*.rej
+
+# ───── Fastlane (caso use para builds) ───── #
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# ───── EAS (Expo Application Services) ───── #
+*.tar.gz
+*.apk
+*.aab
+*.ipa
+
+.expo
+.expo/README.md
+.expo/devices.json

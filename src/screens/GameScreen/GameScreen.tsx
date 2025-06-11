@@ -1,27 +1,28 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { SafeAreaView, ScrollView, Image, Text, View, Animated } from 'react-native';
-import { useGameEngine } from '../../hooks/useGameEngine';
+import { useGameEngine } from '../../game/gameManager';
 import NarrativeText from '../../components/NarrativeText';
 import SceneDivider from '../../components/SceneDivider';
 import ChoiceList from '../../components/ChoiceList';
-import { colors } from '../../constants/colors';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
-import EndGameScreen from './components/EndGameScreen';
+import EndGameScreen from './EndGameScreen';
 
 const localImages: Record<string, any> = {
-  '/assets/id0.jpeg': require('../../assets/id0.png'),
-  '/assets/id2.jpeg': require('../../assets/id2.png'),
-  '/assets/id3.png': require('../../assets/id3.png'),
-  '/assets/id4.png': require('../../assets/id4.png'),
-  '/assets/id5.png': require('../../assets/id5.png'),
-  '/assets/id6.png': require('../../assets/id6.png'),
-  '/assets/id8.png': require('../../assets/id8.png'),
+  '/assets/id00.png': require('../../assets/id0.png'),
+  '/assets/id01.png': require('../../assets/id01.png'),
+  '/assets/id02.png': require('../../assets/id02.png'),
+  '/assets/id03.png': require('../../assets/id03.png'),
+  '/assets/id05.png': require('../../assets/id05.png'),
+  '/assets/id07.png': require('../../assets/id07.png'),
+  '/assets/id08.png': require('../../assets/id08.png'),
+  '/assets/id10.png': require('../../assets/id10.png'),
+  '/assets/id16.png': require('../../assets/id16.png'),
+  '/assets/id18.png': require('../../assets/id18.png'),
+  '/assets/id20.png': require('../../assets/id20.png'),
+  '/assets/id22.png': require('../../assets/id22.png'),
   '/assets/id90.png': require('../../assets/id90.png'),
-  '/assets/id91.png': require('../../assets/id91.png'),
-  '/assets/id92.png': require('../../assets/id92.png'),
-  '/assets/id94.png': require('../../assets/id94.png'),
-  '/assets/id95.png': require('../../assets/id95.png'),
+  '/assets/id94.png': require('../../assets/SinIcon.png'), // Fallback para id94.png que não existe
 };
 
 const GameScreen: React.FC = () => {
@@ -41,6 +42,8 @@ const GameScreen: React.FC = () => {
 
   // Função para fazer a transição suave
   const handleSceneTransition = async (choice: any) => {
+    if (isTransitioning) return;
+    
     setIsTransitioning(true);
     
     // Fade out
@@ -88,13 +91,6 @@ const GameScreen: React.FC = () => {
     );
   }
 
-  
-  const messageParts = currentScene.mensagem.split('[IMAGEM]');
-  const textBeforeImage = messageParts[0] || '';
-  const textAfterImage = messageParts[1] || '';
-  const shouldRenderImageInline = messageParts.length > 1 && currentScene.imagem_url;
-
-  
   if (isGameOver || isVictory) {
     return (
       <EndGameScreen
@@ -105,7 +101,11 @@ const GameScreen: React.FC = () => {
     );
   }
 
-  
+  const messageParts = currentScene.mensagem.split('[IMAGEM]');
+  const textBeforeImage = messageParts[0] || '';
+  const textAfterImage = messageParts[1] || '';
+  const shouldRenderImageInline = messageParts.length > 1 && currentScene.imagem_url;
+
   const currentImageSource = currentScene.imagem_url && localImages[currentScene.imagem_url]
     ? localImages[currentScene.imagem_url]
     : null;
@@ -138,7 +138,6 @@ const GameScreen: React.FC = () => {
             choices={availableChoices.map(choice => ({
               descricao_opcao: choice.descricao_opcao,
               onPress: () => handleSceneTransition(choice),
-              code_condicao: choice.code_condicao,
               disabled: isTransitioning
             }))}
           />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet, View } from 'react-native';
-import { colors } from '../constants/colors';
+import { colors } from '../game/styles';
 
 interface NarrativeTextProps {
   text: string;
