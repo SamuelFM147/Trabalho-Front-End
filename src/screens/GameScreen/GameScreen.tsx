@@ -9,10 +9,20 @@ import { useNavigation } from '@react-navigation/native';
 import EndGameScreen from './EndGameScreen';
 
 const localImages: Record<string, any> = {
-  '/assets/id0.png': require('../../assets/id0.png'),
-  '/assets/id2.png': require('../../assets/id2.png'),
-  '/assets/id3.png': require('../../assets/id3.png'),
+  '/assets/id00.png': require('../../assets/id0.png'),
+  '/assets/id01.png': require('../../assets/id01.png'),
+  '/assets/id02.png': require('../../assets/id02.png'),
+  '/assets/id03.png': require('../../assets/id03.png'),
+  '/assets/id05.png': require('../../assets/id05.png'),
+  '/assets/id07.png': require('../../assets/id07.png'),
+  '/assets/id08.png': require('../../assets/id08.png'),
+  '/assets/id10.png': require('../../assets/id10.png'),
+  '/assets/id16.png': require('../../assets/id16.png'),
+  '/assets/id18.png': require('../../assets/id18.png'),
+  '/assets/id20.png': require('../../assets/id20.png'),
+  '/assets/id22.png': require('../../assets/id22.png'),
   '/assets/id90.png': require('../../assets/id90.png'),
+  '/assets/id94.png': require('../../assets/SinIcon.png'), // Fallback para id94.png que não existe
 };
 
 const GameScreen: React.FC = () => {
