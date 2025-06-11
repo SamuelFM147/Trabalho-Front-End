@@ -71,7 +71,6 @@ export default function Home() {
   useEffect(() => {
     const setupAudio = async () => {
       if (!showVideo) {
-        await stopSound();
         await playMainTheme();
       }
     };

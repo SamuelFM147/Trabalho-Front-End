@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useAudio } from './AudioSystem';
 import ExpandableButton from './ExpandableButton';
@@ -12,13 +12,15 @@ type RootStackParamList = {
 
 const NavigationControls: React.FC = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
-  const { toggleMute, isMuted } = useAudio();
+  const { toggleMute, isMuted, playMainTheme } = useAudio();
+
+  useEffect(() => {
+    // Garante que a música principal está tocando
+    playMainTheme();
+  }, []);
 
   const handleMenuPress = () => {
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'Home' }],
-    });
+    navigation.navigate('Home');
   };
 
   return (

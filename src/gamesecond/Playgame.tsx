@@ -39,8 +39,6 @@ const loadImages = () => {
     'SinIcon.png': require('../assets/SinIcon.png'),
     'SinFundo.png': require('../assets/SinFundo.png'),
     'SinLogo.png': require('../assets/SinLogo.png'),
-    // Mapeamento alternativo para imagens com nomes diferentes
-    'peste_poema.png': require('../assets/id309.png'), // Usando id309 como alternativa para peste_poema
   };
 
   // Adiciona todas as imagens disponíveis ao mapeamento

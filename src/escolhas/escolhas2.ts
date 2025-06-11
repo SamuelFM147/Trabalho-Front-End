@@ -156,7 +156,7 @@ export const escolhas: Escolha[] = [
   {
     "id": "009",
     "pergunta": "Você tentou curar a peste com poemas?",
-    "imagem": "peste_poema.png",
+    "imagem": "id309.png",
     "escolhas": {
       "SIM": {
         "consequencia": "Os versos foram belos. Os cadáveres, também.",
