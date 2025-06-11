@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Image, TouchableOpacity, Text, Animated } from 'react-native';
+import {View,Image,TouchableOpacity,Text,Animated,Dimensions,StyleSheet,} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { styles } from './styleHome';
-import { useAudio } from '../songGame/AudioSystem';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useAudio } from '../components/AudioSystem';
 import VideoPlayer from '../components/VideoPlayer';
+import { styles } from './styleHome';
+const { width, height } = Dimensions.get('window');
 
 export default function Home() {
   const navigation = useNavigation<any>();
@@ -11,15 +13,32 @@ export default function Home() {
   const { playMainTheme, stopSound } = useAudio();
   const [showVideo, setShowVideo] = useState(false);
 
-  // Efeito para iniciar a música quando o componente monta
+  // Fade nos botões
+  useEffect(() => {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(fadeAnim, {
+          toValue: 0,
+          duration: 2000,
+          useNativeDriver: true,
+        }),
+        Animated.timing(fadeAnim, {
+          toValue: 1,
+          duration: 2000,
+          useNativeDriver: true,
+        }),
+      ])
+    ).start();
+  }, []);
+
+  // Música ao montar
   useEffect(() => {
     const setupAudio = async () => {
       if (!showVideo) {
-        await stopSound(); // Garante que não há música tocando
+        await stopSound();
         await playMainTheme();
       }
     };
-
     setupAudio();
   }, [showVideo]);
 
@@ -46,28 +65,76 @@ export default function Home() {
     );
   }
 
+  // Partículas (cinzas)
+  const particles = Array.from({ length: 25 }).map((_, i) => ({
+    left: Math.random() * width,
+    delay: Math.random() * 6000,
+  }));
+
   return (
-    <View style={styles.telaInteiraPreta}>
-      <Image
-        source={require('../assets/SinLogo.png')}
-        style={styles.logoImagem}
-        resizeMode="contain"
+    <View style={StyleSheet.absoluteFill}>
+      <LinearGradient
+        colors={['#000000', '#0b0f1a', '#1a1a1a']}
+        style={StyleSheet.absoluteFill}
       />
 
-      <View style={styles.containerDoBotao}>
-        <Animated.View style={{ opacity: fadeAnim }}>
-          <TouchableOpacity 
-            onPress={handleStartJourney}
-          >
-            <Text style={styles.Textobotao}>Story Game</Text>
-          </TouchableOpacity>
-          
-          <TouchableOpacity 
-            onPress={() => navigation.navigate('PlayGame')}
-          >
-            <Text style={styles.Textobotao}>Iniciar Jornada</Text>
-          </TouchableOpacity>
-        </Animated.View>
+      {/* Partículas */}
+      {particles.map((p, i) => {
+        const fallAnim = useRef(new Animated.Value(0)).current;
+
+        useEffect(() => {
+          Animated.loop(
+            Animated.sequence([
+              Animated.timing(fallAnim, {
+                toValue: height,
+                duration: 8000 + Math.random() * 3000,
+                delay: p.delay,
+                useNativeDriver: true,
+              }),
+              Animated.timing(fallAnim, {
+                toValue: 0,
+                duration: 0,
+                useNativeDriver: true,
+              }),
+            ])
+          ).start();
+        }, []);
+
+        return (
+          <Animated.View
+            key={i}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: p.left,
+              width: 2,
+              height: 8,
+              backgroundColor: 'rgba(255,255,255,0.04)',
+              transform: [{ translateY: fallAnim }],
+            }}
+          />
+        );
+      })}
+
+      {/* Conteúdo */}
+      <View style={styles.containerDoConteudo}>
+        <Image
+          source={require('../assets/SinLogo.png')}
+          style={styles.logoImagem}
+          resizeMode="contain"
+        />
+
+        <View style={styles.containerDoBotao}>
+          <Animated.View style={{ opacity: fadeAnim }}>
+            <TouchableOpacity onPress={handleStartJourney}>
+              <Text style={styles.Textobotao}>Story Game</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => navigation.navigate('PlayGame')}>
+              <Text style={styles.Textobotao}>Iniciar Jornada</Text>
+            </TouchableOpacity>
+          </Animated.View>
+        </View>
       </View>
     </View>
   );

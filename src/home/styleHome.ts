@@ -1,17 +1,16 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
-  telaInteiraPreta: {
+  containerDoConteudo: {
     flex: 1,
-    backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
   },
 
   logoImagem: {
-    width: width * 1,
+    width: width,
     height: height * 0.4,
     marginBottom: height * 0.2,
   },
@@ -21,6 +20,16 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  Textobotao: {
+    color: '#fff',
+    fontSize: 30,
+    letterSpacing: 1.6,
+    textAlign: 'center',
+    fontFamily: 'FonteHome',
+    textShadowColor: '#000',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 8,
+  },
   title: {
     fontSize: 36,
     color: '#e2d4a0',
@@ -31,14 +40,5 @@ export const styles = StyleSheet.create({
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 6,
     fontFamily: 'serif',
-  },
-
-  //NAO USAR FONTSTYLE se nao quebra a fontFamily 
-  Textobotao: {
-    color: '#fff',
-    fontSize: 30,
-    letterSpacing: 1.6,
-    textAlign: 'center',
-    fontFamily: 'FonteHome', //essa fonte esta sendo puxada no App.tsx
   },
 });

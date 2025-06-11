@@ -1,14 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  Animated,
-  PanResponder,
-  Dimensions,
-  ImageBackground,
-  Modal,
-} from 'react-native';
+import {View,Text,Image,Animated,PanResponder,Dimensions, ImageBackground,Modal,} from 'react-native';
 import { styles } from './stylePlay';
 import { getRandomEscolha, Escolha, escolhas } from '../escolhas/escolhas2';
 
