@@ -18,8 +18,8 @@ export default function SinIntroScreen() {
   const pan = useRef(new Animated.ValueXY()).current;
   const [cardColor, setCardColor] = useState<'white' | 'green' | 'red'>('white');
   const [cardLabel, setCardLabel] = useState('Qual a sua resposta?');
-  const [savedCount, setSavedCount] = useState(12);
-  const [sacrificedCount, setSacrificedCount] = useState(3);
+  const [savedCount, setSavedCount] = useState(0);
+  const [sacrificedCount, setSacrificedCount] = useState(2);
   const [sanityLevel, setSanityLevel] = useState(100);
 
   const [modalVisible, setModalVisible] = useState(false);
