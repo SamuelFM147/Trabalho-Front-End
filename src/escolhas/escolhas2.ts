@@ -356,8 +356,93 @@ export const escolhas: Escolha[] = [
         "sacrificados": 7
       }
     }
+  },
+{
+    "id": "021",
+    "pergunta": "Um careca nervoso começou a atacar 6 pessoas ao mesmo tempo. Você tenta acalmá-lo?",
+    "imagem": "id321.png",
+    "escolhas": {
+      "SIM": {
+        "consequencia": "Sua voz suave penetrou na fúria. O brilho de sua cabeça diminuiu e ele caiu de joelhos, chorando.",
+        "salvos": 6,
+        "sacrificados": 0
+      },
+      "NAO": {
+        "consequencia": "A fúria cresceu. Sua cabeça brilhou como um sol. Nada restou além de poeira.",
+        "salvos": 0,
+        "sacrificados": 6
+      }
+    }
+  },
+  {
+    "id": "022",
+    "pergunta": "Um palhaço chorando oferece um balão vermelho. Você aceita?",
+    "imagem": "id322.png",
+    "escolhas": {
+      "SIM": {
+        "consequencia": "O balão te levou para uma festa onde a tristeza era proibida. Você nunca mais sentiu nada.",
+        "salvos": 1,
+        "sacrificados": 0
+      },
+      "NAO": {
+        "consequencia": "Ele soluçou. O balão explodiu, e a alegria do mundo murchou um pouco.",
+        "salvos": 300,
+        "sacrificados": 0
+      }
+    }
+  },
+  {
+    "id": "023",
+    "pergunta": "Seu gato começa a falar sobre o fim do mundo. Você o escuta?",
+    "imagem": "id323.png",
+    "escolhas": {
+      "SIM": {
+        "consequencia": "Ele estava certo. Mas agora ele fala demais.",
+        "salvos": 7000,
+        "sacrificados": 0
+      },
+      "NAO": {
+        "consequencia": "Você o ignorou. O mundo acabou, e o gato te olhou com reprovação.",
+        "salvos": 0,
+        "sacrificados": 7000
+      }
+    }
+  },
+  {
+    "id": "024",
+    "pergunta": "Um louco quer ser o Imperador do mundo. Você o impede?",
+    "imagem": "id324.png",
+    "escolhas": {
+      "SIM": {
+        "consequencia": "Uma guerra nunca antes vista se formou e metade da população morreu.",
+        "salvos": 0,
+        "sacrificados": 15000
+      },
+      "NAO": {
+        "consequencia": "Ele foi um Imperador virtuoso, no futuro será chamado de Santo.",
+        "salvos": 30000,
+        "sacrificados": 0
+      }
+    }
+  },
+  {
+    "id": "025",
+    "pergunta": "Um pombo demoníaco aparece. Você o mata?",
+    "imagem": "id325.png",
+    "escolhas": {
+      "SIM": {
+        "consequencia": "Era só um pombo cara...",
+        "salvos": 0,
+        "sacrificados": 15000
+      },
+      "NAO": {
+        "consequencia": "Uma nova espécie de pombo que adora caçar ratos surgiu.",
+        "salvos": 30000,
+        "sacrificados": 0
+      }
+    }
   }
-
+  
 ];
 
 // Array para armazenar as escolhas já utilizadas
