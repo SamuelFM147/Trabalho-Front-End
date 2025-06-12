@@ -14,7 +14,7 @@ const loadImages = () => {
   
   // Tenta carregar todas as imagens possíveis
   const possibleImages = {
-    // Imagens do id301 ao id320
+    // Imagens do id301 ao id325
     'id301.png': require('../assets/id301.png'),
     'id302.png': require('../assets/id302.png'),
     'id303.png': require('../assets/id303.png'),
@@ -35,6 +35,11 @@ const loadImages = () => {
     'id318.png': require('../assets/id318.png'),
     'id319.png': require('../assets/id319.png'),
     'id320.png': require('../assets/id320.png'),
+    'id321.png': require('../assets/id321.png'),
+    'id322.png': require('../assets/id322.png'),
+    'id323.png': require('../assets/id323.png'),
+    'id324.png': require('../assets/id324.png'),
+    'id325.png': require('../assets/id325.png'),
     // Imagens padrão
     'SinIcon.png': require('../assets/SinIcon.png'),
     'SinFundo.png': require('../assets/SinFundo.png'),
