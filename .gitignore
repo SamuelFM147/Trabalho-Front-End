@@ -149,3 +149,7 @@ fastlane/test_output
 *.apk
 *.aab
 *.ipa
+
+.expo
+.expo/README.md
+.expo/devices.json
