@@ -275,57 +275,64 @@ export default function SinIntroScreen() {
           style={styles.container}
         >
           <View style={styles.contentContainer}>
-            <View style={styles.statusBar}>
-              <View style={styles.statusBox}>
-                <Text style={styles.statusLabel}>Sanidade: {sanityLevel}%</Text>
-                <View style={styles.sanityBar}>
-                  <View style={[styles.sanityUnit, { width: `${sanityLevel}%` }]} />
+            <View style={{ flex: 1, justifyContent: 'space-between' }}>
+              {/* BLOCO SUPERIOR */}
+              <View>
+                <View style={styles.statusBar}>
+                  <View style={styles.statusBox}>
+                    <Text style={styles.statusLabel}>Sanidade: {sanityLevel}%</Text>
+                    <View style={styles.sanityBar}>
+                      <View style={[styles.sanityUnit, { width: `${sanityLevel}%` }]} />
+                    </View>
+                  </View>
                 </View>
+  
+                <Text style={styles.questionText} key={currentEscolha?.id || 'loading'}>
+                  {currentEscolha?.pergunta || 'Carregando...'}
+                </Text>
+  
+                <Animated.View
+                  {...panResponder.panHandlers}
+                  style={[
+                    styles.card,
+                    { transform: [...pan.getTranslateTransform(), { rotate }] },
+                  ]}
+                >
+                  <Image
+                    source={
+                      currentEscolha?.imagem && imageMapping[currentEscolha.imagem]
+                        ? imageMapping[currentEscolha.imagem]
+                        : imageMapping['SinIcon.png']
+                    }
+                    style={styles.cardImage}
+                    resizeMode="contain"
+                    onError={() => console.warn(`Erro ao carregar imagem: ${currentEscolha?.imagem}`)}
+                  />
+                  <Text style={[styles.cardTitle, { color: cardColor }]}>{cardLabel}</Text>
+                </Animated.View>
               </View>
-            </View>
-
-            <Text style={styles.questionText} key={currentEscolha?.id || 'loading'}>
-              {currentEscolha?.pergunta || 'Carregando...'}
-            </Text>
-
-            <Animated.View
-              {...panResponder.panHandlers}
-              style={[
-                styles.card,
-                { transform: [...pan.getTranslateTransform(), { rotate }] },
-              ]}
-            >
-              <Image
-                source={
-                  currentEscolha?.imagem && imageMapping[currentEscolha.imagem]
-                    ? imageMapping[currentEscolha.imagem]
-                    : imageMapping['SinIcon.png']
-                }
-                style={styles.cardImage}
-                resizeMode="contain"
-                onError={() => console.warn(`Erro ao carregar imagem: ${currentEscolha?.imagem}`)}
-              />
-              <Text style={[styles.cardTitle, { color: cardColor }]}>{cardLabel}</Text>
-            </Animated.View>
-
-            <View style={styles.footer}>
-              <Text style={styles.footerText}>Espírito do Esquecido</Text>
-              <Text style={styles.footerSmall}>Sin</Text>
-              <Text style={styles.footerSmall}>{numeroJogadas} dias em vigília</Text>
-              <View style={styles.statsRow}>
-                <View style={styles.statBox}>
-                  <Text style={[styles.statNumber, { color: 'green' }]}>{savedCount}</Text>
-                  <Text style={styles.statLabel}>Pessoas salvas</Text>
-                </View>
-                <View style={styles.statBox}>
-                  <Text style={[styles.statNumber, { color: 'red' }]}>{sacrificedCount}</Text>
-                  <Text style={styles.statLabel}>Pessoas sacrificadas</Text>
+  
+              {/* FOOTER FIXO */}
+              <View style={styles.footer}>
+                <Text style={styles.footerText}>Espírito do Esquecido</Text>
+                <Text style={styles.footerSmall}>Sin</Text>
+                <Text style={styles.footerSmall}>{numeroJogadas} dias em vigília</Text>
+                <View style={styles.statsRow}>
+                  <View style={styles.statBox}>
+                    <Text style={[styles.statNumber, { color: 'green' }]}>{savedCount}</Text>
+                    <Text style={styles.statLabel}>Pessoas salvas</Text>
+                  </View>
+                  <View style={styles.statBox}>
+                    <Text style={[styles.statNumber, { color: 'red' }]}>{sacrificedCount}</Text>
+                    <Text style={styles.statLabel}>Pessoas sacrificadas</Text>
+                  </View>
                 </View>
               </View>
             </View>
           </View>
         </ImageBackground>
-
+  
+        {/* MODAL */}
         <Modal transparent visible={modalVisible} animationType="none">
           <View style={styles.modalOverlay}>
             <Animated.View style={[styles.modalContent, { opacity: modalOpacity }]}>
@@ -333,10 +340,10 @@ export default function SinIntroScreen() {
             </Animated.View>
           </View>
         </Modal>
-
+  
         <NavigationControls />
       </LinearGradient>
     </View>
-  );
+  );  
 }
 

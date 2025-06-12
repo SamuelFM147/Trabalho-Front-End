@@ -29,6 +29,7 @@ export const styles = StyleSheet.create({
     textShadowColor: '#000',
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 8,
+    marginBottom: 25,
   },
   title: {
     fontSize: 36,
