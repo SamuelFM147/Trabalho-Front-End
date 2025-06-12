@@ -135,6 +135,10 @@ export default function Home() {
             <TouchableOpacity onPress={() => navigation.navigate('PlayGame')}>
               <Text style={styles.Textobotao}>Iniciar Jornada</Text>
             </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => navigation.navigate('Credits')}>
+              <Text style={styles.Textobotao}>Créditos</Text>
+            </TouchableOpacity>
           </Animated.View>
         </View>
       </View>

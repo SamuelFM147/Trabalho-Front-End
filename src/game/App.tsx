@@ -10,6 +10,7 @@ import Home from '../home';
 import Game from './AppGame';
 import PlayGame from '../gamesecond/Playgame';
 import EndGame from '../screens/EndGame';
+import Credits from '../credits';
 // import { SafeAreaProvider } from 'react-native-safe-area-context'; // Descomente se usar
 
 const Stack = createStackNavigator();
@@ -30,6 +31,7 @@ export default function App() {
         <Stack.Screen name="Game" component={Game} />
         <Stack.Screen name="PlayGame" component={PlayGame} />
         <Stack.Screen name="EndGame" component={EndGame} />
+        <Stack.Screen name="Credits" component={Credits} />
       </Stack.Navigator>
     </NavigationContainer>
   );
