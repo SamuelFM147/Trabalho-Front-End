@@ -6,7 +6,7 @@ import SceneDivider from '../components/SceneDivider';
 import ChoiceList from '../components/ChoiceList';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
-import EndGameScreen from './EndGameScreen';
+import StoryEndScreen from '../game/storyEnd';
 
 const localImages: Record<string, any> = {
   '../assets/id00.png': require('../assets/id00.png'),
@@ -125,10 +125,9 @@ const GameScreen: React.FC = () => {
 
   if (isGameOver || isVictory) {
     return (
-      <EndGameScreen
+      <StoryEndScreen
         message={currentScene.mensagem || (isGameOver ? "Sua jornada chegou ao fim..." : "Você conquistou a vitória!")}
         onRestart={handleRestart}
-        isVictory={isVictory}
       />
     );
   }
