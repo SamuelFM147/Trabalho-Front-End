@@ -65,14 +65,14 @@ export const styles = StyleSheet.create({
     borderColor: '#444',
     alignItems: 'center',
     width: width * 0.85,
-    height: height * 0.5,
+    height: height * 0.45,
     justifyContent: 'flex-start',
     marginBottom: 20,
   },
   cardImage: {
-    width: width * 0.65,
-    height: width * 0.65,
-    marginBottom: 30,
+    width: width * 0.70,
+    height: width * 0.70,
+    marginBottom: 20,
   },
   cardTitle: {
     color: '#fff',
@@ -88,6 +88,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     width: width * 0.85,
     alignSelf: 'center',
+    marginBottom: height * 0.05,
   },
   footerText: {
     color: '#ccc',

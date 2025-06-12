@@ -12,7 +12,7 @@ const creditsData = [
   },
   {
     role: 'Desenvolvedor: ',
-    name: 'Matheus dos Santos Bosso',
+    name: 'Baruch',
     linkedin: 'https://www.linkedin.com/in/bossobaruch/',
   },
   {
