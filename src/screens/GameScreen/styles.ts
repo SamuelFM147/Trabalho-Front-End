@@ -1,6 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { colors } from '../../constants/colors';
-import { typography } from '../../constants/typography';
+import { colors } from '../../game/styles';
+import { typography } from '../../game/styles';
 
 const { width } = Dimensions.get('window');
 
@@ -15,14 +15,14 @@ export const styles = StyleSheet.create({
   },
   narrativeContainer: {
     backgroundColor: colors.pergaminhoBg,
-    borderRadius: 10,
+    borderRadius: 8,
     padding: 20,
     marginBottom: 20,
-    borderWidth: 2,
-    borderColor: colors.pergaminhoBorder,
-    shadowColor: colors.black,
+    borderWidth: 1,
+    borderColor: 'rgba(230, 192, 104, 0.2)',
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.5,
     shadowRadius: 4,
     elevation: 5,
     minHeight: 200,
@@ -33,19 +33,26 @@ export const styles = StyleSheet.create({
 
   sceneImage: {
     width: width - 30,
-    height: (width - 30) * 0.6,
+    height: (width - 30) * 0.75,
     resizeMode: 'cover',
     marginBottom: 15,
-    borderRadius: 5,
+    borderRadius: 8,
     alignSelf: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(230, 192, 104, 0.2)',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 6,
+    elevation: 8,
   },
   sceneIdContainer: {
     alignItems: 'center',
-    marginVertical: 15,
+    marginVertical: 20,
     paddingVertical: 10,
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    borderColor: colors.pergaminhoBorder,
+    borderColor: 'rgba(230, 192, 104, 0.2)',
   },
   sceneIdText: {
     ...typography.sceneIdText,

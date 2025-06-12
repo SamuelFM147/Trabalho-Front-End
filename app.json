@@ -6,28 +6,39 @@
     "orientation": "portrait",
     "icon": "./src/assets/SinIcon.png",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "splash": {
       "image": "./src/assets/SinSplash.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sincase.app"
     },
     "android": {
+      "package": "com.sincase.app",
+      "versionCode": 1,
+      "permissions": [],
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/SinIcon.png",
-        "resizeMode": "contain",
         "backgroundColor": "#000000"
       },
       "edgeToEdgeEnabled": true
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
     },
     "web": {
       "favicon": "./src/assets/SinIcon.png"
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "e19aedf8-3663-40bc-a968-ee1df4749a44"
+      }
+    }
   }
 }

@@ -2,18 +2,18 @@ import React from 'react';
 import { Pressable, Text, StyleSheet, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { colors } from '../constants/colors';
+import { colors } from '../game/styles';
 
 interface ChoiceItemProps {
   label: string;
   onPress: () => void;
-  isLast?: boolean;
   isRestartButton?: boolean;
   isVictory?: boolean;
   disabled?: boolean;
+  isLast?: boolean;
 }
 
-const ChoiceItem: React.FC<ChoiceItemProps> = ({ label, onPress, isLast, isRestartButton, isVictory, disabled }) => (
+const ChoiceItem: React.FC<ChoiceItemProps> = ({ label, onPress, isRestartButton, isVictory, disabled }) => (
   <View style={[
     !isRestartButton && styles.shadowWrapper,
     disabled && styles.disabledWrapper
@@ -74,21 +74,21 @@ const ChoiceItem: React.FC<ChoiceItemProps> = ({ label, onPress, isLast, isResta
 const styles = StyleSheet.create({
   shadowWrapper: {
     marginVertical: 10,
-    borderWidth: 2,
-    borderColor: '#8B4513',
-    borderRadius: 16,
-    backgroundColor: '#1a1a1a',
-    shadowColor: '#000',
-    shadowOffset: { width: 4, height: 4 },
-    shadowOpacity: 0.8,
-    shadowRadius: 6,
-    elevation: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(230, 192, 104, 0.3)',
+    borderRadius: 8,
+    backgroundColor: 'rgba(26, 30, 35, 0.95)',
+    shadowColor: '#E6C068',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
     marginHorizontal: 16,
   },
   button: {
-    borderRadius: 16,
-    borderColor: '#CD853F',
-    borderWidth: 2,
+    borderRadius: 8,
+    borderColor: 'rgba(230, 192, 104, 0.2)',
+    borderWidth: 1,
     overflow: 'hidden',
     minHeight: 50,
   },
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   buttonPressed: {
-    opacity: 0.8,
+    opacity: 0.7,
   },
   contentContainer: {
     flexDirection: 'row',
@@ -115,11 +115,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   text: {
-    color: '#FFD700',
+    color: '#E6C068',
     fontSize: 18,
     fontFamily: 'serif',
     letterSpacing: 1,
-    textShadowColor: '#000',
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 2,
     flex: 1,
@@ -132,10 +132,10 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   restartPressed: {
-    backgroundColor: 'rgba(255, 0, 0, 0.1)',
+    backgroundColor: 'rgba(230, 192, 104, 0.1)',
   },
   restartText: {
-    color: '#FF0000',
+    color: '#E6C068',
     fontSize: 24,
     textAlign: 'center',
     fontWeight: 'bold',
@@ -146,8 +146,8 @@ const styles = StyleSheet.create({
     textShadowRadius: 4,
   },
   victoryText: {
-    color: '#00FF00',  // Verde brilhante
-    textShadowColor: 'rgba(0, 255, 0, 0.5)',
+    color: '#E6C068',
+    textShadowColor: 'rgba(230, 192, 104, 0.5)',
   },
   disabledWrapper: {
     opacity: 0.7,
