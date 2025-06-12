@@ -80,7 +80,7 @@ export default function SinIntroScreen() {
   const [consequenceText, setConsequenceText] = useState('');
   const [sanityLevel, setSanityLevel] = useState(100);
   const [savedCount, setSavedCount] = useState(0);
-  const [sacrificedCount, setSacrificedCount] = useState(0);
+  const [sacrificedCount, setSacrificedCount] = useState(2);
   const [numeroJogadas, setNumeroJogadas] = useState(0);
   const [escolhasApresentadas, setEscolhasApresentadas] = useState<string[]>([]);
   const modalOpacity = useRef(new Animated.Value(0)).current;
@@ -94,7 +94,7 @@ export default function SinIntroScreen() {
     setConsequenceText('');
     setSanityLevel(100);
     setSavedCount(0);
-    setSacrificedCount(0);
+    setSacrificedCount(2);
     setNumeroJogadas(0);
     setEscolhasApresentadas([]);
     modalOpacity.setValue(0);

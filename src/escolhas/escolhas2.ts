@@ -240,7 +240,7 @@ export const escolhas: Escolha[] = [
   },
   {
     "id": "014",
-    "pergunta": "Um eclipse permanente cobre o império. Um profeta diz que você é a chave. Você o escuta?",
+    "pergunta": "Sob o eclipse, um profeta sussurra: você é a chave. Vai escutá-lo?",
     "imagem": "id314.png",
     "escolhas": {
       "SIM": {
