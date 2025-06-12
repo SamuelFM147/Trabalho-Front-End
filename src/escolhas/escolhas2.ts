@@ -87,7 +87,7 @@ export const escolhas: Escolha[] = [
   },
   {
     "id": "005",
-    "pergunta": "O demônio oferece poder infinito. Vai aceitar?",
+    "pergunta": "O demônio oferece poder infinito. Vai aceita?",
     "imagem": "id305.png",
     "escolhas": {
       "SIM": {
@@ -450,7 +450,7 @@ let escolhasUtilizadas: string[] = [];
 
 export const getRandomEscolha = (): Escolha => {
   // Se todas as escolhas já foram utilizadas, reinicia o array
-  if (escolhasUtilizadas.length === escolhas.length) {
+  if (escolhasUtilizadas.length >= escolhas.length) {
     escolhasUtilizadas = [];
   }
 
@@ -458,6 +458,12 @@ export const getRandomEscolha = (): Escolha => {
   const escolhasDisponiveis = escolhas.filter(
     escolha => !escolhasUtilizadas.includes(escolha.id)
   );
+
+  // Segurança extra: caso por algum motivo o array esteja vazio, reinicia
+  if (escolhasDisponiveis.length === 0) {
+    escolhasUtilizadas = [];
+    return getRandomEscolha(); // Chamada recursiva segura
+  }
 
   // Seleciona uma escolha aleatória das disponíveis
   const randomIndex = Math.floor(Math.random() * escolhasDisponiveis.length);
@@ -473,4 +479,5 @@ export const getRandomEscolha = (): Escolha => {
 export const reiniciarEscolhas = () => {
   escolhasUtilizadas = [];
 };
+
   
