@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { useAudio } from './AudioSystem';
+import { useAudio } from '../components/AudioSystem';
 import ExpandableButton from './ExpandableButton';
 import { StackNavigationProp } from '@react-navigation/stack';
 

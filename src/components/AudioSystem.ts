@@ -1,6 +1,6 @@
 import { Audio } from 'expo-av';
 import { useEffect } from 'react';
-import { useAudioState } from '../hooks/useAudioState';
+import { useAudioState } from '../components/useAudioState';
 
 // Array com todas as músicas disponíveis
 export const AudioAssets = {

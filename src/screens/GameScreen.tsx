@@ -4,7 +4,7 @@ import { useGameEngine } from '../game/gameManager';
 import NarrativeText from '../components/NarrativeText';
 import SceneDivider from '../components/SceneDivider';
 import ChoiceList from '../components/ChoiceList';
-import { styles } from '../game/styles';
+import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import EndGameScreen from './EndGameScreen';
 
