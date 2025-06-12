@@ -19,7 +19,7 @@ export const jsonData: GameData = [
   {
     "id": "90",
     "mensagem": "Sin abriu os braços diante do vazio onde antes existia a vila Naríbia. As pedras ainda queimavam, o ar era feito de silêncio e ruína. Não havia mais dor — só a vastidão. [IMAGEM] Ele deixou que os ventos o atravessassem. Deixou que levassem seus ossos, sua carne, suas lembranças. As cinzas de Felícia fundiram-se às suas. A raiva cessou. A tristeza também. Restou apenas a pulsação da terra, que agora batia em uníssono com seu peito. \n\nEle se tornou poeira nos campos, sussurros nas cavernas, uma sombra sob as árvores onde antes o riso habitava. As montanhas passaram a tremer em noites de tempestade — como se algo gigante respirasse sob elas. \n\nNinguém soube o que houve com Sin. Mas, em cada vila devastada pelo tempo, alguns dizem ouvir um nome carregado pelo vento. Outros juram sentir olhos invisíveis observando, silenciosos, entre as folhas secas. \n\nSin se tornou um com o mundo. Não por escolha, mas por necessidade. \n\nE o mundo… finalmente teve um coração que compreendia sua dor.",
-    "imagem_url": "/assets/id90.png",
+    "imagem_url": "../assets/id90.png",
     "possiveis_destinos": [
       {
         "destino_id": "GAME_OVER_NO_FINAL_7",
@@ -120,7 +120,7 @@ export const jsonData: GameData = [
   {
     "id": "12",
     "mensagem": "Ele sussurrou. \n— Eu... me arrependo. De tudo. De não ter ficado mais. De ter esperado o tempo certo como se ele fosse eterno. \nNada respondeu. \nMas então... \nalgo segurou sua mão. \nEra pequena. \nFria como pedra. \nMas firme. \nNão havia ninguém visível. Só o gesto. \nSin apertou de volta, e o mundo, por um instante, não sentiu dor.",
-    "imagem_url": "/assets/id94.png",
+    "imagem_url": "../assets/id12.png",
     "possiveis_destinos": [
       {
         "destino_id": "14",
@@ -135,7 +135,7 @@ export const jsonData: GameData = [
   {
     "id": "14",
     "mensagem": "Com a mão ainda firme em nada, o chão se abriu como se respondesse ao gesto.\nUma luz profunda brotou do centro do mundo.\nNão calorosa — mas carregada de sentido.\nDentro dela, imagens:\na filha dormindo ao sol,\na mãe sorrindo enquanto costurava,\na esposa esperando — sempre esperando.\nA dor voltou em ondas.\nMas, dessa vez, ela não paralisava —\nela sustentava.",
-    "imagem_url": "/assets/id94.png",
+    "imagem_url": "../assets/id14.png",
     "possiveis_destinos": [
       {
         "destino_id": "16",
@@ -345,7 +345,7 @@ export const jsonData: GameData = [
 {
   "id": "38",
   "mensagem": "O Mundo o engoliu.\nA vontade de outro ser antigo nasceu.\nSeu nome nunca será lembrado pela eternidade.\n[IMAGEM]",
-  "imagem_url": "/assets/id38.png",
+  "imagem_url": "../assets/id38.png",
   "possiveis_destinos": [
     {
       "destino_id": "GAME_OVER_NO_FINAL_7",
@@ -561,7 +561,7 @@ export const jsonData: GameData = [
 {
   "id": "21",
   "mensagem": "Ele viu o passado.\nMas não quis tocá-lo de novo.\nApenas fechou os olhos.\nSe lembrar do que ele não fez era mais doloroso do que o que ele fez.\nEle não precisava da luz para se recordar.",
-  "imagem_url": "",
+  "imagem_url": "../assets/id21.png",
   "possiveis_destinos": [
     {
       "destino_id": "23",
@@ -593,7 +593,7 @@ export const jsonData: GameData = [
 {
   "id": "25",
   "mensagem": "Após a partida, ele continuou sua jornada.\nLembranças ainda o assolavam, chamados delirantes o atormentavam,\ne então ele parou de respirar e pensar.\nParou de caminhar rumo ao destino incerto.\nOlhou o céu quebrado.\nOlhou para si.\nE perguntou:\n\"Ainda vale a pena continuar?\"\n[IMAGEM]\nNão havia resposta.",
-  "imagem_url": "/assets/id25.png",
+  "imagem_url": "../assets/id25.png",
   "possiveis_destinos": [
     {
       "destino_id": "27",
@@ -625,7 +625,7 @@ export const jsonData: GameData = [
 {
   "id": "43",
   "mensagem": "Ele caminhava entre os séculos.\nNunca interferia.\nNunca falava.\nApenas observava.\nO tempo passava.\nO mundo mudava.\nE ele… apenas era.\nAlguns ainda sonhavam com sua imagem.\nMas cada geração sonhava menos.\nAté que ninguém mais pronunciava seu nome.\nE isso não o feriu.\nNem o aliviou.\nApenas… foi.\nUma última lembrança ardia no canto de um santuário.\nUm altar com uma vela.\n[IMAGEM]\nEle soprou.\nE a chama se apagou.\nNo lugar onde ele esteve, nada nasceu.\nMas também nada morreu.\nEra só espaço.\nVazio.\nSilêncio.\nPerfeita ausência.\nE assim terminou.\nSem estátua.\nSem jardim.\nSem ruína.\nSem adoração.\nSin não foi lembrado como herói.\nNem temido como monstro.\nNem reverenciado como mártir.\nEle apenas…\ndeixou de ser.\nE por um tempo,\nisso foi suficiente.",
-  "imagem_url": "/assets/id43.png",
+  "imagem_url": "../assets/id43.png",
   "possiveis_destinos": [
     {
       "destino_id": "GAME_OVER_NO_FINAL_7",
@@ -637,7 +637,7 @@ export const jsonData: GameData = [
 {
   "id": "31",
   "mensagem": "Sin voltou ao lugar onde tudo havia terminado.\nNão para reerguer, mas para lembrar.\nCom mãos feridas, empilhou pedras.\nOnde havia ruína, desenhou símbolos.\nOnde havia dor, deixou silêncio.\nNenhum nome foi esculpido.\nNenhuma estátua foi erguida.\n[IMAGEM]\nApenas um espaço —\nquieto, firme, vivo.\nCom o tempo, outros vieram.\nNão sabiam por quê, mas choravam.\nE deixavam flores onde um dia houve fogo.\nSin permaneceu ali.\nNão como guardião.\nMas como parte do lugar.\nE assim, o mundo não o celebrou.\nMas lembrou-se pois assim ele decidiu que seria.",
-  "imagem_url": "/assets/id31.png",
+  "imagem_url": "../assets/id31.png",
   "possiveis_destinos": [
     {
       "destino_id": "GAME_OVER_NO_FINAL_7",
@@ -649,7 +649,7 @@ export const jsonData: GameData = [
 {
   "id": "32",
   "mensagem": "O tempo não apressou Sin.\nEle não conjurou o jardim com poder.\nEle não o forçou a nascer.\nEle apenas... ficou.\nOnde o corpo da filha caíra, ele limpou o solo com as próprias mãos.\nOnde a cidade desabara, ele empilhou pedra sobre pedra, em silêncio.\nOnde havia pó e ossos, ele os enterrou com cuidado — um por um.\nNão para esquecer,\nmas para dar descanso.\nO vale se transformou lentamente.\nNão era belo como antes,\nmas era verdadeiro.\nCaminhos de terra levavam a pequenas placas — sem nomes, apenas símbolos.\nÁrvores retorcidas floresciam com pétalas feitas de vidro.\nLágrimas plantadas germinavam como musgo nas rochas.\nE no centro, um pilar de pedra.\nSem rosto.\nSem título.\nMas carregando marcas de mãos pequenas...\ne uma frase, cravada em silêncio:\n\"A memória não precisa de altar — precisa de espaço para respirar.\"\n[IMAGEM]\nSin não se tornou estátua.\nNem deus.\nNem sombra.\nEle ficou ali.\nNão como vigia, mas como parte do lugar.\nUm andarilho que nunca parte.\nQue ouve.\nQue cuida.\nQue não precisa ser lembrado para que outros possam lembrar.\nCrianças virão.\nChorarão sem entender por quê.\nSábios escreverão sobre aquele que deu nome ao luto.\nMas nunca encontrarão seu rosto.\nE está tudo bem.\nPorque o mundo precisa de cura,\nnão de heróis.",
-  "imagem_url": "/assets/id32.png",
+  "imagem_url": "../assets/id32.png",
   "possiveis_destinos": [
     {
       "destino_id": "GAME_OVER_NO_FINAL_7",
@@ -661,7 +661,7 @@ export const jsonData: GameData = [
 {
   "id": "34",
   "mensagem": "Ele parou onde tudo começou.\nO chão rachado. O céu em silêncio.\nNada mais pesava — nem mesmo a dor.\nSin olhou ao redor e não viu ruína.\nNem vida.\nApenas um mundo cansado de lembrar.\nFechou os olhos.\nRespirou uma última vez.\nE soltou.\nO vento soprou fraco, como se tivesse esperado por isso.\nCarregou sua capa, sua sombra, sua forma.\nCada parte dele — nome, rosto, lembrança —\nfoi levada sem resistência.\nNenhuma pedra foi deixada.\nNenhum eco.\nNenhuma palavra.\nO mundo seguiu.\nSem história.\nSem luto.\nSem ele.\n[IMAGEM]",
-  "imagem_url": "/assets/id34.png",
+  "imagem_url": "../assets/id34.png",
   "possiveis_destinos": [
     {
         "destino_id": "GAME_OVER_NO_FINAL_7",
@@ -686,7 +686,7 @@ export const jsonData: GameData = [
   {
     "id": "GAME_OVER_NO_FINAL_7",
     "mensagem": "",
-    "imagem_url": "/assets/SinLogo.png",
+    "imagem_url": "../assets/SinLogo.png",
     "possiveis_destinos": [
       {
         "destino_id": "RESTART",
