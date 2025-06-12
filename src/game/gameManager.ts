@@ -1,5 +1,5 @@
 import { jsonData as gameData } from '../escolhas/escolhas';
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 
 
 export interface PossibleDestiny { // trazendo modos e cenas de types e fundindo com gameManager
@@ -134,4 +134,5 @@ export const useGameEngine = () => {
     isGameOver,
     isVictory,
   };
+  
 };

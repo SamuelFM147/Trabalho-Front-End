@@ -577,7 +577,7 @@ export const jsonData: GameData = [
 {
   "id": "23",
   "mensagem": "Ele sentiu o calor.\nMas o soltou.\nNão como rejeição,\nmas como despedida.\nEra hora de sua amada parar de esperar.\nO sorriso tímido de sua filha se apagou.\nAfinal, a culpa era sua.\nEm seu coração, ele sentiu dor e calor.\nUma ideia veio à mente, talvez um propósito.",
-  "imagem_url": "",
+  "imagem_url": "../assets/id23.png",
   "possiveis_destinos": [
     {
       "destino_id": "25",
@@ -609,7 +609,7 @@ export const jsonData: GameData = [
 {
   "id": "27",
   "mensagem": "Sem resposta, ele envolveu a luz ao redor de si.\nCriou um véu, uma dobra no tempo.\nE se escondeu.\nNão como um covarde,\nmas como quem não quer mais ser lembrado nem como exemplo, nem como ruína.",
-  "imagem_url": "",
+  "imagem_url": "../assets/id27.png",
   "possiveis_destinos": [
     {
       "destino_id": "43",

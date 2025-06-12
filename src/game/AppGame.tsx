@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
-import GameScreen from '../screens/GameScreen/GameScreen';
+import GameScreen from '../screens/GameScreen';
 import NavigationControls from '../components/NavigationControls';
 import { colors } from '../game/styles';
 

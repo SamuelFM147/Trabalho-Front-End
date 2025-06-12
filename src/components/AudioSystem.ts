@@ -1,6 +1,6 @@
 import { Audio } from 'expo-av';
 import { useEffect } from 'react';
-import { useAudioState } from '../hooks/useAudioState';
+import { useAudioState } from '../components/useAudioState';
 
 // Array com todas as músicas disponíveis
 export const AudioAssets = {
@@ -75,9 +75,30 @@ export const useAudio = () => {
 
     try {
       isChangingTrack = true;
+      
+      // Atualiza o índice antes de tocar a próxima música
       const nextSong = playlist[currentPlaylistIndex];
-      currentPlaylistIndex = (currentPlaylistIndex + 1) % playlist.length;
+      
+      // Se chegou ao fim da playlist, volta para o início
+      if (currentPlaylistIndex >= playlist.length - 1) {
+        console.log('Fim da playlist, voltando ao início...');
+        currentPlaylistIndex = 0;
+      } else {
+        currentPlaylistIndex++;
+      }
+      
+      // Tenta tocar a próxima música
       await playSound(nextSong);
+      
+      // Se falhou em tocar a música atual, tenta a próxima
+      if (!currentSound) {
+        console.log('Falha ao tocar música atual, tentando próxima...');
+        await playNextInPlaylist();
+      }
+    } catch (error) {
+      console.error('Erro ao tocar próxima música:', error);
+      // Em caso de erro, tenta a próxima música após um delay
+      setTimeout(() => playNextInPlaylist(), RETRY_DELAY);
     } finally {
       isChangingTrack = false;
     }
@@ -99,8 +120,9 @@ export const useAudio = () => {
       // Pequeno delay para garantir que o som anterior foi limpo
       await new Promise(resolve => setTimeout(resolve, 100));
 
+      console.log(`Tentando tocar: ${soundAsset}`);
       const { sound } = await Audio.Sound.createAsync(AudioAssets[soundAsset], {
-        isLooping: false, // Mudamos para false para permitir a troca de músicas
+        isLooping: false,
         volume: isMuted ? 0 : 1,
         progressUpdateIntervalMillis: 1000,
         shouldPlay: true,
@@ -121,20 +143,38 @@ export const useAudio = () => {
           // Se o som parou de tocar por algum motivo (que não seja mute ou fim natural)
           if (!status.isPlaying && !isMuted && !status.didJustFinish && !isChangingTrack) {
             console.log('Som parou de tocar, tentando reiniciar...');
-            await sound.playAsync();
+            try {
+              await sound.playAsync();
+            } catch (error) {
+              console.error('Erro ao tentar reiniciar o som:', error);
+              // Se falhar ao reiniciar, tenta a próxima música
+              await playNextInPlaylist();
+            }
           }
 
           // Se a música terminou naturalmente, toca a próxima
           if (status.didJustFinish && !isChangingTrack) {
-            console.log('Música terminou, tocando próxima...');
+            console.log(`Música ${soundAsset} terminou, tocando próxima...`);
             await playNextInPlaylist();
           }
+        } else {
+          // Se o som não está carregado, tenta a próxima música
+          console.log('Som não está carregado, tentando próxima música...');
+          await playNextInPlaylist();
         }
       });
 
+      // Verifica se o som carregou corretamente antes de tocar
+      const initialStatus = await sound.getStatusAsync();
+      if (!initialStatus.isLoaded) {
+        throw new Error('Som não carregou corretamente');
+      }
+
       await sound.playAsync();
+      console.log(`Tocando: ${soundAsset}`);
+
     } catch (error) {
-      console.error('Error playing sound:', error);
+      console.error(`Erro ao tocar som ${soundAsset}:`, error);
       
       // Tenta novamente se ainda não atingiu o número máximo de tentativas
       if (retryCount < MAX_RETRIES) {
@@ -143,6 +183,7 @@ export const useAudio = () => {
           playSound(soundAsset, retryCount + 1);
         }, RETRY_DELAY);
       } else {
+        console.log(`Falhou após ${MAX_RETRIES} tentativas, tentando próxima música...`);
         // Se falhou todas as tentativas, tenta a próxima música
         await playNextInPlaylist();
       }
