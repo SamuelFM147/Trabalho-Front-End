@@ -1,4 +1,3 @@
-
 import { StyleSheet } from "react-native"; 
 import { TextStyle } from 'react-native';
 
@@ -63,6 +62,10 @@ export const styles = StyleSheet.create({
     padding: 20,
     justifyContent: 'space-between',
   },
+  scrollContent: {
+    flexGrow: 1,
+    paddingBottom: 20,
+  },
   scrollContainer: {
     marginTop: 50,
     padding: 15,
@@ -79,6 +82,12 @@ export const styles = StyleSheet.create({
     fontStyle: 'italic',
     color: '#3e2c1c',
     textAlign: 'center',
+  },
+  sceneImage: {
+    width: '100%',
+    height: 300,
+    marginVertical: 20,
+    borderRadius: 10,
   },
   buttonsContainer: {
     marginBottom: 50,

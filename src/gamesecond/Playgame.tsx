@@ -4,6 +4,15 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { styles } from './stylePlay';
 import { getRandomEscolha, Escolha, escolhas } from '../escolhas/escolhas2';
 import NavigationControls from '../components/NavigationControls';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+
+type RootStackParamList = {
+  EndGame: {
+    diasVigilia: number;
+    salvos: number;
+    sacrificados: number;
+  };
+};
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SWIPE_THRESHOLD = 80;
@@ -63,6 +72,7 @@ const loadImages = () => {
 const imageMapping = loadImages();
 
 export default function SinIntroScreen() {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const [currentEscolha, setCurrentEscolha] = useState<Escolha | null>(null);
   const [cardLabel, setCardLabel] = useState('Qual a sua resposta?');
   const [cardColor, setCardColor] = useState('white');
@@ -72,15 +82,42 @@ export default function SinIntroScreen() {
   const [savedCount, setSavedCount] = useState(0);
   const [sacrificedCount, setSacrificedCount] = useState(0);
   const [numeroJogadas, setNumeroJogadas] = useState(0);
+  const [escolhasApresentadas, setEscolhasApresentadas] = useState<string[]>([]);
   const modalOpacity = useRef(new Animated.Value(0)).current;
   const pan = useRef(new Animated.ValueXY()).current;
   const currentEscolhaRef = useRef<Escolha | null>(null);
 
-  useEffect(() => {
+  const resetGame = () => {
+    setCardLabel('Qual a sua resposta?');
+    setCardColor('white');
+    setModalVisible(false);
+    setConsequenceText('');
+    setSanityLevel(100);
+    setSavedCount(0);
+    setSacrificedCount(0);
+    setNumeroJogadas(0);
+    setEscolhasApresentadas([]);
+    modalOpacity.setValue(0);
+    pan.setValue({ x: 0, y: 0 });
+    
     const initialChoice = getRandomEscolha();
     setCurrentEscolha(initialChoice);
     currentEscolhaRef.current = initialChoice;
-  }, []);
+    setEscolhasApresentadas([initialChoice.id]);
+  };
+
+  // Efeito para reiniciar o jogo quando o componente é montado
+  useEffect(() => {
+    resetGame();
+    
+    // Adiciona um listener para a focagem da tela
+    const unsubscribe = navigation.addListener('focus', () => {
+      resetGame();
+    });
+
+    // Limpa o listener quando o componente é desmontado
+    return () => unsubscribe();
+  }, [navigation]);
 
   useEffect(() => {
     if (currentEscolha) {
@@ -88,14 +125,39 @@ export default function SinIntroScreen() {
     }
   }, [currentEscolha]);
 
+  useEffect(() => {
+    if (sanityLevel <= 0) {
+      navigation.navigate('EndGame', {
+        diasVigilia: numeroJogadas,
+        salvos: savedCount,
+        sacrificados: sacrificedCount
+      });
+    }
+  }, [sanityLevel, navigation, numeroJogadas, savedCount, sacrificedCount]);
+
   const loadNewChoice = () => {
     let newEscolha;
+    let tentativas = 0;
+    const maxTentativas = escolhas.length * 2; // Evita loop infinito
+
+    // Se todas as escolhas já foram apresentadas, reinicia a lista
+    if (escolhasApresentadas.length >= escolhas.length) {
+      setEscolhasApresentadas([]);
+    }
+
     do {
       newEscolha = getRandomEscolha();
-    } while (currentEscolhaRef.current && newEscolha.id === currentEscolhaRef.current.id && escolhas.length > 1);
+      tentativas++;
+      // Continua procurando se a escolha já foi apresentada e ainda há outras opções
+    } while (
+      escolhasApresentadas.includes(newEscolha.id) && 
+      tentativas < maxTentativas &&
+      escolhasApresentadas.length < escolhas.length
+    );
     
     setCurrentEscolha(newEscolha);
     currentEscolhaRef.current = newEscolha;
+    setEscolhasApresentadas(prev => [...prev, newEscolha.id]);
   };
 
   const rotate = pan.x.interpolate({

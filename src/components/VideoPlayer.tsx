@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
-import { audioManager } from '../components/AudioSystem';
+import { useAudio } from '../components/AudioSystem';
 
 interface VideoPlayerProps {
   onSkip: () => void;
@@ -11,18 +11,19 @@ interface VideoPlayerProps {
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ onSkip, onComplete }) => {
   const videoRef = useRef<Video>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const { stopSound } = useAudio();
 
   useEffect(() => {
     const setupAudio = async () => {
       // Pausa a música quando o componente é montado
-      await audioManager.stopSound();
+      await stopSound();
     };
 
     setupAudio();
 
     // Não retomamos a música aqui, deixamos isso para o GameScreen
     return () => {};
-  }, []);
+  }, [stopSound]);
 
   const handlePlaybackStatusUpdate = (status: any) => {
     if (status.didJustFinish) {
