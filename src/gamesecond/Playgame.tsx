@@ -212,7 +212,7 @@ export default function SinIntroScreen() {
         setCardLabel('Qual a sua resposta?');
         loadNewChoice();
       });
-    }, 2000);
+    }, 3000);
   };
 
   const panResponder = useRef(
