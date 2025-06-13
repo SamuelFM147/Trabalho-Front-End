@@ -65,17 +65,27 @@ export default function Home() {
         }),
       ])
     ).start();
-  }, []);
-
-  // Música ao montar
-  useEffect(() => {
-    const setupAudio = async () => {
+  }, []);  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', async () => {
       if (!showVideo) {
+        console.log('Home: Tela focada, iniciando música...');
+        setTimeout(async () => {
+          await playMainTheme();
+        }, 500);
+      }
+    });
+
+    const setupInitialAudio = async () => {
+      if (!showVideo) {
+        console.log('Home: Componente montado, iniciando música...');
         await playMainTheme();
       }
     };
-    setupAudio();
-  }, [showVideo]);
+    
+    setupInitialAudio();
+
+    return unsubscribe;
+  }, [navigation, showVideo, playMainTheme]);
 
   const handleStartJourney = () => {
     setShowVideo(true);

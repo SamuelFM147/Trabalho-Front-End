@@ -2,7 +2,16 @@ import { Audio } from 'expo-av';
 import { useEffect } from 'react';
 import { useAudioState } from '../components/useAudioState';
 
-// Array com todas as músicas disponíveis
+/**
+ * Sistema de Áudio para o Jogo
+ * 
+ * Funcionalidades:
+ * - Loop automático de músicas individuais
+ * - Playlist com múltiplas músicas (opcional)
+ * - Controle de mute/unmute
+ * - Recuperação inteligente de erros
+ * - Prevenção de conflitos de estado
+ */
 export const AudioAssets = {
   TEMA_PRINCIPAL: require('../assets/songs/Tema_Principal.mp3'),
   ID_95: require('../assets/songs/ID_95.mp3'),
@@ -20,9 +29,10 @@ export const AudioAssets = {
 let currentSound: Audio.Sound | null = null;
 let currentSoundAsset: keyof typeof AudioAssets | null = null;
 let currentPlaylistIndex = 0;
-let isChangingTrack = false; // Trava para evitar múltiplas trocas simultâneas
+let isChangingTrack = false;
+let isInitialized = false;
 const MAX_RETRIES = 3;
-const RETRY_DELAY = 1000; // 1 segundo
+const RETRY_DELAY = 1000;
 
 // Lista de todas as músicas para tocar em sequência
 const playlist: (keyof typeof AudioAssets)[] = [
@@ -44,13 +54,12 @@ export const useAudio = () => {
 
   useEffect(() => {
     const initAudio = async () => {
-      try {
-        await Audio.setAudioModeAsync({
+      try {        await Audio.setAudioModeAsync({
           playsInSilentModeIOS: true,
           staysActiveInBackground: true,
           shouldDuckAndroid: true,
-          interruptionModeIOS: 1, // Audio.InterruptionModeIOS.DoNotMix
-          interruptionModeAndroid: 1, // Audio.InterruptionModeAndroid.DoNotMix
+          interruptionModeIOS: 1,
+          interruptionModeAndroid: 1,
         });
       } catch (error) {
         console.error('Error initializing audio:', error);
@@ -103,30 +112,44 @@ export const useAudio = () => {
       isChangingTrack = false;
     }
   };
-
   const playSound = async (soundAsset: keyof typeof AudioAssets, retryCount = 0) => {
     // Se já estiver trocando de música, não faz nada
     if (isChangingTrack && retryCount === 0) {
       console.log('Já está trocando de música, ignorando nova requisição...');
-      return;
+      return Promise.resolve();
+    }
+
+    // Se já está tocando a mesma música, verifica se precisa mesmo trocar
+    if (currentSoundAsset === soundAsset && currentSound && retryCount === 0) {
+      try {
+        const status = await currentSound.getStatusAsync();
+        if (status.isLoaded && status.isPlaying) {
+          console.log(`${soundAsset} já está tocando e funcionando, ignorando...`);
+          return Promise.resolve();
+        }
+      } catch (error) {
+        console.log(`Erro ao verificar ${soundAsset}, prosseguindo com recriação...`);
+      }
     }
 
     try {
       isChangingTrack = true;
 
       // Primeiro, garante que qualquer som anterior seja completamente parado
-      await stopSound();
-
-      // Pequeno delay para garantir que o som anterior foi limpo
+      await stopSound();      // Pequeno delay para garantir que o som anterior foi limpo
       await new Promise(resolve => setTimeout(resolve, 100));
 
-      console.log(`Tentando tocar: ${soundAsset}`);
-      const { sound } = await Audio.Sound.createAsync(AudioAssets[soundAsset], {
-        isLooping: false,
+      console.log(`Tentando tocar: ${soundAsset}`);      const { sound } = await Audio.Sound.createAsync(AudioAssets[soundAsset], {
+        isLooping: true,
         volume: isMuted ? 0 : 1,
         progressUpdateIntervalMillis: 1000,
         shouldPlay: true,
       });
+
+      const status = await sound.getStatusAsync();
+      if (status.isLoaded) {
+        console.log(`Loop habilitado para ${soundAsset}:`, status.isLooping);
+      }
 
       // Se outro som foi iniciado enquanto este estava carregando, descarta este
       if (currentSound && currentSound !== sound) {
@@ -135,32 +158,18 @@ export const useAudio = () => {
       }
 
       currentSound = sound;
-      currentSoundAsset = soundAsset;
-
-      // Adiciona listener para monitorar o status do áudio
-      sound.setOnPlaybackStatusUpdate(async (status) => {
+      currentSoundAsset = soundAsset;      sound.setOnPlaybackStatusUpdate(async (status) => {
         if (status.isLoaded) {
-          // Se o som parou de tocar por algum motivo (que não seja mute ou fim natural)
           if (!status.isPlaying && !isMuted && !status.didJustFinish && !isChangingTrack) {
             console.log('Som parou de tocar, tentando reiniciar...');
             try {
               await sound.playAsync();
             } catch (error) {
               console.error('Erro ao tentar reiniciar o som:', error);
-              // Se falhar ao reiniciar, tenta a próxima música
-              await playNextInPlaylist();
             }
           }
-
-          // Se a música terminou naturalmente, toca a próxima
-          if (status.didJustFinish && !isChangingTrack) {
-            console.log(`Música ${soundAsset} terminou, tocando próxima...`);
-            await playNextInPlaylist();
-          }
         } else {
-          // Se o som não está carregado, tenta a próxima música
-          console.log('Som não está carregado, tentando próxima música...');
-          await playNextInPlaylist();
+          console.log('Som não está carregado - aguardando nova chamada manual');
         }
       });
 
@@ -190,10 +199,10 @@ export const useAudio = () => {
     } finally {
       isChangingTrack = false;
     }
-  };
-
-  const stopSound = async () => {
+  };  const stopSound = async () => {
     try {
+      isChangingTrack = true;
+      
       if (currentSound) {
         const status = await currentSound.getStatusAsync();
         if (status.isLoaded) {
@@ -203,27 +212,65 @@ export const useAudio = () => {
         currentSound = null;
         currentSoundAsset = null;
       }
+      
+      console.log('Som parado e limpo com sucesso');
     } catch (error) {
       console.error('Error stopping sound:', error);
-      // Em caso de erro, ainda tentamos limpar a referência
       currentSound = null;
       currentSoundAsset = null;
+    } finally {
+      setTimeout(() => {
+        isChangingTrack = false;
+      }, 200);
     }
-  };
-
-  const playMainTheme = () => {
-    currentPlaylistIndex = 0; // Reinicia a playlist do início
+  };  const playMainTheme = async () => {
+    if (currentSoundAsset === 'TEMA_PRINCIPAL' && currentSound) {
+      try {
+        const status = await currentSound.getStatusAsync();
+        if (status.isLoaded && status.isPlaying) {
+          console.log('Tema principal já está tocando, ignorando chamada...');
+          return Promise.resolve();
+        }
+      } catch (error) {
+        console.log('Erro ao verificar status, reiniciando tema principal...');
+        currentSound = null;
+        currentSoundAsset = null;
+      }
+    }
+    
+    if (isChangingTrack) {
+      console.log('Sistema ocupado, aguardando para iniciar tema principal...');
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      if (!isChangingTrack) {
+        return playMainTheme();
+      } else {
+        console.log('Sistema ainda ocupado, cancelando chamada...');
+        return Promise.resolve();
+      }
+    }
+    
+    currentPlaylistIndex = 0;
+    console.log('Iniciando tema principal...');
     return playSound('TEMA_PRINCIPAL');
+  };
+  const playNextTrack = async () => {
+    if (currentPlaylistIndex >= playlist.length - 1) {
+      currentPlaylistIndex = 0;
+    } else {
+      currentPlaylistIndex++;
+    }
+    
+    const nextSong = playlist[currentPlaylistIndex];
+    console.log(`Avançando manualmente para: ${nextSong}`);
+    return playSound(nextSong);
   };
 
   const toggleMute = async () => {
     try {
       if (currentSound) {
         const status = await currentSound.getStatusAsync();
-        if (status.isLoaded) {
-          await currentSound.setVolumeAsync(isMuted ? 1 : 0);
+        if (status.isLoaded) {          await currentSound.setVolumeAsync(isMuted ? 1 : 0);
           
-          // Se estiver desmutando e o som não estiver tocando, reinicia a playlist
           if (!isMuted && !status.isPlaying && !isChangingTrack) {
             await playNextInPlaylist();
           }
@@ -233,12 +280,11 @@ export const useAudio = () => {
     } catch (error) {
       console.error('Error toggling mute:', error);
     }
-  };
-
-  return {
+  };  return {
     playSound,
     stopSound,
     playMainTheme,
+    playNextTrack,
     toggleMute,
     isMuted,
     playNextInPlaylist,
