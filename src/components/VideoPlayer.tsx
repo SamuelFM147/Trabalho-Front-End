@@ -7,34 +7,26 @@ interface VideoPlayerProps {
   onSkip: () => void;
   onComplete: () => void;
 }
-
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ onSkip, onComplete }) => {
   const videoRef = useRef<Video>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const { stopSound } = useAudio();
-
   useEffect(() => {
     const setupAudio = async () => {
-      // Pausa a música quando o componente é montado
       await stopSound();
     };
-
     setupAudio();
-
     // Não retomamos a música aqui, deixamos isso para o GameScreen
     return () => {};
   }, [stopSound]);
-
   const handlePlaybackStatusUpdate = (status: any) => {
     if (status.didJustFinish) {
       onComplete();
     }
   };
-
   const handleSkip = () => {
     onSkip();
   };
-
   return (
     <View style={styles.container}>
       <Video
@@ -55,7 +47,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ onSkip, onComplete }) => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -82,5 +73,4 @@ const styles = StyleSheet.create({
     fontFamily: 'FonteHome',
   },
 });
-
 export default VideoPlayer; 

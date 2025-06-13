@@ -1,9 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import { colors } from '../game/styles';
 import { typography } from '../game/styles';
-
 const { width } = Dimensions.get('window');
-
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -30,7 +28,6 @@ export const styles = StyleSheet.create({
   narrativeText: {
     ...typography.narrativeText,
   },
-
   sceneImage: {
     width: width - 30,
     height: (width - 30) * 0.75,
@@ -90,7 +87,6 @@ export const styles = StyleSheet.create({
     color: colors.buttonText,
     fontSize: 18,
   },
-
   choiceButtonIcon: {
     width: 24,
     height: 24,

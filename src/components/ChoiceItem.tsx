@@ -12,7 +12,6 @@ interface ChoiceItemProps {
   disabled?: boolean;
   isLast?: boolean;
 }
-
 const ChoiceItem: React.FC<ChoiceItemProps> = ({ label, onPress, isRestartButton, isVictory, disabled }) => (
   <View style={[
     !isRestartButton && styles.shadowWrapper,
@@ -70,7 +69,6 @@ const ChoiceItem: React.FC<ChoiceItemProps> = ({ label, onPress, isRestartButton
     )}
   </View>
 );
-
 const styles = StyleSheet.create({
   shadowWrapper: {
     marginVertical: 10,
@@ -159,5 +157,4 @@ const styles = StyleSheet.create({
     color: '#999999',
   },
 });
-
 export default ChoiceItem; 

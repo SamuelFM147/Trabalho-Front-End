@@ -11,7 +11,6 @@ interface ChoiceListProps {
     disabled?: boolean;
   }>;
 }
-
 const ChoiceList: React.FC<ChoiceListProps> = ({ choices }) => (
   <View>
     {choices.map((choice, idx) => (
@@ -26,5 +25,4 @@ const ChoiceList: React.FC<ChoiceListProps> = ({ choices }) => (
     ))}
   </View>
 );
-
 export default ChoiceList; 

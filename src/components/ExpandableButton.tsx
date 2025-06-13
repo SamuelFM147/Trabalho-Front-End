@@ -1,19 +1,11 @@
 import React, { useState, useRef } from 'react';
-import { 
-  View, 
-  TouchableOpacity, 
-  StyleSheet, 
-  Animated, 
-  Dimensions,
-} from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Animated, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
 interface ExpandableButtonProps {
   onMenuPress: () => void;
   onMutePress: () => void;
   isMuted: boolean;
 }
-
 const ExpandableButton: React.FC<ExpandableButtonProps> = ({
   onMenuPress,
   onMutePress,
@@ -21,25 +13,20 @@ const ExpandableButton: React.FC<ExpandableButtonProps> = ({
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const animatedValue = useRef(new Animated.Value(0)).current;
-
   const toggleExpand = () => {
     const toValue = isExpanded ? 0 : 1;
-    
     Animated.spring(animatedValue, {
       toValue,
       useNativeDriver: false,
       friction: 6,
       tension: 40
     }).start();
-    
     setIsExpanded(!isExpanded);
   };
-
   const containerHeight = animatedValue.interpolate({
     inputRange: [0, 1],
     outputRange: [30, 100]
   });
-
   return (
     <View style={styles.container}>
       <Animated.View style={[styles.buttonContainer, { height: containerHeight }]}>
@@ -82,7 +69,6 @@ const ExpandableButton: React.FC<ExpandableButtonProps> = ({
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
@@ -128,5 +114,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-
 export default ExpandableButton; 

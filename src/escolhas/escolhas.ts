@@ -59,8 +59,8 @@ export const jsonData: GameData = [
   },
   {
     "id": "5",
-    "mensagem": "Entre ruínas de pedra, uma criança esperava. [IMAGEM]\nNão ria. Não chorava. Apenas observava. \nTalvez fosse só uma memória errante — ou um eco da filha — talvez o mundo testando sua essência. \n— Você ainda acredita no que é belo? — perguntou. \nSin estendeu a mão. \nA luz que surgia nela tremia, como se também estivesse de luto.",
-    "imagem_url": "../assets/id05.png",
+    "mensagem": "Entre ruínas de pedra, uma criança esperava. \nNão ria. Não chorava. Apenas observava. \nTalvez fosse só uma memória errante — ou um eco da filha — talvez o mundo testando sua essência. \n— Você ainda acredita no que é belo? — perguntou. \nSin estendeu a mão. \nA luz que surgia nela tremia, como se também estivesse de luto.",
+    "imagem_url": " ",
     "possiveis_destinos": [
       {
         "destino_id": "6",
@@ -572,8 +572,8 @@ export const jsonData: GameData = [
   },
   {
     "id": "23",
-    "mensagem": "Ele sentiu o calor.[IMAGEM]\nMas o soltou.\nNão como rejeição,\nmas como despedida.\nEra hora de sua amada parar de esperar.\nO sorriso tímido de sua filha se apagou.\nAfinal, a culpa era sua.\nEm seu coração, ele sentiu dor e calor.\nUma ideia veio à mente, talvez um propósito.",
-    "imagem_url": "../assets/id23.png",
+    "mensagem": "Ele sentiu o calor. \nMas o soltou.\nNão como rejeição,\nmas como despedida.\nEra hora de sua amada parar de esperar.\nO sorriso tímido de sua filha se apagou.\nAfinal, a culpa era sua.\nEm seu coração, ele sentiu dor e calor.\nUma ideia veio à mente, talvez um propósito.",
+    "imagem_url": " ",
     "possiveis_destinos": [
       {
         "destino_id": "25",

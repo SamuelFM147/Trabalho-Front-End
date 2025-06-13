@@ -28,7 +28,6 @@ export const AudioAssets = {
   ID_0: require('../assets/songs/ID_0.mp3'),
   FINAL_BOM: require('../assets/songs/Final_Bom.mp3'),
 } as const;
-
 let currentSound: Audio.Sound | null = null;
 let currentSoundAsset: keyof typeof AudioAssets | null = null;
 let currentPlaylistIndex = 0;

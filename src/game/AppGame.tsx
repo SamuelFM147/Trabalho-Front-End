@@ -17,12 +17,10 @@ const AppGame: React.FC = () => {
     </SafeAreaView>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
   },
 });
-
 export default AppGame;

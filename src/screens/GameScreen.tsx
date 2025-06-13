@@ -14,7 +14,6 @@ const localImages: Record<string, any> = {
   '../assets/id02.png': require('../assets/id02.png'),
   '../assets/id03.png': require('../assets/id03.png'),
   '../assets/id04.png': require('../assets/id04.png'),
-  '../assets/id05.png': require('../assets/id05.png'),
   '../assets/id06.png': require('../assets/id06.png'),
   '../assets/id07.png': require('../assets/id07.png'),
   '../assets/id08.png': require('../assets/id08.png'),
@@ -32,9 +31,7 @@ const localImages: Record<string, any> = {
   '../assets/id20.png': require('../assets/id20.png'),
   '../assets/id21.png': require('../assets/id21.png'),
   '../assets/id22.png': require('../assets/id22.png'),
-  '../assets/id23.png': require('../assets/id23.png'),
   '../assets/id24.png': require('../assets/id24.png'),
-  '../assets/id25.png': require('../assets/id25.png'),
   '../assets/id26.png': require('../assets/id26.png'),
   '../assets/id27.png': require('../assets/id27.png'),
   '../assets/id28.png': require('../assets/id28.png'),
@@ -62,7 +59,6 @@ const GameScreen: React.FC = () => {
   const scrollViewRef = useRef<ScrollView>(null);
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const [isTransitioning, setIsTransitioning] = useState(false);
-  
   const {
     currentScene,
     availableChoices,
@@ -71,14 +67,11 @@ const GameScreen: React.FC = () => {
     isGameOver,
     isVictory,
   } = useGameEngine();
-
   // Função para fazer a transição suave
   const handleSceneTransition = async (choice: any) => {
     if (isTransitioning) return;
     
     setIsTransitioning(true);
-    
-    // Fade out
     Animated.timing(fadeAnim, {
       toValue: 0,
       duration: 300,
@@ -88,11 +81,7 @@ const GameScreen: React.FC = () => {
       if (scrollViewRef.current) {
         scrollViewRef.current.scrollTo({ y: 0, animated: false });
       }
-      
-      // Faz a escolha
       await makeChoice(choice);
-      
-      // Fade in
       Animated.timing(fadeAnim, {
         toValue: 1,
         duration: 300,
@@ -102,19 +91,15 @@ const GameScreen: React.FC = () => {
       });
     });
   };
-
-  // Efeito para rolar suavemente quando a cena mudar
   useEffect(() => {
     if (scrollViewRef.current && !isTransitioning) {
       scrollViewRef.current.scrollTo({ y: 0, animated: true });
     }
   }, [currentScene, isTransitioning]);
-
   const handleRestart = () => {
     restartGame();
     navigation.navigate('Home' as never);
   };
-
   if (!currentScene) {
     return (
       <SafeAreaView style={styles.container}>
@@ -122,7 +107,6 @@ const GameScreen: React.FC = () => {
       </SafeAreaView>
     );
   }
-
   if (isGameOver || isVictory) {
     return (
       <StoryEndScreen
@@ -131,16 +115,13 @@ const GameScreen: React.FC = () => {
       />
     );
   }
-
   const messageParts = currentScene.mensagem.split('[IMAGEM]');
   const textBeforeImage = messageParts[0] || '';
   const textAfterImage = messageParts[1] || '';
   const shouldRenderImageInline = messageParts.length > 1 && currentScene.imagem_url;
-
   const currentImageSource = currentScene.imagem_url && localImages[currentScene.imagem_url]
     ? localImages[currentScene.imagem_url]
     : null;
-
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView 
@@ -150,20 +131,17 @@ const GameScreen: React.FC = () => {
       >
         <Animated.View style={{ opacity: fadeAnim }}>
           <NarrativeText text={textBeforeImage.trim()} />
-
           {shouldRenderImageInline && currentImageSource && (
             <Image
               source={currentImageSource}
               style={styles.sceneImage} 
               resizeMode="cover"
             />
-          )}
-          
+          )}  
           {shouldRenderImageInline && textAfterImage.trim().length > 0 && (
             <NarrativeText text={textAfterImage.trim()} />
           )}
           {!shouldRenderImageInline && <NarrativeText text={currentScene.mensagem} />}
-
           <SceneDivider sceneNumber={currentScene.id} />
           <ChoiceList
             choices={availableChoices.map(choice => ({
@@ -177,5 +155,4 @@ const GameScreen: React.FC = () => {
     </SafeAreaView>
   );
 };
-
 export default GameScreen;

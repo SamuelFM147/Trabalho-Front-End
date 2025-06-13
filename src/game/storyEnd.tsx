@@ -5,10 +5,8 @@ interface StoryEndScreenProps {
   message: string;
   onRestart: () => void;
 }
-
 const StoryEndScreen: React.FC<StoryEndScreenProps> = ({ message, onRestart }) => {
   const fadeAnim = useRef(new Animated.Value(1)).current;
-
   useEffect(() => {
     const blinkAnimation = Animated.sequence([
       Animated.timing(fadeAnim, {
@@ -28,7 +26,6 @@ const StoryEndScreen: React.FC<StoryEndScreenProps> = ({ message, onRestart }) =
       loop.stop();
     };
   }, [fadeAnim]);
-
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -54,7 +51,6 @@ const StoryEndScreen: React.FC<StoryEndScreenProps> = ({ message, onRestart }) =
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -107,5 +103,4 @@ const styles = StyleSheet.create({
     textShadowColor: '#000',
   },
 });
-
 export default StoryEndScreen;
