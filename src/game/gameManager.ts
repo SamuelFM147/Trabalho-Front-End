@@ -7,32 +7,26 @@ export interface PossibleDestiny { // trazendo modos e cenas de types e fundindo
   descricao_opcao: string;
   define_condicao?: string;
 }
-
 export interface Scene {
   id: number | string;
   mensagem: string;
   possiveis_destinos: PossibleDestiny[];
   imagem_url?: string; 
 }
-
 // Exportando os dados do jogo importados do arquivo escolhas.ts
 export const gameStories: GameData = gameData;
 
 // ID da cena inicial do jogo
 export const INITIAL_SCENE_ID = "0";
-
 export type GameData = Scene[];
-
 export class GameManager {
   private scenes: GameData;
   public currentScene: Scene;
-  
   private gameLog: string[] = [];
 
   constructor() {
     this.scenes = gameStories
     this.currentScene = this.findSceneById(INITIAL_SCENE_ID) || this.scenes[0];
-    
   }
 
   private findSceneById(id: number | string): Scene | undefined {
@@ -40,7 +34,6 @@ export class GameManager {
   }
 
   public startGame(): Scene {
-    
     this.currentScene = this.findSceneById(INITIAL_SCENE_ID) || this.scenes[0];
     this.gameLog = [];
     
@@ -53,12 +46,10 @@ export class GameManager {
 
   public getAvailableChoices() {
     if (!this.currentScene || !this.currentScene.possiveis_destinos) {
-     
       return [];
     }
 
     const choices = this.currentScene.possiveis_destinos
-   
     return choices;
   }
   public makeChoice(choiceDestinoId: number | string): Scene | null {
@@ -66,7 +57,6 @@ export class GameManager {
     
     // Encontrar e definir próxima cena
     const nextScene = this.findSceneById(choiceDestinoId);
-    
     if (nextScene) {
       this.currentScene = nextScene;
       return this.currentScene;

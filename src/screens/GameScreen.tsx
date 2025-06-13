@@ -174,5 +174,4 @@ const GameScreen: React.FC = () => {
     </SafeAreaView>
   );
 };
-
 export default GameScreen;
