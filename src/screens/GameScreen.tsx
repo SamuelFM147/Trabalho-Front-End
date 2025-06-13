@@ -32,7 +32,6 @@ const localImages: Record<string, any> = {
   '../assets/id21.png': require('../assets/id21.png'),
   '../assets/id22.png': require('../assets/id22.png'),
   '../assets/id24.png': require('../assets/id24.png'),
-  '../assets/id25.png': require('../assets/id25.png'),
   '../assets/id26.png': require('../assets/id26.png'),
   '../assets/id27.png': require('../assets/id27.png'),
   '../assets/id28.png': require('../assets/id28.png'),
