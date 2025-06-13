@@ -14,7 +14,6 @@ const localImages: Record<string, any> = {
   '../assets/id02.png': require('../assets/id02.png'),
   '../assets/id03.png': require('../assets/id03.png'),
   '../assets/id04.png': require('../assets/id04.png'),
-  '../assets/id05.png': require('../assets/id05.png'),
   '../assets/id06.png': require('../assets/id06.png'),
   '../assets/id07.png': require('../assets/id07.png'),
   '../assets/id08.png': require('../assets/id08.png'),
@@ -32,7 +31,6 @@ const localImages: Record<string, any> = {
   '../assets/id20.png': require('../assets/id20.png'),
   '../assets/id21.png': require('../assets/id21.png'),
   '../assets/id22.png': require('../assets/id22.png'),
-  '../assets/id23.png': require('../assets/id23.png'),
   '../assets/id24.png': require('../assets/id24.png'),
   '../assets/id25.png': require('../assets/id25.png'),
   '../assets/id26.png': require('../assets/id26.png'),
@@ -122,7 +120,6 @@ const GameScreen: React.FC = () => {
       </SafeAreaView>
     );
   }
-
   if (isGameOver || isVictory) {
     return (
       <StoryEndScreen
