@@ -1,5 +1,6 @@
 import { Audio } from 'expo-av';
 import { useEffect } from 'react';
+import { AppState, AppStateStatus } from 'react-native';
 import { useAudioState } from '../components/useAudioState';
 
 /**
@@ -11,6 +12,8 @@ import { useAudioState } from '../components/useAudioState';
  * - Controle de mute/unmute
  * - Recuperação inteligente de erros
  * - Prevenção de conflitos de estado
+ * - Controle automático de pause/resume baseado no estado da aplicação
+ * - Pausar música quando app vai para background ou tela desliga
  */
 export const AudioAssets = {
   TEMA_PRINCIPAL: require('../assets/songs/Tema_Principal.mp3'),
@@ -31,6 +34,8 @@ let currentSoundAsset: keyof typeof AudioAssets | null = null;
 let currentPlaylistIndex = 0;
 let isChangingTrack = false;
 let isInitialized = false;
+let appState: AppStateStatus = 'active';
+let shouldResumeOnForeground = false;
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 1000;
 
@@ -51,12 +56,12 @@ const playlist: (keyof typeof AudioAssets)[] = [
 
 export const useAudio = () => {
   const { isMuted, setIsMuted } = useAudioState();
-
   useEffect(() => {
     const initAudio = async () => {
-      try {        await Audio.setAudioModeAsync({
+      try {
+        await Audio.setAudioModeAsync({
           playsInSilentModeIOS: true,
-          staysActiveInBackground: true,
+          staysActiveInBackground: false,
           shouldDuckAndroid: true,
           interruptionModeIOS: 1,
           interruptionModeAndroid: 1,
@@ -66,9 +71,46 @@ export const useAudio = () => {
       }
     };
     
+    const handleAppStateChange = async (nextAppState: AppStateStatus) => {
+      console.log('App state changed from', appState, 'to', nextAppState);
+      
+      if (appState === 'active' && (nextAppState === 'background' || nextAppState === 'inactive')) {
+        if (currentSound) {
+          try {
+            const status = await currentSound.getStatusAsync();
+            if (status.isLoaded && status.isPlaying) {
+              shouldResumeOnForeground = true;
+              await currentSound.pauseAsync();
+              console.log('Música pausada - app foi para background/inactive');
+            }
+          } catch (error) {
+            console.error('Erro ao pausar música:', error);
+          }
+        }
+      } else if ((appState === 'background' || appState === 'inactive') && nextAppState === 'active') {
+        if (shouldResumeOnForeground && currentSound) {
+          try {
+            const status = await currentSound.getStatusAsync();
+            if (status.isLoaded && !status.isPlaying) {
+              await currentSound.playAsync();
+              console.log('Música retomada - app voltou para active');
+            }
+          } catch (error) {
+            console.error('Erro ao retomar música:', error);
+          }
+          shouldResumeOnForeground = false;
+        }
+      }
+      
+      appState = nextAppState;
+    };
+    
     initAudio();
+    
+    const subscription = AppState.addEventListener('change', handleAppStateChange);
 
     return () => {
+      subscription?.remove();
       if (currentSound) {
         currentSound.unloadAsync();
       }
@@ -199,7 +241,35 @@ export const useAudio = () => {
     } finally {
       isChangingTrack = false;
     }
-  };  const stopSound = async () => {
+  };  const pauseSound = async () => {
+    try {
+      if (currentSound) {
+        const status = await currentSound.getStatusAsync();
+        if (status.isLoaded && status.isPlaying) {
+          await currentSound.pauseAsync();
+          console.log('Música pausada manualmente');
+        }
+      }
+    } catch (error) {
+      console.error('Error pausing sound:', error);
+    }
+  };
+
+  const resumeSound = async () => {
+    try {
+      if (currentSound) {
+        const status = await currentSound.getStatusAsync();
+        if (status.isLoaded && !status.isPlaying) {
+          await currentSound.playAsync();
+          console.log('Música retomada manualmente');
+        }
+      }
+    } catch (error) {
+      console.error('Error resuming sound:', error);
+    }
+  };
+
+  const stopSound = async () => {
     try {
       isChangingTrack = true;
       
@@ -283,6 +353,8 @@ export const useAudio = () => {
   };  return {
     playSound,
     stopSound,
+    pauseSound,
+    resumeSound,
     playMainTheme,
     playNextTrack,
     toggleMute,

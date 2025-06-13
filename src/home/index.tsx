@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {View,Image,TouchableOpacity,Text,Animated,Dimensions,StyleSheet,} from 'react-native';
+import {View,Image,TouchableOpacity,Text,Animated,Dimensions,StyleSheet,AppState,} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAudio } from '../components/AudioSystem';
