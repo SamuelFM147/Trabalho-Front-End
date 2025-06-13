@@ -75,16 +75,15 @@ export const useGameEngine = () => {
   const [currentScene, setCurrentScene] = useState<Scene>(gameManager.getCurrentScene());
   const [availableChoices, setAvailableChoices] = useState<PossibleDestiny[]>(gameManager.getAvailableChoices());
   const makeChoice = useCallback((choice: PossibleDestiny) => {
-    const nextScene = gameManager.makeChoice(choice.destino_id); // Corrigido: apenas 1 argumento
+    const nextScene = gameManager.makeChoice(choice.destino_id); 
     if (nextScene) {
       setCurrentScene(nextScene);
       setAvailableChoices(gameManager.getAvailableChoices());
     } else {
-      // Lidar com fim de jogo ou erro
       const finalScene = gameManager.getCurrentScene();
       if (finalScene && (finalScene.id.toString().startsWith('GAME_OVER') || finalScene.id.toString().startsWith('VITORIA'))) {
         setCurrentScene(finalScene);
-        setAvailableChoices([]); // Não há mais escolhas
+        setAvailableChoices([]); 
       }
     }
   }, [gameManager]);

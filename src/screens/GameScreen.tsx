@@ -82,9 +82,7 @@ const GameScreen: React.FC = () => {
       if (scrollViewRef.current) {
         scrollViewRef.current.scrollTo({ y: 0, animated: false });
       }
-      // Faz a escolha
       await makeChoice(choice);
-      // Fade in
       Animated.timing(fadeAnim, {
         toValue: 1,
         duration: 300,
@@ -94,7 +92,6 @@ const GameScreen: React.FC = () => {
       });
     });
   };
-  // Efeito para rolar suavemente quando a cena mudar
   useEffect(() => {
     if (scrollViewRef.current && !isTransitioning) {
       scrollViewRef.current.scrollTo({ y: 0, animated: true });

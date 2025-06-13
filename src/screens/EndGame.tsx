@@ -38,7 +38,6 @@ const EndScreen: React.FC = () => {
     >
       <View style={styles.overlay}>
         <Text style={styles.title}>Fim da Jornada</Text>
-
         <View style={styles.statsContainer}>
           <Text style={styles.statsText}>
             Dias de Vigília: <Text style={styles.salvos}>{diasVigilia}</Text>
