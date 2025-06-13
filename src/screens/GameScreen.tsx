@@ -60,7 +60,6 @@ const GameScreen: React.FC = () => {
   const scrollViewRef = useRef<ScrollView>(null);
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const [isTransitioning, setIsTransitioning] = useState(false);
-  
   const {
     currentScene,
     availableChoices,
@@ -69,14 +68,11 @@ const GameScreen: React.FC = () => {
     isGameOver,
     isVictory,
   } = useGameEngine();
-
   // Função para fazer a transição suave
   const handleSceneTransition = async (choice: any) => {
     if (isTransitioning) return;
     
     setIsTransitioning(true);
-    
-    // Fade out
     Animated.timing(fadeAnim, {
       toValue: 0,
       duration: 300,
@@ -86,10 +82,8 @@ const GameScreen: React.FC = () => {
       if (scrollViewRef.current) {
         scrollViewRef.current.scrollTo({ y: 0, animated: false });
       }
-      
       // Faz a escolha
       await makeChoice(choice);
-      
       // Fade in
       Animated.timing(fadeAnim, {
         toValue: 1,
@@ -100,19 +94,16 @@ const GameScreen: React.FC = () => {
       });
     });
   };
-
   // Efeito para rolar suavemente quando a cena mudar
   useEffect(() => {
     if (scrollViewRef.current && !isTransitioning) {
       scrollViewRef.current.scrollTo({ y: 0, animated: true });
     }
   }, [currentScene, isTransitioning]);
-
   const handleRestart = () => {
     restartGame();
     navigation.navigate('Home' as never);
   };
-
   if (!currentScene) {
     return (
       <SafeAreaView style={styles.container}>
@@ -128,16 +119,13 @@ const GameScreen: React.FC = () => {
       />
     );
   }
-
   const messageParts = currentScene.mensagem.split('[IMAGEM]');
   const textBeforeImage = messageParts[0] || '';
   const textAfterImage = messageParts[1] || '';
   const shouldRenderImageInline = messageParts.length > 1 && currentScene.imagem_url;
-
   const currentImageSource = currentScene.imagem_url && localImages[currentScene.imagem_url]
     ? localImages[currentScene.imagem_url]
     : null;
-
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView 
@@ -147,20 +135,17 @@ const GameScreen: React.FC = () => {
       >
         <Animated.View style={{ opacity: fadeAnim }}>
           <NarrativeText text={textBeforeImage.trim()} />
-
           {shouldRenderImageInline && currentImageSource && (
             <Image
               source={currentImageSource}
               style={styles.sceneImage} 
               resizeMode="cover"
             />
-          )}
-          
+          )}  
           {shouldRenderImageInline && textAfterImage.trim().length > 0 && (
             <NarrativeText text={textAfterImage.trim()} />
           )}
           {!shouldRenderImageInline && <NarrativeText text={currentScene.mensagem} />}
-
           <SceneDivider sceneNumber={currentScene.id} />
           <ChoiceList
             choices={availableChoices.map(choice => ({

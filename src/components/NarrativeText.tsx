@@ -5,13 +5,11 @@ import { colors } from '../game/styles';
 interface NarrativeTextProps {
   text: string;
 }
-
 const NarrativeText: React.FC<NarrativeTextProps> = ({ text }) => (
   <View style={styles.container}>
     <Text style={styles.text}>{text}</Text>
   </View>
 );
-
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 24,
@@ -27,5 +25,4 @@ const styles = StyleSheet.create({
     lineHeight: 26,
   },
 });
-
 export default NarrativeText; 

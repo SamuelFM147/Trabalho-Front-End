@@ -36,14 +36,11 @@ const creditsData = [
     linkedin: 'https://www.linkedin.com/in/vin%C3%ADciusrferreira/',
   },
 ];
-
 export default function Credits() {
   const navigation = useNavigation<any>();
-
   const handlePressLinkedIn = (url: string) => {
     Linking.openURL(url).catch(err => console.error("Erro ao abrir o LinkedIn:", err));
   };
-
   return (
     <View style={styles.container}>
       <LinearGradient

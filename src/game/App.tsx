@@ -1,7 +1,3 @@
-import 'react-native-gesture-handler';
-import { enableScreens } from 'react-native-screens';
-enableScreens();
-
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -12,7 +8,9 @@ import Game from './AppGame';
 import PlayGame from '../gamesecond/Playgame';
 import EndGame from '../screens/EndGame';
 import Credits from '../credits';
-// import { SafeAreaProvider } from 'react-native-safe-area-context'; // Descomente se usar
+import 'react-native-gesture-handler';
+import { enableScreens } from 'react-native-screens';
+enableScreens();
 
 const Stack = createStackNavigator();
 

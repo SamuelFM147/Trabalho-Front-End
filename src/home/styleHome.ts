@@ -1,25 +1,21 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
-
 export const styles = StyleSheet.create({
   containerDoConteudo: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
-
   logoImagem: {
     width: width,
     height: height * 0.4,
     marginBottom: height * 0.2,
   },
-
   containerDoBotao: {
     alignItems: 'center',
     justifyContent: 'center',
   },
-
   Textobotao: {
     color: '#fff',
     fontSize: 30,

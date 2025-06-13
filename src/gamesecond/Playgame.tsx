@@ -13,14 +13,11 @@ type RootStackParamList = {
     sacrificados: number;
   };
 };
-
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SWIPE_THRESHOLD = 80;
-
 // Função para carregar todas as imagens disponíveis
 const loadImages = () => {
   const images: { [key: string]: any } = {};
-  
   // Tenta carregar todas as imagens possíveis
   const possibleImages = {
     // Imagens do id301 ao id325
@@ -54,7 +51,6 @@ const loadImages = () => {
     'SinFundo.png': require('../assets/SinFundo.png'),
     'SinLogo.png': require('../assets/SinLogo.png'),
   };
-
   // Adiciona todas as imagens disponíveis ao mapeamento
   Object.entries(possibleImages).forEach(([key, value]) => {
     try {
@@ -64,13 +60,10 @@ const loadImages = () => {
       images[key] = require('../assets/SinIcon.png'); // Fallback para imagem padrão
     }
   });
-
   return images;
 };
-
 // Carrega todas as imagens disponíveis
 const imageMapping = loadImages();
-
 export default function SinIntroScreen() {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const [currentEscolha, setCurrentEscolha] = useState<Escolha | null>(null);
@@ -86,7 +79,6 @@ export default function SinIntroScreen() {
   const modalOpacity = useRef(new Animated.Value(0)).current;
   const pan = useRef(new Animated.ValueXY()).current;
   const currentEscolhaRef = useRef<Escolha | null>(null);
-
   const resetGame = () => {
     setCardLabel('Qual a sua resposta?');
     setCardColor('white');
@@ -99,32 +91,26 @@ export default function SinIntroScreen() {
     setEscolhasApresentadas([]);
     modalOpacity.setValue(0);
     pan.setValue({ x: 0, y: 0 });
-    
     const initialChoice = getRandomEscolha();
     setCurrentEscolha(initialChoice);
     currentEscolhaRef.current = initialChoice;
     setEscolhasApresentadas([initialChoice.id]);
   };
-
   // Efeito para reiniciar o jogo quando o componente é montado
   useEffect(() => {
     resetGame();
-    
     // Adiciona um listener para a focagem da tela
     const unsubscribe = navigation.addListener('focus', () => {
       resetGame();
     });
-
     // Limpa o listener quando o componente é desmontado
     return () => unsubscribe();
   }, [navigation]);
-
   useEffect(() => {
     if (currentEscolha) {
       currentEscolhaRef.current = currentEscolha;
     }
   }, [currentEscolha]);
-
   useEffect(() => {
     if (sanityLevel <= 0) {
       navigation.navigate('EndGame', {
@@ -139,12 +125,10 @@ export default function SinIntroScreen() {
     let newEscolha;
     let tentativas = 0;
     const maxTentativas = escolhas.length * 2; // Evita loop infinito
-
     // Se todas as escolhas já foram apresentadas, reinicia a lista
     if (escolhasApresentadas.length >= escolhas.length) {
       setEscolhasApresentadas([]);
     }
-
     do {
       newEscolha = getRandomEscolha();
       tentativas++;
@@ -154,53 +138,43 @@ export default function SinIntroScreen() {
       tentativas < maxTentativas &&
       escolhasApresentadas.length < escolhas.length
     );
-    
     setCurrentEscolha(newEscolha);
     currentEscolhaRef.current = newEscolha;
     setEscolhasApresentadas(prev => [...prev, newEscolha.id]);
   };
-
   const rotate = pan.x.interpolate({
     inputRange: [-SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2],
     outputRange: ['-20deg', '0deg', '20deg'],
     extrapolate: 'clamp',
   });
-
   const updateSanity = (choice: 'SIM' | 'NÃO') => {
     if (choice === 'SIM') {
       setSanityLevel(prevSanity => Math.max(0, prevSanity - 5));
     }
   };
-
   const showConsequenceModal = (label: string) => {
     let escolhaParaUsar = currentEscolhaRef.current || currentEscolha;
-    
     if (!escolhaParaUsar) {
       escolhaParaUsar = getRandomEscolha();
       setCurrentEscolha(escolhaParaUsar);
       currentEscolhaRef.current = escolhaParaUsar;
     }
-    
     const normalizedLabel = label === 'NÃO' ? 'NAO' : label;
     const escolhaData = escolhaParaUsar.escolhas[normalizedLabel as 'SIM' | 'NAO'];
-    
     if (!escolhaData) {
       return;
     }
-    
     setSavedCount(prev => prev + escolhaData.salvos);
     setSacrificedCount(prev => prev + escolhaData.sacrificados);
     setConsequenceText(escolhaData.consequencia);
     setModalVisible(true);
     updateSanity(label as 'SIM' | 'NÃO');
     setNumeroJogadas(prev => prev + 1);
-
     Animated.timing(modalOpacity, {
       toValue: 1,
       duration: 300,
       useNativeDriver: true,
     }).start();
-
     setTimeout(() => {
       Animated.timing(modalOpacity, {
         toValue: 0,
@@ -214,13 +188,11 @@ export default function SinIntroScreen() {
       });
     }, 3000);
   };
-
   const panResponder = useRef(
     PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (_, gesture) => {
         pan.setValue({ x: gesture.dx, y: gesture.dy });
-
         if (gesture.dx > 20) {
           setCardLabel('SIM');
           setCardColor('green');
@@ -263,7 +235,6 @@ export default function SinIntroScreen() {
       },
     })
   ).current;
-
   return (
     <View style={StyleSheet.absoluteFill}>
       <LinearGradient
@@ -286,7 +257,6 @@ export default function SinIntroScreen() {
                     </View>
                   </View>
                 </View>
-  
                 <Text style={styles.questionText} key={currentEscolha?.id || 'loading'}>
                   {currentEscolha?.pergunta || 'Carregando...'}
                 </Text>
@@ -311,7 +281,6 @@ export default function SinIntroScreen() {
                   <Text style={[styles.cardTitle, { color: cardColor }]}>{cardLabel}</Text>
                 </Animated.View>
               </View>
-  
               {/* FOOTER FIXO */}
               <View style={styles.footer}>
                 <Text style={styles.footerText}>Espírito do Esquecido</Text>
@@ -331,7 +300,6 @@ export default function SinIntroScreen() {
             </View>
           </View>
         </ImageBackground>
-  
         {/* MODAL */}
         <Modal transparent visible={modalVisible} animationType="none">
           <View style={styles.modalOverlay}>
@@ -340,7 +308,6 @@ export default function SinIntroScreen() {
             </Animated.View>
           </View>
         </Modal>
-  
         <NavigationControls />
       </LinearGradient>
     </View>

@@ -9,7 +9,6 @@ type RootStackParamList = {
   Game: undefined;
   PlayGame: undefined;
 };
-
 const NavigationControls: React.FC = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const { toggleMute, isMuted } = useAudio();
@@ -17,7 +16,6 @@ const NavigationControls: React.FC = () => {
   const handleMenuPress = () => {
     navigation.navigate('Home');
   };
-
   return (
     <ExpandableButton
       onMenuPress={handleMenuPress}
@@ -26,5 +24,4 @@ const NavigationControls: React.FC = () => {
     />
   );
 };
-
 export default NavigationControls; 
