@@ -42,7 +42,7 @@ const StoryEndScreen: React.FC<StoryEndScreenProps> = ({ message, onRestart }) =
           <TouchableOpacity onPress={onRestart} activeOpacity={0.9}>
             <Animated.View style={{ opacity: fadeAnim }}>
               <Text style={styles.buttonText}>
-                Jogar Novamente
+                Voltar a Home
               </Text>
             </Animated.View>
           </TouchableOpacity>
