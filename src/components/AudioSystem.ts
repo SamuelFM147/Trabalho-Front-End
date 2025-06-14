@@ -17,16 +17,6 @@ import { useAudioState } from '../components/useAudioState';
  */
 export const AudioAssets = {
   TEMA_PRINCIPAL: require('../assets/songs/Tema_Principal.mp3'),
-  ID_95: require('../assets/songs/ID_95.mp3'),
-  ID_94: require('../assets/songs/ID_94.mp3'),
-  ID_92: require('../assets/songs/ID_92.mp3'),
-  ID_91: require('../assets/songs/ID_91.mp3'),
-  ID_4_A_6: require('../assets/songs/ID_4_a_6.mp3'),
-  ID_3: require('../assets/songs/ID_3.mp3'),
-  ID_2: require('../assets/songs/ID_2.mp3'),
-  ID_1: require('../assets/songs/ID_1.mp3'),
-  ID_0: require('../assets/songs/ID_0.mp3'),
-  FINAL_BOM: require('../assets/songs/Final_Bom.mp3'),
 } as const;
 let currentSound: Audio.Sound | null = null;
 let currentSoundAsset: keyof typeof AudioAssets | null = null;
@@ -41,16 +31,6 @@ const RETRY_DELAY = 1000;
 // Lista de todas as músicas para tocar em sequência
 const playlist: (keyof typeof AudioAssets)[] = [
   'TEMA_PRINCIPAL',
-  'ID_0',
-  'ID_1',
-  'ID_2',
-  'ID_3',
-  'ID_4_A_6',
-  'ID_91',
-  'ID_92',
-  'ID_94',
-  'ID_95',
-  'FINAL_BOM'
 ];
 
 export const useAudio = () => {
