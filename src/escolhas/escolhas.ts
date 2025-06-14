@@ -422,8 +422,8 @@ export const jsonData: GameData = [
   },
   {
     "id": "2",
-    "mensagem": "Aos poucos, ele se arrastou pelo campo.[IMAGEM]\nAs plantas o evitavam.\nAs raízes se contorciam.\nNo meio das cinzas, algo tentava brotar.\nMas ele desviou.\nNão suportava ver algo nascer onde ela havia morrido.\nO verde feria mais que a queimadura.",
-    "imagem_url": "../assets/id02.png",
+    "mensagem": "Aos poucos, ele se arrastou pelo campo.\nAs plantas o evitavam.\nAs raízes se contorciam.\nNo meio das cinzas, algo tentava brotar.\nMas ele desviou.\nNão suportava ver algo nascer onde ela havia morrido.\nO verde feria mais que a queimadura.",
+    "imagem_url": " ",
     "possiveis_destinos": [
       {
         "destino_id": "3",
@@ -527,8 +527,8 @@ export const jsonData: GameData = [
   },
   {
     "id": "17",
-    "mensagem": "Ele subiu.[IMAGEM]\nCom passos lentos.\nSem pressa de chegar.\nMas também sem coragem de ficar.\nAlgo o chamava.\nTalvez um fim.\nTalvez nada.",
-    "imagem_url": "../assets/id17.png",
+    "mensagem": "Ele subiu.\nCom passos lentos.\nSem pressa de chegar.\nMas também sem coragem de ficar.\nAlgo o chamava.\nTalvez um fim.\nTalvez nada.",
+    "imagem_url": " ",
     "possiveis_destinos": [
       {
         "destino_id": "19",

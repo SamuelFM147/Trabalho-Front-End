@@ -11,7 +11,6 @@ import StoryEndScreen from '../game/storyEnd';
 const localImages: Record<string, any> = {
   '../assets/id00.png': require('../assets/id00.png'),
   '../assets/id01.png': require('../assets/id01.png'),
-  '../assets/id02.png': require('../assets/id02.png'),
   '../assets/id03.png': require('../assets/id03.png'),
   '../assets/id04.png': require('../assets/id04.png'),
   '../assets/id06.png': require('../assets/id06.png'),
@@ -25,7 +24,6 @@ const localImages: Record<string, any> = {
   '../assets/id14.png': require('../assets/id14.png'),
   '../assets/id15.png': require('../assets/id15.png'),
   '../assets/id16.png': require('../assets/id16.png'),
-  '../assets/id17.png': require('../assets/id17.png'),
   '../assets/id18.png': require('../assets/id18.png'),
   '../assets/id19.png': require('../assets/id19.png'),
   '../assets/id20.png': require('../assets/id20.png'),
