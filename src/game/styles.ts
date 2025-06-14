@@ -20,9 +20,7 @@ export const colors = {
   white: '#FFFFFF',
   black: '#000000',
   disabledButtonBg: '#1C2126',
-  // Adicione mais cores conforme necessário
 };
-
 export const typography = {
   narrativeText: {
     fontSize: 20,
