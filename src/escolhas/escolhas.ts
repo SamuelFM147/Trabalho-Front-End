@@ -59,8 +59,8 @@ export const jsonData: GameData = [
   },
   {
     "id": "5",
-    "mensagem": "Entre ruínas de pedra, uma criança esperava. \nNão ria. Não chorava. Apenas observava. \nTalvez fosse só uma memória errante — ou um eco da filha — talvez o mundo testando sua essência. \n— Você ainda acredita no que é belo? — perguntou. \nSin estendeu a mão. \nA luz que surgia nela tremia, como se também estivesse de luto.",
-    "imagem_url": " ",
+    "mensagem": "Entre ruínas de pedra, uma criança esperava.[IMAGEM] \nNão ria. Não chorava. Apenas observava. \nTalvez fosse só uma memória errante — ou um eco da filha — talvez o mundo testando sua essência. \n— Você ainda acredita no que é belo? — perguntou. \nSin estendeu a mão. \nA luz que surgia nela tremia, como se também estivesse de luto.",
+    "imagem_url": "../assets/id05.png",
     "possiveis_destinos": [
       {
         "destino_id": "6",
@@ -422,8 +422,8 @@ export const jsonData: GameData = [
   },
   {
     "id": "2",
-    "mensagem": "Aos poucos, ele se arrastou pelo campo.\nAs plantas o evitavam.\nAs raízes se contorciam.\nNo meio das cinzas, algo tentava brotar.\nMas ele desviou.\nNão suportava ver algo nascer onde ela havia morrido.\nO verde feria mais que a queimadura.",
-    "imagem_url": " ",
+    "mensagem": "Aos poucos, ele se arrastou pelo campo.\nAs plantas o evitavam. [IMAGEM] \nAs raízes se contorciam.\nNo meio das cinzas, algo tentava brotar.\nMas ele desviou.\nNão suportava ver algo nascer onde ela havia morrido.\nO verde feria mais que a queimadura.",
+    "imagem_url": "../assets/id02.png",
     "possiveis_destinos": [
       {
         "destino_id": "3",
@@ -527,8 +527,8 @@ export const jsonData: GameData = [
   },
   {
     "id": "17",
-    "mensagem": "Ele subiu.\nCom passos lentos.\nSem pressa de chegar.\nMas também sem coragem de ficar.\nAlgo o chamava.\nTalvez um fim.\nTalvez nada.",
-    "imagem_url": " ",
+    "mensagem": "Ele subiu.\nCom passos lentos.\nSem pressa de chegar.[IMAGEM] \nMas também sem coragem de ficar.\nAlgo o chamava.\nTalvez um fim.\nTalvez nada.",
+    "imagem_url": "../assets/id17.png",
     "possiveis_destinos": [
       {
         "destino_id": "19",
@@ -572,8 +572,8 @@ export const jsonData: GameData = [
   },
   {
     "id": "23",
-    "mensagem": "Ele sentiu o calor. \nMas o soltou.\nNão como rejeição,\nmas como despedida.\nEra hora de sua amada parar de esperar.\nO sorriso tímido de sua filha se apagou.\nAfinal, a culpa era sua.\nEm seu coração, ele sentiu dor e calor.\nUma ideia veio à mente, talvez um propósito.",
-    "imagem_url": " ",
+    "mensagem": "Ele sentiu o calor. \nMas o soltou.\nNão como rejeição,\nmas como despedida.[IMAGEM]\nEra hora de sua amada parar de esperar.\nO sorriso tímido de sua filha se apagou.\nAfinal, a culpa era sua.\nEm seu coração, ele sentiu dor e calor.\nUma ideia veio à mente, talvez um propósito.",
+    "imagem_url": "../assets/id23.png",
     "possiveis_destinos": [
       {
         "destino_id": "25",
@@ -587,7 +587,7 @@ export const jsonData: GameData = [
   },
   {
     "id": "25",
-    "mensagem": "Após a partida, ele continuou sua jornada.[IMAGEM]\nLembranças ainda o assolavam, chamados delirantes o atormentavam,\ne então ele parou de respirar e pensar.\nParou de caminhar rumo ao destino incerto.\nOlhou o céu quebrado.\nOlhou para si.\nE perguntou:\n\"Ainda vale a pena continuar?\"\n[IMAGEM]\nNão havia resposta.",
+    "mensagem": "Após a partida, ele continuou sua jornada.\nLembranças ainda o assolavam, chamados delirantes o atormentavam,\ne então ele parou de respirar e pensar.\nParou de caminhar rumo ao destino incerto.\nOlhou o céu quebrado.\nOlhou para si.\nE perguntou:\n\"Ainda vale a pena continuar?\"\n[IMAGEM]\nNão havia resposta.",
     "imagem_url": "../assets/id25.png",
     "possiveis_destinos": [
       {
