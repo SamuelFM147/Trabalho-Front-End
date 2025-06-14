@@ -395,7 +395,7 @@ export const jsonData: GameData = [
     ]
   },
   {
-    "id": "37",
+    "id": "95",
     "mensagem": "O mundo estava em silêncio.[IMAGEM]\nMas não aquele silêncio de paz —\no silêncio que vem quando tudo já gritou, já queimou,\njá implorou por fim.\nSin, envolto em brasas apagadas e cinzas que nem o tempo ousava recolher,\nparou diante do nada.\nAtrás dele: cidades viradas em pó.\nÀ frente: um campo onde não nasceria mais som.\nEle se ajoelhou.\nNão por arrependimento.\nNão por cansaço.\nMas porque, naquele instante… ele ouviu.\nUm sopro.\nFrágil.\nQuase inexistente.\nO tipo de vento que carrega poeira de nomes esquecidos,\no rastro do toque de uma criança que nunca cresceu.\nEle não tentou segurá-lo.\nNem se escondeu.\nApenas fechou os olhos.\nE permitiu.\nO vento passou por ele como quem limpa o altar de um templo morto.\nE tudo — absolutamente tudo — começou a sumir.\nO chão.\nO céu.\nO nome.\nA dor.\nO poder.\nO próprio conceito de Sin.\nNada restaria.\nNem sombra.\nNem ruína.\nNem vestígio.\nSó o silêncio verdadeiro.\nA ausência perfeita.\nE talvez,\nem algum lugar inalcançável,\numa única nota —\ntão leve que o universo nem percebeu —\ncantasse:\n\"Ela foi amada.\"",
     "imagem_url": "../assets/id37.png",
     "possiveis_destinos": [
