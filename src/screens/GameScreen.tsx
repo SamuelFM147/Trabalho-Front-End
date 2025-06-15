@@ -139,7 +139,7 @@ const GameScreen: React.FC = () => {
             <Image
               source={currentImageSource}
               style={styles.sceneImage} 
-              resizeMode="cover"
+              resizeMode="contain"
             />
           )}  
           {shouldRenderImageInline && textAfterImage.trim().length > 0 && (

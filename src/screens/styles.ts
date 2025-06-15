@@ -29,9 +29,9 @@ export const styles = StyleSheet.create({
     ...typography.narrativeText,
   },
   sceneImage: {
-    width: width - 30,
-    height: (width - 30) * 0.75,
-    resizeMode: 'cover',
+    width: 512,
+    height: 512,
+    resizeMode: 'contain',
     marginBottom: 15,
     borderRadius: 8,
     alignSelf: 'center',
