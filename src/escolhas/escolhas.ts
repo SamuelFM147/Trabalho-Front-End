@@ -292,7 +292,7 @@ export const jsonData: GameData = [
         "descricao_opcao": "Permanecer em vigília, mesmo que o mundo mude."
       },
       {
-        "destino_id": "37",
+        "destino_id": "95",
         "descricao_opcao": "Permitir que um último sopro de vento leve tudo."
       }
     ]
@@ -415,7 +415,7 @@ export const jsonData: GameData = [
         "descricao_opcao": "Quebrar o espelho com a mão."
       },
       {
-        "destino_id": "37",
+        "destino_id": "95",
         "descricao_opcao": "Destruir as emoções e a existência."
       }
     ]
