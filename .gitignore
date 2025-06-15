@@ -36,6 +36,7 @@ android/gradlew
 android/gradlew.bat
 android/gradle/
 android/build/
+android
 
 # macOS/Linux system files
 .DS_Store
@@ -153,3 +154,4 @@ fastlane/test_output
 .expo
 .expo/README.md
 .expo/devices.json
+android/
